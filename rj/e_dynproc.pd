@@ -1,4 +1,4 @@
-#N canvas 223 202 914 700 10;
+#N canvas 223 68 914 700 10;
 #N canvas 0 0 450 300 dw 0;
 #X obj 100 85 inlet~;
 #X obj 98 189 outlet~;
@@ -337,8 +337,8 @@ License along with this program. If not \, see <http://www.gnu.org/licenses/>.
 #X restore 782 20 pd LICENSE-GPL;
 #X connect 0 0 1 0;
 #X connect 1 0 4 0;
+#X connect 1 0 49 1;
 #X connect 2 0 0 0;
-#X connect 2 0 49 1;
 #X connect 4 0 54 0;
 #X connect 5 0 17 0;
 #X connect 6 0 7 0;
