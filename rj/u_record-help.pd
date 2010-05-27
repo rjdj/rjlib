@@ -1,4 +1,4 @@
-#N canvas 236 121 925 699 10;
+#N canvas 236 69 925 699 10;
 #X floatatom 265 537 8 0 0 3 dur_in_smps - -;
 #X floatatom 191 537 8 0 0 3 dur_in_ms - -;
 #X msg 320 304 info;
@@ -14,7 +14,7 @@
 #X obj 481 474 symbol \$0-sample;
 #X msg 481 452 bang;
 #X text 103 122 Inlets: 1) audio signal to record;
-#X msg 296 188 start;
+#X msg 296 168 start;
 #X msg 305 214 stop;
 #X text 369 298 output list containing: <table name> <recording duration
 in ms> <rec. duration in samples> <samplerate>;
@@ -25,7 +25,7 @@ in ms> <rec. duration in samples> <samplerate>;
 #X obj 143 351 soundinput;
 #X text 289 448 <name> <maxdur>;
 #X text 359 215 stop recording;
-#X text 350 187 start recording. Does not clear previous recordings!
+#X text 350 167 start recording. Does not clear previous recordings!
 ;
 #X text 366 244 delete recording and set duration to 0;
 #X msg 318 389 clear \, start;
@@ -42,12 +42,14 @@ You can change this time with "fade x" messages;
 #X obj 156 321 tgl 15 0 empty empty sine_wave 17 7 1 10 -262144 -1
 -1 0 1;
 #X obj 116 320 *~ 1;
-#X obj 43 18 u_record \$0-mysample;
 #X text 210 19 Record mono sounds into Pd tables.;
 #X text 143 73 <table name - required!>;
 #X text 333 72 <max duration in milliseconds \, optional \, default
 1000>;
 #X text 157 145 2) various messages \, see below;
+#X obj 43 18 u_record \$0-mysample;
+#X msg 303 187 start 500;
+#X text 383 185 start recording 500 milliseconds from table start;
 #X connect 2 0 32 1;
 #X connect 3 0 4 0;
 #X connect 3 0 4 1;
@@ -75,3 +77,4 @@ You can change this time with "fade x" messages;
 #X connect 35 0 34 1;
 #X connect 36 0 37 1;
 #X connect 37 0 32 0;
+#X connect 43 0 32 1;
