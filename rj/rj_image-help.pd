@@ -1,0 +1,44 @@
+#N canvas 19 22 1108 416 10;
+#X obj 606 38 r #touch;
+#X obj 704 141 list split 1;
+#X obj 606 366 rj_image moving_image.png;
+#X obj 606 141 list split 1;
+#X msg 744 202 move \$1 \$2;
+#X msg 606 294 visible \$1;
+#X obj 536 204 loadbang;
+#X msg 536 234 0;
+#X obj 606 68 route down xy up;
+#X obj 678 90 list split 1;
+#X obj 678 111 sel 1;
+#N canvas 462 157 683 430 REFERENCE 0;
+#X text 110 41 Name: rj_image;
+#X text 110 62 Summary: displays images;
+#X text 110 83 Argument 0: file name \, required;
+#X text 110 104 Inlet 0: messages: visible <0/1> \, move <x \, y>;
+#X text 110 204 Remember that the move messages places the image's
+center at the coordinates given.;
+#X text 110 124 Description: rj_image displays an image while a scene
+is running in the iPhone. It allows either jpg or png to be used. Sending
+a visible message to the right inlet will show (1) or hide (0) the
+image. A move message will place the image in the screen at the coordinates
+given in the message.;
+#X coords 0 -1 1 1 450 350 1 100 20;
+#X restore 17 39 pd REFERENCE;
+#X text 14 12 rj_image - place and control images on a device;
+#X text 722 113 Hides the image when untouched;
+#X text 686 295 Shows the image when touched;
+#X text 824 202 Moves the image according to touch xy;
+#X connect 0 0 8 0;
+#X connect 1 0 5 0;
+#X connect 1 1 4 0;
+#X connect 3 0 5 0;
+#X connect 3 1 4 0;
+#X connect 4 0 2 0;
+#X connect 5 0 2 0;
+#X connect 6 0 7 0;
+#X connect 7 0 5 0;
+#X connect 8 0 3 0;
+#X connect 8 1 1 0;
+#X connect 8 2 9 0;
+#X connect 9 0 10 0;
+#X connect 10 0 7 0;

@@ -1,5 +1,103 @@
 #N canvas 781 41 291 431 10;
-#N canvas 0 0 682 744 \$0-overview 0;
+#N canvas 0 0 683 629 \$0-overview 0;
+#X text 250 45 - compute biquad coefficients for a bandpass filter
+(const skirt BW);
+#X obj 100 45 u_bandpass1;
+#X text 250 90 - compute biquad coefficients for a bandpass filter
+(const skirt Q);
+#X obj 100 90 u_bandpass1q;
+#X text 250 135 - compute biquad coefficients for a bandpass filter
+(const peak BW);
+#X obj 100 135 u_bandpass2;
+#X text 250 180 - compute biquad coefficients for a bandpass filter
+(const peak Q);
+#X obj 100 180 u_bandpass2q;
+#X text 250 225 - mixing strip with two postfader sends;
+#X obj 100 225 u_channelstrip;
+#X text 250 270 - collect messages into a message and end each with
+a comma;
+#X obj 100 270 u_cocollect;
+#X text 250 315 - collect messages into a message;
+#X obj 100 315 u_collect;
+#X text 250 360 - dispatch messages by selector to local senders;
+#X obj 100 360 u_dispatch;
+#X text 250 405 - read and dump a textfile;
+#X obj 100 405 u_dumpfile;
+#X text 250 450 - remote fader control;
+#X obj 100 450 u_fade;
+#X text 250 495 - follower for messages delivered at constant rate
+;
+#X obj 100 495 u_follower;
+#X text 250 540 - compute biquad coefficients for a resonant highpass
+filter (BW);
+#X obj 100 540 u_highpass;
+#X text 250 585 - compute biquad coefficients for a resonant highpass
+filter (Q);
+#X obj 100 585 u_highpassq;
+#X text 250 630 - serialise a list immediatly (i.e. list-drip);
+#X obj 100 630 u_listdrip;
+#X text 250 675 - compare two number lists;
+#X obj 100 675 u_listequal;
+#X text 250 720 - filter a list (i.e. list-filter);
+#X obj 100 720 u_listfilter;
+#X text 250 765 - loop items in a list;
+#X obj 100 765 u_listloop;
+#X text 250 810 - map an operation to each list element (i.e. list-map)
+;
+#X obj 100 810 u_listmap;
+#X text 250 855 - output the nth element of a list (i.e. list-nth)
+;
+#X obj 100 855 u_listnth;
+#X text 250 900 - make list of random numbers;
+#X obj 100 900 u_listrandom;
+#X text 250 945 - reduce a list in pairs (i.e. list-reduce);
+#X obj 100 945 u_listreduce;
+#X text 250 990 - serialise a list on demand (i.e. list-dripslow);
+#X obj 100 990 u_listser;
+#X text 250 1035 - show CPU load;
+#X obj 100 1035 u_loadmeter;
+#X text 250 1080 - connect local state variables to global senders
+;
+#X obj 100 1080 u_loader;
+#X text 250 1125 - compute biquad coefficients for a resonant lowpass
+filter (BW);
+#X obj 100 1125 u_lowpass;
+#X text 250 1170 - compute biquad coefficients for a resonant lowpass
+filter (Q);
+#X obj 100 1170 u_lowpassq;
+#X text 250 1215 - make midi-like instruments polyphonic;
+#X obj 100 1215 u_makepoly;
+#X text 250 1260 - samplebank for many mono files;
+#X obj 100 1260 u_multisamplebank;
+#X text 250 1305 - samplebank for many stereo files;
+#X obj 100 1305 u_multisamplebank2;
+#X text 250 1350 - record audio data into tables;
+#X obj 100 1350 u_record;
+#X text 250 1395 - round robin polyphony;
+#X obj 100 1395 u_robinpoly;
+#X text 250 1440 - round robin polyphony (mono version);
+#X obj 100 1440 u_robinpolymono;
+#X text 250 1485 - load files into tables;
+#X obj 100 1485 u_samplebank;
+#X text 250 1530 - load stereo files into tables;
+#X obj 100 1530 u_samplebank2;
+#X text 250 1575 - load a directory of mono samples;
+#X obj 100 1575 u_samplekit;
+#X text 250 1620 - load a directory of stereo samples;
+#X obj 100 1620 u_samplekit2;
+#X text 250 1665 - sigmoid function for messaging squashing;
+#X obj 100 1665 u_sigm;
+#X text 250 1710 - show messages in a message box;
+#X obj 100 1710 u_show;
+#X text 250 1755 - transition splicer for bandlimiting jumps in waveforms
+;
+#X obj 100 1755 u_splicetrans;
+#X text 250 1800 - select items from a list by a scaled index;
+#X obj 100 1800 u_spinner;
+#X text 250 1845 - make stereo versions of effects;
+#X obj 100 1845 u_stereo;
+#X text 250 1890 - generate weighted random numbers;
+#X obj 100 1890 u_wrandom;
 #X restore 72 299 pd \$0-overview;
 #X text 72 328 Help-click any object to;
 #X text 72 347 open the help file!;
@@ -21,9 +119,6 @@
 #X msg 118 106 a;
 #X msg 294 114 g;
 #X obj 78 39 list split 1;
-#X obj 118 63 select Analysis Synths Effects GUIs Mappings Controllers
-Utilities clear;
-#X msg 501 110 clear;
 #N canvas 337 123 805 747 dump 0;
 #X obj 94 243 textfile;
 #X obj 94 337 t a b;
@@ -93,28 +188,35 @@ GOP objects so they don't overlap with following objects.;
 #X connect 26 0 2 0;
 #X restore 118 214 pd dump;
 #X obj 118 172 t a;
+#X obj 118 63 select Analysis Synths Effects GUIs Mappings Controllers
+Utilities RjDj-Externals clear;
+#X msg 553 110 clear;
+#X msg 501 110 rj;
 #X connect 0 0 8 0;
-#X connect 1 0 12 0;
-#X connect 2 0 12 0;
-#X connect 3 0 12 0;
-#X connect 4 0 12 0;
-#X connect 5 0 12 0;
-#X connect 6 0 12 0;
-#X connect 7 0 12 0;
-#X connect 8 1 9 0;
-#X connect 9 0 6 0;
-#X connect 9 1 1 0;
-#X connect 9 2 2 0;
-#X connect 9 3 7 0;
-#X connect 9 4 3 0;
-#X connect 9 5 4 0;
-#X connect 9 6 5 0;
-#X connect 9 7 10 0;
-#X connect 10 0 11 1;
-#X connect 12 0 11 0;
+#X connect 1 0 10 0;
+#X connect 2 0 10 0;
+#X connect 3 0 10 0;
+#X connect 4 0 10 0;
+#X connect 5 0 10 0;
+#X connect 6 0 10 0;
+#X connect 7 0 10 0;
+#X connect 8 1 11 0;
+#X connect 10 0 9 0;
+#X connect 11 0 6 0;
+#X connect 11 1 1 0;
+#X connect 11 2 2 0;
+#X connect 11 3 7 0;
+#X connect 11 4 3 0;
+#X connect 11 5 4 0;
+#X connect 11 6 5 0;
+#X connect 11 7 13 0;
+#X connect 11 8 12 0;
+#X connect 12 0 9 1;
+#X connect 13 0 10 0;
 #X restore 72 276 pd open objects;
 #X text 55 15 rj-Library Reference;
 #X text 55 38 Select section to read:;
+#X msg 72 224 _ RjDj-Externals;
 #X connect 3 0 11 0;
 #X connect 4 0 11 0;
 #X connect 5 0 11 0;
@@ -123,3 +225,4 @@ GOP objects so they don't overlap with following objects.;
 #X connect 8 0 11 0;
 #X connect 9 0 11 0;
 #X connect 10 0 11 0;
+#X connect 14 0 11 0;
