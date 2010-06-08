@@ -12,7 +12,6 @@
 #X obj 112 301 outlet~;
 #X obj 188 126 r \$0-freq;
 #X obj 31 184 *~;
-#X obj 49 165 r 0$-dry;
 #X text 281 204 Simple tremolo TODO: add depth param;
 #X msg 386 64 freq 5 \, dry 0;
 #N canvas 172 83 586 377 LICENSE-GPL 0;
@@ -31,8 +30,9 @@ License along with this program. If not \, see <http://www.gnu.org/licenses/>.
 #X text 60 325 See the file LICENSE.txt for the full license text.
 ;
 #X restore 522 39 pd LICENSE-GPL;
+#X obj 49 164 r \$0-dry;
 #X connect 0 0 4 0;
-#X connect 1 0 15 0;
+#X connect 1 0 14 0;
 #X connect 5 0 6 0;
 #X connect 6 0 7 1;
 #X connect 7 0 10 0;
@@ -41,5 +41,5 @@ License along with this program. If not \, see <http://www.gnu.org/licenses/>.
 #X connect 9 0 5 0;
 #X connect 11 0 9 0;
 #X connect 12 0 10 0;
-#X connect 13 0 12 1;
-#X connect 15 0 4 0;
+#X connect 14 0 4 0;
+#X connect 16 0 12 1;
