@@ -16,11 +16,11 @@ an object from Karl-Heinz Essls "RTC-lib".;
 #X floatatom 536 199 5 0 0 1 interval - -;
 #X floatatom 536 277 5 0 0 0 - - -;
 #X text 636 254 opposite conversion;
-#X text 6 14 m_ratio2intv - Convert a pitch interval into a ratio.
-;
 #X obj 536 162 m_ratio2intv;
 #X obj 536 254 m_intv2ratio;
-#X connect 1 0 6 0;
-#X connect 2 0 7 0;
-#X connect 6 0 2 0;
-#X connect 7 0 3 0;
+#X text 6 14 m_ratio2intv - Convert a ratio into a pitch interval.
+;
+#X connect 1 0 5 0;
+#X connect 2 0 6 0;
+#X connect 5 0 2 0;
+#X connect 6 0 3 0;

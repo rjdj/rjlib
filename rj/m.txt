@@ -13,7 +13,7 @@ m_markovanal - analyses a stream of number pairs
 m_minorscale - map numbers to minor scales
 m_ms2beat - convert durations in milliseconds to beats
 m_ms2sm - convert duration in milliseconds to duration in samples
-m_ratio2intv - Convert a pitch interval into a ratio
+m_ratio2intv - Convert a ratio into a pitch interval 
 m_scale - scale ranges
 m_sm2ms - convert duration in samples to duration in milliseconds 
 m_speedlimit - impose upper limit on message speed
