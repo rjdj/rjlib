@@ -20,5 +20,6 @@ s_playolap - play overlapped chunks of a table
 s_playtable - sample player for tables with resampling
 s_playtable2 - sample player for tables with resampling (stereo)
 s_rhodey - FM emulation of rhodes e-piano
+s_spad - slow synth pads
 s_osc - multi-waveform oscillator: sine saw square triangle
 s_vphasor - phasor~ clone with sample accurate phase setting
