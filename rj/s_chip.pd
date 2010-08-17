@@ -160,7 +160,7 @@
 #X connect 34 0 29 0;
 #X restore 388 81 pd envelopes;
 #X obj 601 118 list trim;
-#X obj 601 164 u_loader s_cws-synth-\$1 \$0;
+#X obj 601 164 u_loader s_chip-\$1 \$0;
 #X obj 149 61 t a b b b b;
 #X obj 230 128 > 0;
 #X obj 149 103 unpack f f f;

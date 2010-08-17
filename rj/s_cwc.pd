@@ -198,7 +198,7 @@
 #X obj 244 478 +~;
 #X obj 255 216 * 100;
 #X obj 206 179 r \$0-mod1a;
-#X obj 457 106 u_loader s_cws-synth-\$1 \$0;
+#X obj 457 106 u_loader s_cwc-\$1 \$0;
 #X obj 130 56 sig~;
 #X obj 245 145 *~ 0.5;
 #X obj 60 388 * 500;
