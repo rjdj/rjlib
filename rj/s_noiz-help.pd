@@ -339,7 +339,7 @@ help for details. Possible message are (in alphabetical order): env1a
 \, osc1b \, osc1c \, osc1d \, osc2a \, osc2b \, osc2c \, osc2d \, osc3a
 \, osc3b \, osc3c \, osc3d. They all accept a float in the range 0-1
 ;
-#X text 114 121 Name: noiz;
+#X text 114 121 Name: s_noiz;
 #X text 113 140 Summary: Noise sounds \, snaps \, whistles \, whooshes
 ;
 #X text 121 529 Tags: wind \, percussion \, sweeps;

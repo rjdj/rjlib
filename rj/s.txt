@@ -23,3 +23,4 @@ s_rhodey - FM emulation of rhodes e-piano
 s_spad - slow synth pads
 s_osc - multi-waveform oscillator: sine saw square triangle
 s_vphasor - phasor~ clone with sample accurate phase setting
+s_wsb - type B waveshaper
