@@ -15,6 +15,7 @@ s_hstr - string synthesiser
 s_looper - sample player with builtin sample loader 
 s_loopsmooth - loop table parts with overlapped chunks
 s_noish - sample and hold noise
+s_noiz - multiband noise synth with modulation
 s_pinknoise - pinkish noise source
 s_playolap - play overlapped chunks of a table
 s_playtable - sample player for tables with resampling
