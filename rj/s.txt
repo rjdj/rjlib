@@ -11,6 +11,7 @@ s_fm4 - simple 4-operator FM unfinished!
 s_fplaytable - fast sample player for tables
 s_fplaytable2 - fast sample player for tables (stereo)
 s_guitar - karplus strong guitar
+s_hstr - string synthesiser
 s_looper - sample player with builtin sample loader 
 s_loopsmooth - loop table parts with overlapped chunks
 s_noish - sample and hold noise
