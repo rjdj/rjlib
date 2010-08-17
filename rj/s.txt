@@ -1,7 +1,11 @@
 s_blsaw - bandlimited saw wave
 s_blsquare - bandlimited square wave with PWM
 s_buzz - buzz harmonics generator
+s_chip - grungy and grainy console and cheap synth sounds
+s_cwc - synth with 4 harmonic oscillator modulating a waveshaper and FM stage
+s_czz - dual square wave synthesizer
 s_drumelectro - electronic drums
+s_ejun - juno like instrument
 s_fmoscil - simple 2-operator FM
 s_fm4 - simple 4-operator FM unfinished!
 s_fplaytable - fast sample player for tables
