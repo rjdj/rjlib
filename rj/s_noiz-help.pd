@@ -1,5 +1,5 @@
-#N struct 1113-symarray float x array symbols 1113-sym;
-#N struct 1113-sym symbol name float on;
+#N struct 1005-symarray float x array symbols 1005-sym;
+#N struct 1005-sym symbol name float on;
 #N canvas 324 183 877 510 10;
 #X declare -path .;
 #X declare -path .;
@@ -10,7 +10,7 @@
 #X obj 575 9 r \$0-GUI;
 #X obj 21 132 m_majorscale 50;
 #X obj 21 78 metro 500;
-#X obj 21 54 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+#X obj 21 54 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
 ;
 #X obj 21 211 pack;
 #N canvas 0 58 1013 367 midi-control 0;
@@ -66,12 +66,12 @@ accepts. They all expect values in a range of 0-1.;
 #X symbolatom 350 271 20 0 0 0 - - -;
 #X obj 466 249 s \$0-GUI;
 #X obj 350 200 nbx 3 20 0 256 0 0 empty empty empty 0 -8 0 16 -260097
--262144 -1 2 256;
+-262144 -1 7 256;
 #X obj 350 177 pgmin 1;
 #X obj 21 154 makenote 127 300;
 #X floatatom 112 62 5 0 0 0 - - -;
 #X obj 307 157 hradio 15 1 0 16 empty empty empty 0 -8 0 10 -262144
--1 -1 2;
+-1 -1 7;
 #X msg 144 317 name helicopter \, mod3d 0 \, mod3c label _ \, mod3b
 0.0740945 \, mod3a 0 \, mod2d 0 \, mod2c 0 \, mod2b 0.385827 \, mod2a
 0.393701 \, mod1d 0 \, mod1c 0.244094 \, mod1b 0.0708661 \, mod1a 0
@@ -340,23 +340,23 @@ help for details. Possible message are (in alphabetical order): env1a
 \, osc3b \, osc3c \, osc3d. They all accept a float in the range 0-1
 ;
 #X text 114 121 Name: s_noiz;
-#X text 113 140 Summary: Noise sounds \, snaps \, whistles \, whooshes
-;
 #X text 121 529 Tags: wind \, percussion \, sweeps;
-#X text 113 411 Description: Noise sounds \, snaps \, whistles \, whooshes.
+#X text 113 140 Summary: multiband noise synth with modulation.;
+#X text 113 411 Description: s_noiz is a multiband noise synth with
+modulation. Great for making noise sounds \, snaps \, whistles \, whooshes.
 ajf2010;
 #X coords 0 -1 1 1 450 450 1 100 100;
 #X restore 4 48 pd REFERENCE;
 #X text 498 230 Please see inside for help and an example.;
 #X text 658 97 control inlet;
 #X text 657 143 preset outlet;
-#X text 7 14 s_noiz is a multi band noise synth with modulation;
 #X obj 570 172 soundoutput;
 #X obj 570 89 pack;
 #X obj 570 52 notein;
 #X obj 570 119 s_noiz \$0-TAG;
-#X connect 7 0 9 0;
-#X connect 8 0 7 0;
-#X connect 8 1 7 1;
-#X connect 9 0 6 0;
-#X connect 9 0 6 1;
+#X text 7 14 s_noiz - multiband noise synth with modulation;
+#X connect 6 0 8 0;
+#X connect 7 0 6 0;
+#X connect 7 1 6 1;
+#X connect 8 0 5 0;
+#X connect 8 0 5 1;
