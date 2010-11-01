@@ -5,7 +5,7 @@
 #X obj 155 250 pack 0 0;
 #X obj 155 171 m_majorscale 60;
 #X obj 155 271 u_makepoly 8 1 s_rhodey \$0-piano;
-#X obj 212 104 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 212 104 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #N canvas 359 223 592 507 play-a-little-song-for-me 0;
 #X msg 133 301 0 \, 2 \, 3 \, 5 \, 8 \, 9;
@@ -94,7 +94,7 @@
 #X connect 13 0 2 0;
 #X connect 13 1 2 1;
 #X restore 494 68 pd song;
-#X obj 494 46 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 494 46 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 494 237 soundoutput;
 #X text 548 138 There must be a matching delwrite~ in your patch;
@@ -106,16 +106,15 @@
 #X text 114 175 Argument 1: delayline name (required);
 #X text 114 246 Outlet 0: delayed audio signal;
 #X text 114 195 Inlet 0: delay time;
-#X text 114 214 Inlet 1: declick frequency (default 5);
+#X text 114 214 Inlet 1: declick latency (default 200 ms);
 #X text 115 267 Description: e_noclickdel is a tap from a delay line
 with an adjustable delay time that doesn't introduce audible clicks
 when changed. Note that you will hear clicks if the delay time is being
 changed too often \, try using m_speedlimit to control it. The declick
-frequency controls the speed of the declicker inside the object and
-will affect how fast the delay time is allowed to change. Larger values
-let the delay times change faster \, but you risk more clicks here.
-The default value is 5 Hz \, so changes in delay times will only be
-registered every 200 msec.;
+latency controls the speed of the declicker inside the object and will
+affect how fast the delay time is allowed to change. The default value
+is 200 msec \, so that changes in delay times will only be registered
+every 200 msec. Smaller values increase the risk of clicks.;
 #X coords 0 -1 1 1 450 350 1 100 100;
 #X restore 16 27 pd REFERENCE;
 #X text 13 9 e_noclickdel - clickless delread~ object;
@@ -125,8 +124,9 @@ registered every 200 msec.;
 #X obj 566 68 *~;
 #X obj 581 45 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X floatatom 741 179 5 0 0 1 declick-frequency - -;
+#X floatatom 741 179 5 0 0 1 latency - -;
 #X obj 597 197 e_noclickdel \$0-delay;
+#X text 759 199 Default latency is 200 ms.;
 #X connect 0 0 2 0;
 #X connect 0 0 7 0;
 #X connect 1 0 0 0;
