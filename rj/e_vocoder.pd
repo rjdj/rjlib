@@ -1,5 +1,5 @@
 #N canvas 373 183 808 432 10;
-#N canvas 147 0 795 617 fft-analysis 0;
+#N canvas 147 22 795 617 fft-analysis 0;
 #X obj 94 511 *~;
 #X obj 55 511 *~;
 #X obj 413 356 *~;
