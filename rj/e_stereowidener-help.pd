@@ -1,30 +1,38 @@
-#N canvas 146 73 873 516 10;
-#X obj 589 333 e_stereowidener;
-#X obj 589 392 soundoutput;
-#N canvas 264 347 827 710 REFERENCE 0;
+#N canvas 146 73 833 533 10;
+#X obj 575 311 e_stereowidener;
+#X obj 575 370 soundoutput;
+#N canvas 264 314 827 710 REFERENCE 0;
 #X text 114 120 Name: e_stereowidener;
-#X text 114 141 Summary: widens the sound field of a stereo signal
+#X text 114 151 Summary: widens the sound field of a stereo signal
 ;
-#X text 114 164 Inlet 0: left audio signal;
-#X text 114 184 Inlet 1: right audio signal;
-#X text 114 205 Inlet 2: width <number (0-1)>;
-#X text 114 230 Outlet 0: effected left audio signal;
-#X text 114 250 Outlet 0: effected right audio signal;
-#X text 112 271 Description: widen stereo signals further. Setting
+#X text 112 311 Description: widen stereo signals further. Setting
 width to 0 sums the signal to mono \, a width of 1 gives maximum stereo
 width. Important: this effect will NOT work on mono signals. If you
 want to use a mono signal try delaying one input by a few ms.;
-#X text 122 529 Tags: mixing \, effect;
+#X text 112 401 See also:;
+#X text 112 521 Tags: Audio \, Imaging;
+#X text 114 225 Inlet 2: 'width <float>' Default = 0 \, 0-1.;
+#X text 114 184 Inlet 0: Audio input signal left;
+#X text 114 204 Inlet 1: Audio input signal right;
+#X text 114 260 Outlet 0: Audio output signal left;
+#X text 114 280 Outlet 1: Audio output signal right;
 #X coords 0 -1 1 1 450 450 1 100 100;
-#X restore 17 43 pd REFERENCE;
-#X obj 537 117 soundinput;
-#X msg 691 293 width \$1;
-#X obj 694 263 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+#X restore 6 43 pd REFERENCE;
+#X obj 523 95 soundinput;
+#X msg 677 271 width \$1;
+#X obj 680 241 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
-#X obj 577 181 delread~ \$0-wide 400;
-#X obj 577 202 *~ 0.6;
-#X obj 577 224 delwrite~ \$0-wide 400;
-#X text 19 10 e_stereowidener - widens the spread of a stereo signal
+#X obj 563 159 delread~ \$0-wide 400;
+#X obj 563 180 *~ 0.6;
+#X obj 563 202 delwrite~ \$0-wide 400;
+#X obj 100 344 e_pan;
+#X obj 150 344 e_circlepan;
+#X obj 5 18 cnv 15 450 20 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X text 129 21 - widens the spread of a stereo signal;
+#X obj 8 20 e_stereowidener;
+#X text 466 46 Example:;
+#X text 467 511 RjDj Library (https://github.com/rjdj/rjlib) - 2011
 ;
 #X connect 0 0 1 0;
 #X connect 0 1 1 1;
