@@ -14,7 +14,7 @@
 #X obj 692 236 - 100;
 #X obj 693 258 vu 15 120 empty empty -1 -8 0 10 -66577 -1 1 0;
 #X obj 597 182 e_pan;
-#N canvas -64 227 827 710 REFERENCE 0;
+#N canvas 0 227 827 710 REFERENCE 0;
 #X text 114 404 See also:;
 #X text 114 121 Name: e_pan;
 #X text 114 141 Summary: Constant power panner;
