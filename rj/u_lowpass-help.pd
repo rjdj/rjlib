@@ -1,8 +1,8 @@
-#N canvas 240 143 845 532 10;
-#X obj 423 224 mtof;
-#X floatatom 483 193 5 0 0 2 BW - -;
-#X floatatom 423 192 5 0 0 2 freq - -;
-#N canvas 0 0 450 300 show 0;
+#N canvas 102 22 1178 709 10;
+#X obj 847 154 mtof;
+#X floatatom 907 123 5 0 0 2 BW - -;
+#X floatatom 847 122 5 0 0 2 freq - -;
+#N canvas 0 22 450 300 show 0;
 #X obj 41 39 inlet;
 #X obj 186 36 inlet;
 #X obj 41 124 outlet;
@@ -14,50 +14,71 @@
 #X connect 3 0 2 0;
 #X connect 4 0 5 0;
 #X connect 5 0 2 0;
-#X restore 423 294 pd show;
-#X msg 423 327;
-#X obj 423 262 u_lowpass;
-#X text 513 265 args: <freq> <BW>;
-#X text 120 91 u_lowpass is controlled by a bandwidth which is expressed
-in octaves. A bandwidth of 100 is equivalent to one octave.;
-#X obj 209 187 noise~;
-#X obj 108 346 env~;
-#X obj 210 233 *~ 0.3;
-#X obj 170 302 e_beequad;
-#X obj 171 437 soundoutput;
-#X text 66 26 u_lowpass;
-#X obj 171 404 c_xfade;
-#X text 120 48 Compute biquad coefficients for a resonant lowpass
-filter. Designed to be used with [biquad~] or [e_beequad];
-#X msg 481 294 reset;
-#X obj 255 304 biquad~;
-#X obj 108 369 - 100;
-#X obj 109 393 vu 15 80 empty empty -1 -8 0 10 -66577 -1 0 0;
-#X obj 293 345 env~;
-#X obj 293 368 - 100;
-#X obj 294 392 vu 15 80 empty empty -1 -8 0 10 -66577 -1 0 0;
-#X obj 220 383 hsl 32 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+#X restore 847 224 pd show;
+#X msg 847 257;
+#X obj 847 192 u_lowpass;
+#X obj 633 117 noise~;
+#X obj 532 276 env~;
+#X obj 634 163 *~ 0.3;
+#X obj 594 232 e_beequad;
+#X obj 595 367 soundoutput;
+#X obj 595 334 c_xfade;
+#X msg 905 224 reset;
+#X obj 679 234 biquad~;
+#X obj 532 299 - 100;
+#X obj 533 323 vu 15 80 empty empty -1 -8 0 10 -66577 -1 0 0;
+#X obj 717 275 env~;
+#X obj 717 298 - 100;
+#X obj 718 322 vu 15 80 empty empty -1 -8 0 10 -66577 -1 0 0;
+#X obj 644 313 hsl 32 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
-#X text 122 136 Both inlets are hot and trigger new coefficients.;
+#N canvas 239 53 582 570 REFERENCE 0;
+#X text 24 168 Outlet 0:;
+#X text 24 31 Name: u_lowpass;
+#X text 24 51 Summary: Compute biquad coefficients for a resonant lowpass
+filter. Designed to be used with [biquad~] or [e_beequad];
+#X text 24 65 comment;
+#X text 24 108 Inlet 0: frequency;
+#X text 24 128 Inlet 1: bandwidth which is expressed in octaves. A
+bandwidth of 100 is equivalent to one octave.;
+#X text 24 178 comment;
+#X text 24 374 See also: [biquad~] [e-beequad];
+#X text 24 434 Tags: Audio \, Filter;
+#X text 24 224 Description: Compute biquad coefficients for a resonant
+lowpass filter. Designed to be used with [biquad~] or [e_beequad] u_lowpass
+is controlled by a bandwidth which is expressed in octaves. A bandwidth
+of 100 is equivalent to one octave. Both inlets are hot and trigger
+new coefficients.;
+#X text 231 436;
+#X coords 0 -1 1 1 450 450 1 10 10;
+#X restore 15 58 pd REFERENCE;
+#X obj 15 28 cnv 15 450 20 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X text 478 61 Example:;
+#X text 501 507 RjDj Library (https://github.com/rjdj/rjlib) - 2011
+;
+#X obj 18 30 u_lowpass;
+#X text 99 30 - Compute biquad coefficients for a resonant lowpass
+filter.;
 #X connect 0 0 5 0;
 #X connect 1 0 5 1;
 #X connect 2 0 0 0;
 #X connect 3 0 4 0;
 #X connect 5 0 3 0;
-#X connect 5 0 11 1;
-#X connect 5 0 17 0;
-#X connect 8 0 10 0;
-#X connect 9 0 18 0;
-#X connect 10 0 11 0;
-#X connect 10 0 17 0;
-#X connect 11 0 9 0;
-#X connect 11 0 14 0;
-#X connect 14 0 12 0;
-#X connect 14 0 12 1;
-#X connect 16 0 3 1;
-#X connect 17 0 20 0;
-#X connect 17 0 14 1;
-#X connect 18 0 19 0;
-#X connect 20 0 21 0;
-#X connect 21 0 22 0;
-#X connect 23 0 14 2;
+#X connect 5 0 9 1;
+#X connect 5 0 13 0;
+#X connect 6 0 8 0;
+#X connect 7 0 14 0;
+#X connect 8 0 9 0;
+#X connect 8 0 13 0;
+#X connect 9 0 7 0;
+#X connect 9 0 11 0;
+#X connect 11 0 10 0;
+#X connect 11 0 10 1;
+#X connect 12 0 3 1;
+#X connect 13 0 16 0;
+#X connect 13 0 11 1;
+#X connect 14 0 15 0;
+#X connect 16 0 17 0;
+#X connect 17 0 18 0;
+#X connect 19 0 11 2;
