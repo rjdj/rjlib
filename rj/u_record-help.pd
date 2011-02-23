@@ -50,7 +50,7 @@ You can change this time with "fade x" messages;
 #X text 24 165 Inlet 0: audio signal to record;
 #X text 24 185 Inlet 1: various messages \, see example;
 #X text 24 31 Name: [u_record \$0-mysample];
-#X text 25 204;
+#X text 25 204 comment;
 #X text 24 225 Outlet 0: outputs a list containing: <table name> <recording
 duration in ms> <rec. duration in samples> <samplerate>;
 #X text 24 298 Description: Records a mono sound into Pd tables and
