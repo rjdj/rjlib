@@ -1,80 +1,97 @@
-#N canvas 236 69 925 699 10;
-#X floatatom 265 537 8 0 0 3 dur_in_smps - -;
-#X floatatom 191 537 8 0 0 3 dur_in_ms - -;
-#X msg 320 304 info;
-#X obj 481 526 s_playtable;
-#X obj 481 568 soundoutput;
-#X msg 625 494 sr 44100;
-#X msg 626 471 sr 22050;
-#X symbolatom 116 537 10 0 0 3 table_name - -;
-#X msg 626 526 stop;
-#X text 103 54 Arguments:;
-#X obj 116 487 unpack s f f f;
-#X floatatom 349 537 6 0 0 3 samplerate - -;
-#X obj 481 474 symbol \$0-sample;
-#X msg 481 452 bang;
-#X text 103 122 Inlets: 1) audio signal to record;
-#X msg 296 168 start;
-#X msg 305 214 stop;
-#X text 369 298 output list containing: <table name> <recording duration
+#N canvas 4 22 1276 756 10;
+#X floatatom 666 420 8 0 0 3 dur_in_smps - -;
+#X floatatom 592 420 8 0 0 3 dur_in_ms - -;
+#X msg 721 187 info;
+#X obj 882 409 s_playtable;
+#X obj 882 451 soundoutput;
+#X msg 1026 377 sr 44100;
+#X msg 1027 354 sr 22050;
+#X symbolatom 517 420 10 0 0 3 table_name - -;
+#X msg 1027 409 stop;
+#X obj 517 370 unpack s f f f;
+#X floatatom 750 420 6 0 0 3 samplerate - -;
+#X obj 882 357 symbol \$0-sample;
+#X msg 882 335 bang;
+#X msg 697 51 start;
+#X msg 706 97 stop;
+#X text 770 181 output list containing: <table name> <recording duration
 in ms> <rec. duration in samples> <samplerate>;
-#X msg 314 242 clear;
-#X msg 315 269 normalize;
-#X text 391 270 normalize so that largest sample value is 1;
-#X text 383 632 s_playtable can be used to play the sample;
-#X obj 143 351 soundinput;
-#X text 289 448 <name> <maxdur>;
-#X text 359 215 stop recording;
-#X text 350 167 start recording. Does not clear previous recordings!
+#X msg 715 125 clear;
+#X msg 716 152 normalize;
+#X text 792 153 normalize so that largest sample value is 1;
+#X text 784 515 s_playtable can be used to play the sample;
+#X obj 544 234 soundinput;
+#X text 690 331 <name> <maxdur>;
+#X text 760 98 stop recording;
+#X text 751 50 start recording. Does not clear previous recordings!
 ;
-#X text 366 244 delete recording and set duration to 0;
-#X msg 318 389 clear \, start;
-#X text 419 389 You can combine messages like this.;
-#X msg 319 346 fade \$1;
-#X floatatom 319 329 5 0 0 0 - - -;
-#X text 393 333 default behaviour is to fade in and out over 5 msec.
+#X text 767 127 delete recording and set duration to 0;
+#X msg 719 272 clear \, start;
+#X text 820 272 You can combine messages like this.;
+#X msg 720 229 fade \$1;
+#X floatatom 720 212 5 0 0 0 - - -;
+#X text 794 216 default behaviour is to fade in and out over 5 msec.
 You can change this time with "fade x" messages;
-#X obj 116 447 u_record \$0-sample 2000;
-#X obj 117 261 osc~ 440;
-#X obj 143 387 *~ 0;
-#X obj 183 388 tgl 15 0 empty empty microphone 17 7 1 10 -262144 -1
+#X obj 517 330 u_record \$0-sample 2000;
+#X obj 518 144 osc~ 440;
+#X obj 544 270 *~ 0;
+#X obj 584 271 tgl 15 0 empty empty microphone 17 7 1 10 -262144 -1
 -1 0 1;
-#X obj 156 321 tgl 15 0 empty empty sine_wave 17 7 1 10 -262144 -1
+#X obj 557 204 tgl 15 0 empty empty sine_wave 17 7 1 10 -262144 -1
 -1 0 1;
-#X obj 116 320 *~ 1;
-#X text 210 19 Record mono sounds into Pd tables.;
-#X text 143 73 <table name - required!>;
-#X text 333 72 <max duration in milliseconds \, optional \, default
-1000>;
-#X text 157 145 2) various messages \, see below;
-#X obj 43 18 u_record \$0-mysample;
-#X msg 303 187 start 500;
-#X text 383 185 start recording 500 milliseconds from table start;
-#X connect 2 0 32 1;
+#X obj 517 203 *~ 1;
+#X msg 704 70 start 500;
+#X text 784 68 start recording 500 milliseconds from table start;
+#N canvas 55 22 582 570 REFERENCE 0;
+#X text 24 51 Summary: Record mono sounds into Pd tables.;
+#X text 24 95 Argument 0: <table name - required!>;
+#X text 24 119 Argument 1: <max duration in milliseconds \, optional
+\, default 1000>;
+#X text 24 165 Inlet 0: audio signal to record;
+#X text 24 185 Inlet 1: various messages \, see example;
+#X text 24 31 Name: [u_record \$0-mysample];
+#X text 25 204;
+#X text 24 225 Outlet 0: outputs a list containing: <table name> <recording
+duration in ms> <rec. duration in samples> <samplerate>;
+#X text 24 298 Description: Records a mono sound into Pd tables and
+outputs: <table name> <recording duration in ms> <rec. duration in
+samples> <samplerate>. s_playtable can be used to play the sample;
+#X text 24 384 See also: [s_playtable];
+#X text 24 434 Tags: Audio recorde (mono);
+#X coords 0 -1 1 1 450 450 1 10 10;
+#X restore 15 58 pd REFERENCE;
+#X obj 15 28 cnv 15 450 20 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X text 478 61 Example:;
+#X text 484 597 RjDj Library (https://github.com/rjdj/rjlib) - 2011
+;
+#X obj 18 30 u_record;
+#X text 139 31 - Record mono sounds into Pd tables.;
+#X connect 2 0 30 1;
 #X connect 3 0 4 0;
 #X connect 3 0 4 1;
 #X connect 5 0 3 1;
 #X connect 6 0 3 1;
 #X connect 8 0 3 1;
-#X connect 10 0 7 0;
-#X connect 10 1 1 0;
-#X connect 10 2 0 0;
-#X connect 10 3 11 0;
-#X connect 12 0 3 0;
-#X connect 13 0 12 0;
-#X connect 15 0 32 1;
-#X connect 16 0 32 1;
-#X connect 18 0 32 1;
-#X connect 19 0 32 1;
-#X connect 22 0 34 0;
-#X connect 22 1 34 0;
-#X connect 27 0 32 1;
-#X connect 29 0 32 1;
-#X connect 30 0 29 0;
-#X connect 32 0 10 0;
-#X connect 33 0 37 0;
-#X connect 34 0 32 0;
-#X connect 35 0 34 1;
-#X connect 36 0 37 1;
-#X connect 37 0 32 0;
-#X connect 43 0 32 1;
+#X connect 9 0 7 0;
+#X connect 9 1 1 0;
+#X connect 9 2 0 0;
+#X connect 9 3 10 0;
+#X connect 11 0 3 0;
+#X connect 12 0 11 0;
+#X connect 13 0 30 1;
+#X connect 14 0 30 1;
+#X connect 16 0 30 1;
+#X connect 17 0 30 1;
+#X connect 20 0 32 0;
+#X connect 20 1 32 0;
+#X connect 25 0 30 1;
+#X connect 27 0 30 1;
+#X connect 28 0 27 0;
+#X connect 30 0 9 0;
+#X connect 31 0 35 0;
+#X connect 32 0 30 0;
+#X connect 33 0 32 1;
+#X connect 34 0 35 1;
+#X connect 35 0 30 0;
+#X connect 36 0 30 1;
