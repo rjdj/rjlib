@@ -1,89 +1,91 @@
-#N struct 1005-symarray float x array symbols 1005-sym;
-#N struct 1005-sym symbol name float on;
-#N struct 1006-symarray float x array symbols 1006-sym;
-#N struct 1006-sym symbol name float on;
-#N struct 1014-symarray float x array symbols 1014-sym;
-#N struct 1014-sym symbol name float on;
-#N struct 1018-symarray float x array symbols 1018-sym;
-#N struct 1018-sym symbol name float on;
-#N struct 1022-symarray float x array symbols 1022-sym;
-#N struct 1022-sym symbol name float on;
-#N canvas 178 6 790 878 10;
-#X floatatom 399 678 5 0 0 0 - - -;
-#X symbolatom 391 733 10 0 0 0 - - -;
-#X floatatom 90 655 5 0 0 0 - - -;
-#X symbolatom 149 727 10 0 0 0 - - -;
-#X obj 149 754 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#N struct 1259-symarray float x array symbols 1259-sym;
+#N struct 1259-sym symbol name float on;
+#N struct 1263-symarray float x array symbols 1263-sym;
+#N struct 1263-sym symbol name float on;
+#N struct 1288-symarray float x array symbols 1288-sym;
+#N struct 1288-sym symbol name float on;
+#N canvas -5 22 1172 663 10;
+#X floatatom 501 345 5 0 0 0 - - -;
+#X symbolatom 493 400 10 0 0 0 - - -;
+#X floatatom 192 322 5 0 0 0 - - -;
+#X symbolatom 251 394 10 0 0 0 - - -;
+#X obj 251 421 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X msg 167 661 reset;
-#X msg 172 562 notfound.wav 2 \, otherfile 3;
-#X obj 391 754 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X msg 269 328 reset;
+#X msg 274 229 notfound.wav 2 \, otherfile 3;
+#X obj 493 421 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 149 531 list append 0;
-#X obj 237 506 hradio 15 1 0 8 empty empty empty 0 -8 0 10 -262144
--1 -1 1;
-#X obj 149 507 openpanel;
-#X msg 149 486 bang;
-#X msg 301 659 dump;
-#X obj 272 733 print;
-#X obj 149 596 list prepend open;
-#X obj 149 619 list trim;
-#X msg 391 653 open filenname.wav 12 \, open filenname.wav 200;
-#X text 106 114 If no first argument was supplied \, the internal \$0
-variable is used as a prefix.;
-#X text 106 152 You can lookup the names of the available tables by
-an index number.;
-#X text 105 224 Inlet 0:;
-#X text 121 279 float: look up the table name stored at index <float>
+#X obj 251 198 list append 0;
+#X obj 339 173 hradio 15 1 0 8 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X obj 251 174 openpanel;
+#X msg 251 153 bang;
+#X msg 403 326 dump;
+#X obj 374 400 print;
+#X obj 251 263 list prepend open;
+#X obj 251 286 list trim;
+#X msg 493 320 open filenname.wav 12 \, open filenname.wav 200;
+#X msg 264 308 delete 2;
+#X msg 341 327 size \$1;
+#X floatatom 341 307 5 0 0 0 - - -;
+#X obj 251 368 u_multisamplebank2;
+#X obj 493 374 u_multisamplebank2 xxx;
+#N canvas 703 74 582 570 REFERENCE 0;
+#X text 24 124 Inlet 0:;
+#X text 22 536 Tags:;
+#X text 23 463 See also:;
+#X text 24 91 Argument 0: <table prefix \, will be the internal \$0
+if null>;
+#X text 82 154 float: look up the table name stored at index <float>
 ;
-#X text 121 298 reset: delete all tables.;
-#X msg 162 641 delete 2;
-#X text 100 409 Inlet 1:;
-#X obj 311 426 m_symbolarray;
-#X text 413 425 that maps indices to table names.;
-#X obj 286 825 m_symbolarray;
-#X text 140 804 Also see:;
-#X text 120 247 open <filename> <index>: open a file and load it into
+#X text 81 173 reset: delete all tables.;
+#X text 80 122 open <filename> <index>: open a file and load it into
 a table called "prefix-index". Index must be a number.;
-#X text 121 319 delete <index>: resize table <index> to 1 and remove
+#X text 81 194 delete <index>: resize table <index> to 1 and remove
 it from the index-lookup. Saves a bit of memory.;
-#X text 119 425 Internally connected to an;
-#X msg 239 660 size \$1;
-#X text 120 351 size <index>: rport size of table at <index> in samples
+#X text 80 222 size <index>: report size of table at <index> in samples
 to 2nd outlet. Will be 0 for a non-existing table \, 1 for an existing
 table without data and greater for an actually loaded sample.;
-#X floatatom 239 640 5 0 0 0 - - -;
-#X text 107 203 Argument: <table prefix \, will be the internal \$0
-if null>;
-#X obj 149 701 u_multisamplebank2;
-#X text 92 19 u_multisamplebank2 - samplebank for many stereo files
+#X text 28 286 Inlet 1:;
+#X text 82 286 Internally connected to an [m_symbolarray] that maps
+indices to table names.;
+#X text 24 31 Name: u_multisamplebank2;
+#X text 24 51 Summary: used to load many stereo files into tables.
 ;
-#X text 105 55 [u_multisamplebank2] can be used to load many stereo
-files into tables. The tables will be dynamically created and filled.
-They get automatic names that are constructed from the first argument
-and an index number supplied by you.;
-#X obj 149 825 u_multisamplebank;
-#X obj 391 707 u_multisamplebank2 xxx;
-#X obj 395 825 u_samplebank2;
-#X obj 496 825 s_playtable2;
-#X obj 590 825 s_fplaytable2;
-#X connect 0 0 39 0;
+#X text 25 340 Description: [u_multisamplebank2] can be used to load
+many stereo files into tables. The tables will be dynamically created
+and filled. They get automatic names that are constructed from the
+first argument and an index number supplied by you. If no first argument
+was supplied \, the internal \$0 variable is used as a prefix. You
+can lookup the names of the available tables by an index number.;
+#X text 82 463 [u_multisamplebank][m_symbolarray] [u_samplebank2] [s_playtable2]
+[s_fplaytable2];
+#X coords 0 -1 1 1 450 550 1 10 10;
+#X restore -311 52 pd REFERENCE;
+#X obj -311 22 cnv 15 450 20 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X text -187 25 - samplebank for many stereo files;
+#X text 171 51 Example:;
+#X text 402 589 RjDj Library (https://github.com/rjdj/rjlib) - 2011
+;
+#X obj -305 24 u_multisamplebank2;
+#X connect 0 0 21 0;
 #X connect 1 0 7 0;
-#X connect 2 0 35 0;
+#X connect 2 0 20 0;
 #X connect 3 0 4 0;
-#X connect 5 0 35 0;
+#X connect 5 0 20 0;
 #X connect 6 0 14 0;
 #X connect 8 0 14 0;
 #X connect 9 0 8 1;
 #X connect 10 0 8 0;
 #X connect 11 0 10 0;
-#X connect 12 0 35 1;
+#X connect 12 0 20 1;
 #X connect 14 0 15 0;
-#X connect 15 0 35 0;
-#X connect 16 0 39 0;
-#X connect 22 0 35 0;
-#X connect 31 0 35 0;
-#X connect 33 0 31 0;
-#X connect 35 0 3 0;
-#X connect 35 1 13 0;
-#X connect 39 0 1 0;
+#X connect 15 0 20 0;
+#X connect 16 0 21 0;
+#X connect 17 0 20 0;
+#X connect 18 0 20 0;
+#X connect 19 0 18 0;
+#X connect 20 0 3 0;
+#X connect 20 1 13 0;
+#X connect 21 0 1 0;
