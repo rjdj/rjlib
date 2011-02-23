@@ -1,16 +1,36 @@
-#N canvas 520 91 852 486 10;
-#X text 61 41 A quick way to convert a mono effect into a stereo effect.
+#N canvas 117 22 1117 670 10;
+#X obj 567 173 u_stereo e_alias ali1;
+#X obj 567 125 osc~ 220;
+#X msg 740 144 freq \$1;
+#X obj 567 249 soundoutput;
+#X obj 628 124 osc~ 280;
+#X floatatom 741 125 5 0 0 0 - - -;
+#X text 782 122 Parameters depend on the effect used;
+#N canvas 298 100 952 714 REFERENCE 0;
+#X text 24 51 Summary:;
+#X text 24 91 Argument 0:;
+#X text 24 124 Inlet 0:;
+#X text 24 144 Inlet 1:;
+#X text 24 164 Outlet 0:;
+#X text 24 184 Outlet 1:;
+#X text 24 434 Tags:;
+#X text 24 334 See also:;
+#X text 76 51 A quick way to convert a mono effect into a stereo effect.
 Works for effects with 1 audio in and 1 audio out.;
-#X obj 63 170 u_stereo e_alias ali1;
-#X obj 63 122 osc~ 220;
-#X msg 236 141 freq \$1;
-#X obj 63 246 soundoutput;
-#X obj 135 121 osc~ 280;
-#X floatatom 237 122 5 0 0 0 - - -;
-#X text 283 123 Parameters depend on the effect used;
-#X connect 1 0 4 0;
-#X connect 1 1 4 1;
-#X connect 2 0 1 0;
-#X connect 3 0 1 2;
-#X connect 5 0 1 1;
-#X connect 6 0 3 0;
+#X text 24 31 Name: u_stereo;
+#X text 59 434 Audio;
+#X text 24 234 Description:;
+#X coords 0 -1 1 1 450 450 1 10 10;
+#X restore 15 58 pd REFERENCE;
+#X obj 15 28 cnv 15 450 20 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj 18 30 u_stereo;
+#X text 89 29 - mono to stereo converter;
+#X text 562 492 RjDj Library (https://github.com/rjdj/rjlib) - 2011
+;
+#X connect 0 0 3 0;
+#X connect 0 1 3 1;
+#X connect 1 0 0 0;
+#X connect 2 0 0 2;
+#X connect 4 0 0 1;
+#X connect 5 0 2 0;
