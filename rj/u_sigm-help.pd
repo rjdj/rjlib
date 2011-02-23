@@ -1,25 +1,25 @@
-#N canvas 272 196 802 516 10;
-#X msg 255 284 gain \$1;
-#X floatatom 255 264 5 0 0 1 gain - -;
-#X floatatom 98 278 5 0 0 0 - - -;
-#X floatatom 99 377 5 0 0 0 - - -;
-#X obj 167 398 tabwrite \$0-sigm;
-#X obj 167 169 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#N canvas 209 22 1071 705 10;
+#X msg 655 268 gain \$1;
+#X floatatom 655 248 5 0 0 1 gain - -;
+#X floatatom 498 262 5 0 0 0 - - -;
+#X floatatom 499 361 10 0 0 0 - - -;
+#X obj 567 382 tabwrite \$0-sigm;
+#X obj 567 153 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 167 254 - 50;
-#X obj 167 276 / 5;
-#X obj 167 215 t a a;
-#N canvas 0 0 450 300 (subpatch) 0;
+#X obj 567 238 - 50;
+#X obj 567 260 / 5;
+#X obj 567 199 t a a;
+#N canvas 0 22 450 300 (subpatch) 0;
 #X array \$0-sigm 100 float 2;
 #X coords 0 1 99 -1 200 140 1;
-#X restore 314 327 graph;
-#X obj 223 149 t b a;
-#X obj 226 126 hsl 128 15 -2 2 0 0 empty empty gain_-2...2 -2 -8 0
-10 -262144 -1 -1 4300 1;
-#X obj 167 323 u_sigm MYSIGM;
-#X text 322 281 default gain is 1;
-#X msg 376 109 1;
-#N canvas 0 0 450 300 count100 0;
+#X restore 714 311 graph;
+#X obj 623 133 t b a;
+#X obj 626 110 hsl 128 15 -2 2 0 0 empty empty gain_-2...2 -2 -8 0
+10 -262144 -1 -1 0 1;
+#X obj 567 307 u_sigm MYSIGM;
+#X text 722 265 default gain is 1;
+#X msg 776 93 1;
+#N canvas 0 22 450 300 count100 0;
 #X obj 171 145 until;
 #X msg 171 88 100;
 #X obj 171 173 f 0;
@@ -37,8 +37,29 @@
 #X connect 5 0 0 0;
 #X connect 5 1 4 0;
 #X connect 7 0 1 0;
-#X restore 167 190 pd count100;
-#X text 107 46 u_sigm - sigmoid function;
+#X restore 567 174 pd count100;
+#N canvas 137 66 582 570 REFERENCE 0;
+#X text 24 51 Summary:;
+#X text 24 94 Inlet 0:;
+#X text 24 434 Tags:;
+#X text 24 334 See also:;
+#X text 24 234 Description: Use this as a template for writing other
+help patches.;
+#X text 24 31 Name: u_sigm - sigmoid function;
+#X text 24 91;
+#X text 24 124 Inlet 1: Gain (Default gain is 1);
+#X text 24 184;
+#X text 24 154 Outlet 0: floating point number whose maximum is 1 and
+the minimum limits to zero.;
+#X coords 0 -1 1 1 450 450 1 10 10;
+#X restore 15 58 pd REFERENCE;
+#X obj 15 28 cnv 15 450 20 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X text 478 61 Example:;
+#X text 576 595 RjDj Library (https://github.com/rjdj/rjlib) - 2011
+;
+#X text 139 31 - summary;
+#X obj 18 30 u_sigm;
 #X connect 0 0 12 1;
 #X connect 1 0 0 0;
 #X connect 2 0 12 0;
