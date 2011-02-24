@@ -1,4 +1,4 @@
-#N canvas 102 22 914 526 10;
+#N canvas 1449 154 914 526 10;
 #X floatatom 674 155 5 0 0 1 Bandwidth - -;
 #X floatatom 574 155 5 0 0 1 Frequency - -;
 #N canvas 0 22 450 300 show 0;

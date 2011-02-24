@@ -1,7 +1,7 @@
-#N canvas 311 139 845 532 10;
-#X obj 805 166 mtof;
-#X floatatom 872 134 5 0 0 2 Q - -;
-#X floatatom 805 134 5 0 0 2 freq - -;
+#N canvas 69 146 822 521 10;
+#X obj 608 156 mtof;
+#X floatatom 665 169 5 0 0 1 Q - -;
+#X floatatom 608 136 5 0 0 1 Frequency - -;
 #N canvas 0 22 450 300 show 0;
 #X obj 41 39 inlet;
 #X obj 186 36 inlet;
@@ -14,68 +14,43 @@
 #X connect 3 0 2 0;
 #X connect 4 0 5 0;
 #X connect 5 0 2 0;
-#X restore 805 236 pd show;
-#X msg 805 269;
-#X obj 591 129 noise~;
-#X obj 490 288 env~;
-#X obj 592 175 *~ 0.3;
-#X obj 552 244 e_beequad;
-#X obj 553 379 soundoutput;
-#X obj 553 346 c_xfade;
-#X msg 863 236 reset;
-#X obj 637 246 biquad~;
-#X obj 490 311 - 100;
-#X obj 491 335 vu 15 80 empty empty -1 -8 0 10 -66577 -1 0 0;
-#X obj 675 287 env~;
-#X obj 675 310 - 100;
-#X obj 676 334 vu 15 80 empty empty -1 -8 0 10 -66577 -1 0 0;
-#X obj 602 325 hsl 32 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
-#X obj 805 204 u_lowpassq;
-#N canvas 181 176 582 570 REFERENCE 0;
-#X text 24 170 Outlet 0:;
-#X text 24 244 Description: Compute biquad coefficients for a resonant
-lowpass filter with Q. Designed to be used with [biquad~] or [e_beequad]
-u_lowpassq is controlled by a Q (resonance) parameter. Both inlets
-are hot and trigger new coefficients.;
-#X text 24 51 Summary: Compute biquad coefficients for a resonant lowpass
+#X restore 657 283 pd show;
+#X obj 557 268 noise~;
+#X obj 557 294 *~ 0.3;
+#X obj 557 324 e_beequad;
+#X obj 608 214 u_lowpassq;
+#N canvas 181 176 582 570 REFERENCE 1;
+#X text 24 61 Summary: Compute biquad coefficients for a resonant lowpass
 filter with Q.;
 #X text 24 31 Name: [u_lowpassq];
-#X text 24 91;
-#X text 24 120 Inlet 0: frequency;
-#X text 24 140 Inlet 1: Q factor;
-#X text 24 170;
-#X text 24 374 See also: [biquad~] [e_beequad];
 #X text 24 434 Tags: Audio \, Filter;
+#X text 24 138 Inlet 1: <float> - Q Factor.;
+#X text 24 118 Inlet 0: <float> - Frequency.;
+#X text 24 180 Outlet 0: Computed coefficients as a list.;
+#X text 24 344 See also: [e_beequad] [u_lowpass] [u_bandpass1] [u_bandpass1q]
+[u_bandpass2] [u_highpass] [u_highpassq];
+#X text 24 224 Description: Compute biquad coefficients for a resonant
+lowpass filter with Q. Designed to be used with [e_beequad] or [biquad~]
+\, u_lowpassq is controlled by a Q (resonance) parameter. Both inlets
+are hot and trigger new coefficients.;
 #X coords 0 -1 1 1 450 450 1 10 10;
 #X restore 15 58 pd REFERENCE;
 #X obj 15 28 cnv 15 450 25 empty empty empty 20 12 0 14 -261234 -66577
 0;
 #X text 478 61 Example:;
-#X text 510 505 RjDj Library (https://github.com/rjdj/rjlib) - 2011
+#X text 494 492 RjDj Library (https://github.com/rjdj/rjlib) - 2011
 ;
 #X obj 18 30 u_lowpassq;
 #X text 103 25 - Compute biquad coefficients for a resonant lowpass
 filter with Q.;
-#X connect 0 0 19 0;
-#X connect 1 0 19 1;
+#X obj 557 354 soundoutput;
+#X msg 657 307;
+#X connect 0 0 7 0;
+#X connect 1 0 7 1;
 #X connect 2 0 0 0;
-#X connect 3 0 4 0;
-#X connect 5 0 7 0;
-#X connect 6 0 13 0;
-#X connect 7 0 8 0;
-#X connect 7 0 12 0;
-#X connect 8 0 6 0;
-#X connect 8 0 10 0;
-#X connect 10 0 9 0;
-#X connect 10 0 9 1;
-#X connect 11 0 3 1;
-#X connect 12 0 15 0;
-#X connect 12 0 10 1;
-#X connect 13 0 14 0;
-#X connect 15 0 16 0;
-#X connect 16 0 17 0;
-#X connect 18 0 10 2;
-#X connect 19 0 3 0;
-#X connect 19 0 8 1;
-#X connect 19 0 12 0;
+#X connect 3 0 15 0;
+#X connect 4 0 5 0;
+#X connect 5 0 6 0;
+#X connect 6 0 14 0;
+#X connect 7 0 3 0;
+#X connect 7 0 6 1;
