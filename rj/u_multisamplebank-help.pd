@@ -1,9 +1,9 @@
-#N struct 1557-symarray float x array symbols 1557-sym;
-#N struct 1557-sym symbol name float on;
-#N struct 1559-symarray float x array symbols 1559-sym;
-#N struct 1559-sym symbol name float on;
-#N struct 1561-symarray float x array symbols 1561-sym;
-#N struct 1561-sym symbol name float on;
+#N struct 1011-symarray float x array symbols 1011-sym;
+#N struct 1011-sym symbol name float on;
+#N struct 1013-symarray float x array symbols 1013-sym;
+#N struct 1013-sym symbol name float on;
+#N struct 1015-symarray float x array symbols 1015-sym;
+#N struct 1015-sym symbol name float on;
 #N canvas 0 22 1088 616 10;
 #X symbolatom 342 323 10 0 0 0 - - -;
 #X symbolatom 82 460 10 0 0 0 - - -;
@@ -48,12 +48,12 @@ table without data and greater for an actually loaded sample.;
 #X text 82 306 Internally connected to an [m_symbolarray] that maps
 indices to table names.;
 #X text 24 31 Name: u_multisamplebank;
-#X text 22 536 Tags:;
 #X text 23 60 Summary: Used to load many mono files into tables.;
 #X text 80 201 delete <index>: resizes table <index> to 1 and remove
 it from the index-lookup. Saves a bit of memory.;
 #X text 29 464 See also: [m_multisamplebank2] [u_samplebank] [s_playtable]
 [s_fplaytable] [m_symbolarray];
+#X text 22 536 Tags: Audio \, Playback;
 #X coords 0 -1 1 1 450 550 1 10 10;
 #X restore -439 58 pd REFERENCE;
 #X obj -439 28 cnv 15 450 20 empty empty empty 20 12 0 14 -261234 -66577

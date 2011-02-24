@@ -1,80 +1,75 @@
-#N canvas 63 22 1126 557 10;
-#X declare -path .;
-#X floatatom 250 340 8 0 0 3 dur_in_smps - -;
-#X floatatom 176 340 8 0 0 3 dur_in_ms - -;
-#X msg 135 135 info;
-#X msg 101 67 open;
-#X msg 137 188 sr 44100 \, info;
-#X msg 136 213 sr 22050 \, info;
-#X obj 435 328 s_playtable;
-#X obj 435 370 soundoutput;
-#X msg 579 296 sr 44100;
-#X msg 580 273 sr 22050;
-#X symbolatom 101 340 10 0 0 3 table_name - -;
-#X msg 580 328 stop;
-#X text 143 65 load a sample with opendialog;
-#X text 303 99 load a sample by path;
-#X text 257 192 Change the file samplerate \, that is used to calculate
-the duration in milliseconds;
-#X text 310 433 s_playtable can be used to play tables in the samplebank.
+#N canvas 51 144 867 514 10;
+#X declare -path ./PATH/;
+#N canvas 405 257 582 570 REFERENCE 0;
+#X text 23 147 Inlet 0:;
+#X text 23 342 You can add paths to search for soundfiles using "declare".
 ;
-#X msg 118 99 open file_not_found.wav;
-#X text 197 128 output list containing: <table name> <duration in ms>
-<duration in samples> <samplerate>;
-#X obj 101 290 unpack s f f f;
-#X floatatom 334 340 6 0 0 3 samplerate - -;
-#X obj 435 276 symbol \$0-sample;
-#X obj 101 250 u_samplebank \$0-sample;
-#X msg 435 254 bang;
-#N canvas 144 114 582 570 REFERENCE 0;
-#X text 24 70 Summary:;
-#X text 26 132 Argument 0:;
-#X text 26 229 Inlet 0:;
-#X text 25 286 Outlet 0:;
-#X text 24 434 Tags:;
-#X text 24 394 See also:;
-#X text 24 31 Name: u_samplebank;
-#X text 98 132 <table name>;
-#X text 26 152 Argument 1:;
-#X text 98 152 <path to soundfile - optional>;
-#X obj 170 192 declare -path .;
-#X text 97 170 You can add paths to search for soundfiles using "declare".
+#X text 22 361 Just add;
+#X text 244 361 to your _main.pd patch.;
+#X text 24 31 Name: u_samplebank2;
+#X text 22 433 Tags: Audio \, Playback;
+#X text 23 97 Argument 0: <symbol> Table name - Must be unique.;
+#X text 23 117 Argument 1: <path> Soundfile directory (optional).;
+#X text 88 178 <message> "info" - output list containing: table name
+\, duration in ms \, duration in samples \, samplerate.;
+#X text 88 147 <message> "open" - load a sample with opendialog.;
+#X text 88 162 <message> "open filename.wav" - load a sample by path.
 ;
-#X text 98 193 Just add;
-#X text 286 192 to your _main.pd patch.;
-#X text 91 286 output list containing: <table name> <duration in ms>
-<duration in samples> <samplerate>;
-#X text 83 394 [u_samplebank2];
-#X text 83 71 Utility patch to load sample files into Pd tables.;
-#X text 98 228 <message> "open" - load a sample with opendialog;
-#X text 98 243 <message> "open filename.wav" - load a sample by path
+#X text 88 205 <message> "sr SAMPLERATE \, info" - change the samplerate
 ;
-#X text 24 331 Description: Utility patch to load sample files into
-Pd tables. Also calculates duration in milliseconds. Available in stereo
-as [u_samplebank2] as well.;
+#X text 24 230 Outlet 0: output list if "info" message is sent to Inlet
+0;
+#X text 23 57 Summary: Utility patch to load mono stereo files into
+Pd tables.;
+#X text 23 258 Description: Utility patch to load sample stereo files
+into Pd tables. Also calculates duration in milliseconds. Available
+in stereo as [u_samplebank2] as well. Play back the sample via [s_playtable].
+;
+#X text 23 396 See also: [u_samplebank2] [u_multisamplebank] [s_playtable]
+[s_playtable2];
 #X coords 0 -1 1 1 450 450 1 10 10;
 #X restore -402 45 pd REFERENCE;
 #X obj -402 20 cnv 15 450 20 empty empty empty 20 12 0 14 -261234 -66577
 0;
 #X obj -399 22 u_samplebank;
 #X text -278 23 - to load samplefiles into Pd tables;
-#X text 90 19 Example:;
-#X text 383 525 RjDj Library (https://github.com/rjdj/rjlib) - 2011
+#X text 60 47 Example:;
+#X text 132 490 RjDj Library (https://github.com/rjdj/rjlib) - 2011
 ;
-#X connect 2 0 21 0;
-#X connect 3 0 21 0;
-#X connect 4 0 21 0;
-#X connect 5 0 21 0;
-#X connect 6 0 7 0;
-#X connect 6 0 7 1;
-#X connect 8 0 6 1;
-#X connect 9 0 6 1;
-#X connect 11 0 6 1;
-#X connect 16 0 21 0;
-#X connect 18 0 10 0;
-#X connect 18 1 1 0;
-#X connect 18 2 0 0;
-#X connect 18 3 19 0;
-#X connect 20 0 6 0;
-#X connect 21 0 18 0;
-#X connect 22 0 20 0;
+#X obj -318 396 declare -path ./PATH/;
+#N canvas 0 22 469 282 HOW 0;
+#X obj 152 165 s_playtable;
+#X obj 152 207 soundoutput;
+#X msg 152 91 bang;
+#X obj 152 113 pack \$0;
+#X msg 152 135 \$1-SAMPLE;
+#X text 35 28 [s_playtable] can be used to play tables in the samplebank.
+;
+#X connect 0 0 1 0;
+#X connect 0 0 1 1;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 0 0;
+#X restore 273 433 pd HOW TO PLAYBACK SAMPLE;
+#X floatatom 150 358 8 0 0 1 duration_in_samples - -;
+#X floatatom 123 378 8 0 0 1 duration_in_ms - -;
+#X msg 96 91 info;
+#X msg 106 121 open;
+#X msg 136 181 sr 44100 \, info;
+#X msg 136 211 sr 22050 \, info;
+#X symbolatom 96 398 12 0 0 1 table_name - -;
+#X msg 126 151 open file_not_found.wav;
+#X obj 96 315 unpack s f f f;
+#X floatatom 177 338 6 0 0 1 samplerate - -;
+#X obj 96 275 u_samplebank2 \$0-sample ../samples/file_not_found.wav
+;
+#X connect 10 0 18 0;
+#X connect 11 0 18 0;
+#X connect 12 0 18 0;
+#X connect 13 0 18 0;
+#X connect 15 0 18 0;
+#X connect 16 0 14 0;
+#X connect 16 1 9 0;
+#X connect 16 2 8 0;
+#X connect 16 3 17 0;
+#X connect 18 0 16 0;
