@@ -119,9 +119,6 @@ will act like the left and right outlets of [list split 2] reversed.
 #X obj 223 363 loadbang;
 #N canvas 22 203 476 475 REFERENCE 0;
 #X text 24 31 Name: u_listreduce;
-#X text 24 364 See also: [u_list drip] [u_listequal] [u_listfilter]
-[u_listloop] [u_listmap] [u_listnth] [u_listrandom] [u_listreduce]
-[u_listser];
 #X text 24 434 Tags: Message \, Lists;
 #X text 24 104 Inlet 0: 'bang' - sends last list again.;
 #X text 24 61 Summary: Utility to allow user-defined functions on lists.
@@ -139,6 +136,8 @@ like the left and right outlets of [list split 2] reversed. Only one
 element can be sent back into Inlet 1;
 #X text 78 118 <list> - list to apply function to. Single element lists
 will pass through unchanged.;
+#X text 24 364 See also: [u_list drip] [u_listequal] [u_listfilter]
+[u_listloop] [u_listmap] [u_listnth] [u_listrandom] [u_listser];
 #X coords 0 -1 1 1 450 450 1 10 10;
 #X restore -435 57 pd REFERENCE;
 #X obj -435 28 cnv 15 450 20 empty empty empty 20 12 0 14 -261234 -66577
