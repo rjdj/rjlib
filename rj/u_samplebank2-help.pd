@@ -1,83 +1,62 @@
-#N canvas 104 162 1158 604 10;
-#X declare -path .;
-#X floatatom 235 380 8 0 0 3 dur_in_smps - -;
-#X floatatom 161 380 8 0 0 3 dur_in_ms - -;
-#X msg 120 175 info;
-#X msg 86 106 open;
-#X msg 122 228 sr 44100 \, info;
-#X msg 121 253 sr 22050 \, info;
-#X obj 420 410 soundoutput;
-#X msg 564 336 sr 44100;
-#X msg 565 313 sr 22050;
-#X symbolatom 86 420 12 0 0 3 table_base_name - -;
-#X msg 565 368 stop;
-#X text 128 105 load a sample with opendialog;
-#X text 288 139 load a sample by path;
-#X text 242 232 Change the file samplerate \, that is used to calculate
-the duration in milliseconds;
-#X msg 103 139 open file_not_found.wav;
-#X text 182 168 output list containing: <table name> <duration in ms>
-<duration in samples> <samplerate>;
+#N canvas 104 162 877 527 10;
+#X declare -path ./;
+#X floatatom 140 373 8 0 0 1 duration_in_samples - -;
+#X floatatom 113 393 8 0 0 1 duration_in_ms - -;
+#X msg 86 106 info;
+#X msg 96 136 open;
+#X msg 126 196 sr 44100 \, info;
+#X msg 126 226 sr 22050 \, info;
+#X symbolatom 86 413 12 0 0 1 table_name - -;
+#X msg 116 166 open file_not_found.wav;
 #X obj 86 330 unpack s f f f;
-#X floatatom 319 380 6 0 0 3 samplerate - -;
-#X obj 420 316 symbol \$0-sample;
-#X msg 420 294 bang;
-#X obj 86 290 u_samplebank2 \$0-sample;
-#X obj 420 368 s_playtable2;
-#X text 295 473 s_playtable2 can be used to play stereo samples in
-the samplebank.;
-#N canvas 432 118 582 570 REFERENCE 0;
-#X text 23 57 Summary:;
-#X text 25 98 Argument 0:;
-#X text 24 210 Inlet 0:;
-#X text 24 250 Outlet 0:;
-#X text 22 431 Tags:;
-#X text 79 58 Utility patch to load sample stereo files into Pd tables.
+#X floatatom 167 353 6 0 0 1 samplerate - -;
+#N canvas 120 378 934 511 REFERENCE 0;
+#X text 23 147 Inlet 0:;
+#X text 23 342 You can add paths to search for soundfiles using "declare".
 ;
-#X text 23 396 See also: [u_samplebank];
-#X text 97 97 <table name> Left channel;
-#X text 97 119 <table name> Right channel;
-#X text 25 120 Argument 1:;
-#X text 25 143 Argument 2:;
-#X text 99 143 <path to soundfile - optional>;
-#X obj 170 176 declare -path .;
-#X text 97 157 You can add paths to search for soundfiles using "declare".
-;
-#X text 98 177 Just add;
-#X text 280 177 to your _main.pd patch.;
-#X text 101 251 output list containing: <table name> <duration in ms>
-<duration in samples> <samplerate>;
-#X text 98 206 <message> "open" - load a sample with opendialog;
-#X text 98 221 <message> "open filename.wav" - load a sample by path
-;
+#X text 22 361 Just add;
+#X text 204 361 to your _main.pd patch.;
 #X text 24 31 Name: u_samplebank2;
-#X text 23 300 Description: Utility patch to load sample stereo files
+#X text 22 431 Tags: Audio \, Playback;
+#X text 23 396 See also: [u_samplebank] [u_multisamplebank] [s_playtable]
+;
+#X text 23 57 Summary: Utility patch to load sample stereo files into
+Pd tables.;
+#X text 23 97 Argument 0: <symbol> Table name - Must be unique.;
+#X text 23 117 Argument 1: <path> Soundfile directory (optional).;
+#X text 88 178 <message> "info" - output list containing: table name
+\, duration in ms \, duration in samples \, samplerate.;
+#X text 88 147 <message> "open" - load a sample with opendialog.;
+#X text 88 162 <message> "open filename.wav" - load a sample by path.
+;
+#X text 88 205 <message> "sr SAMPLERATE \, info" - change the samplerate
+;
+#X text 23 258 Description: Utility patch to load sample stereo files
 into Pd tables. Also calculates duration in milliseconds. Available
 in mono as [u_samplebank] as well. Left channel will be in table "ARGUMENT-1"
-\, right channel is in table "ARGUMENT-2";
-#X coords 0 -1 1 1 450 450 1 10 10;
+\, right channel is in table "ARGUMENT-2". Play back the sample via
+[s_playtable].;
+#X text 24 230 Outlet 0: output list if "info" message is sent to Inlet
+0;
+#X coords 0 -1 1 1 450 450 1 0 0;
 #X restore -415 52 pd REFERENCE;
 #X obj -415 28 cnv 15 450 20 empty empty empty 20 12 0 14 -261234 -66577
 0;
 #X obj -412 30 u_samplebank2;
-#X text -291 31 - to load sample stereo files into Pd tables.;
 #X text 72 56 Example:;
-#X text 318 545 RjDj Library (https://github.com/rjdj/rjlib) - 2011
+#X text 120 496 RjDj Library (https://github.com/rjdj/rjlib) - 2011
 ;
-#X connect 2 0 20 0;
-#X connect 3 0 20 0;
-#X connect 4 0 20 0;
-#X connect 5 0 20 0;
-#X connect 7 0 21 1;
-#X connect 8 0 21 1;
-#X connect 10 0 21 1;
-#X connect 14 0 20 0;
-#X connect 16 0 9 0;
-#X connect 16 1 1 0;
-#X connect 16 2 0 0;
-#X connect 16 3 17 0;
-#X connect 18 0 21 0;
-#X connect 19 0 18 0;
-#X connect 20 0 16 0;
-#X connect 21 0 6 0;
-#X connect 21 1 6 1;
+#X text -301 31 - loads stereo audio files into Pd tables.;
+#X obj 86 290 u_samplebank2 \$0-sample ../samples/file_not_found.wav
+;
+#X obj -325 414 declare -path ./;
+#X connect 2 0 16 0;
+#X connect 3 0 16 0;
+#X connect 4 0 16 0;
+#X connect 5 0 16 0;
+#X connect 7 0 16 0;
+#X connect 8 0 6 0;
+#X connect 8 1 1 0;
+#X connect 8 2 0 0;
+#X connect 8 3 9 0;
+#X connect 16 0 8 0;
