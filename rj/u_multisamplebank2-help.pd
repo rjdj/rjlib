@@ -1,35 +1,32 @@
-#N struct 1259-symarray float x array symbols 1259-sym;
-#N struct 1259-sym symbol name float on;
-#N struct 1263-symarray float x array symbols 1263-sym;
-#N struct 1263-sym symbol name float on;
-#N struct 1288-symarray float x array symbols 1288-sym;
-#N struct 1288-sym symbol name float on;
-#N canvas -5 22 1172 663 10;
-#X floatatom 501 345 5 0 0 0 - - -;
-#X symbolatom 493 400 10 0 0 0 - - -;
-#X floatatom 192 322 5 0 0 0 - - -;
-#X symbolatom 251 394 10 0 0 0 - - -;
-#X obj 251 421 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#N struct 1568-symarray float x array symbols 1568-sym;
+#N struct 1568-sym symbol name float on;
+#N struct 1570-symarray float x array symbols 1570-sym;
+#N struct 1570-sym symbol name float on;
+#N struct 1572-symarray float x array symbols 1572-sym;
+#N struct 1572-sym symbol name float on;
+#N canvas 0 22 1056 617 10;
+#X floatatom 457 238 5 0 0 0 - - -;
+#X symbolatom 449 293 10 0 0 0 - - -;
+#X symbolatom 180 428 10 0 0 0 - - -;
+#X obj 180 455 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X msg 269 328 reset;
-#X msg 274 229 notfound.wav 2 \, otherfile 3;
-#X obj 493 421 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X msg 199 332 reset;
+#X msg 204 203 notfound.wav 2 \, otherfile 3;
+#X obj 449 314 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 251 198 list append 0;
-#X obj 339 173 hradio 15 1 0 8 empty empty empty 0 -8 0 10 -262144
+#X obj 181 172 list append 0;
+#X obj 256 147 hradio 15 1 0 8 empty empty empty 0 -8 0 10 -262144
 -1 -1 0;
-#X obj 251 174 openpanel;
-#X msg 251 153 bang;
-#X msg 403 326 dump;
-#X obj 374 400 print;
-#X obj 251 263 list prepend open;
-#X obj 251 286 list trim;
-#X msg 493 320 open filenname.wav 12 \, open filenname.wav 200;
-#X msg 264 308 delete 2;
-#X msg 341 327 size \$1;
-#X floatatom 341 307 5 0 0 0 - - -;
-#X obj 251 368 u_multisamplebank2;
-#X obj 493 374 u_multisamplebank2 xxx;
+#X obj 181 118 openpanel;
+#X msg 181 97 bang;
+#X msg 357 330 dump;
+#X obj 357 433 print;
+#X obj 181 237 list prepend open;
+#X obj 181 260 list trim;
+#X msg 449 213 open filenname.wav 12 \, open filenname.wav 200;
+#X msg 194 312 delete 2;
+#X msg 271 331 size \$1;
+#X floatatom 271 311 5 0 0 0 - - -;
 #N canvas 703 74 582 570 REFERENCE 0;
 #X text 24 124 Inlet 0:;
 #X text 22 536 Tags:;
@@ -41,8 +38,6 @@ if null>;
 #X text 81 173 reset: delete all tables.;
 #X text 80 122 open <filename> <index>: open a file and load it into
 a table called "prefix-index". Index must be a number.;
-#X text 81 194 delete <index>: resize table <index> to 1 and remove
-it from the index-lookup. Saves a bit of memory.;
 #X text 80 222 size <index>: report size of table at <index> in samples
 to 2nd outlet. Will be 0 for a non-existing table \, 1 for an existing
 table without data and greater for an actually loaded sample.;
@@ -58,34 +53,37 @@ and filled. They get automatic names that are constructed from the
 first argument and an index number supplied by you. If no first argument
 was supplied \, the internal \$0 variable is used as a prefix. You
 can lookup the names of the available tables by an index number.;
-#X text 82 463 [u_multisamplebank][m_symbolarray] [u_samplebank2] [s_playtable2]
-[s_fplaytable2];
+#X text 81 194 delete <index>: resizes table <index> to 1 and remove
+it from the index-lookup. Saves a bit of memory.;
+#X text 82 463 [u_multisamplebank] [m_symbolarray] [u_samplebank2]
+[s_playtable2] [s_fplaytable2];
 #X coords 0 -1 1 1 450 550 1 10 10;
 #X restore -311 52 pd REFERENCE;
 #X obj -311 22 cnv 15 450 20 empty empty empty 20 12 0 14 -261234 -66577
 0;
 #X text -187 25 - samplebank for many stereo files;
 #X text 171 51 Example:;
-#X text 402 589 RjDj Library (https://github.com/rjdj/rjlib) - 2011
+#X text 416 585 RjDj Library (https://github.com/rjdj/rjlib) - 2011
 ;
 #X obj -305 24 u_multisamplebank2;
-#X connect 0 0 21 0;
-#X connect 1 0 7 0;
-#X connect 2 0 20 0;
-#X connect 3 0 4 0;
-#X connect 5 0 20 0;
-#X connect 6 0 14 0;
-#X connect 8 0 14 0;
-#X connect 9 0 8 1;
-#X connect 10 0 8 0;
-#X connect 11 0 10 0;
-#X connect 12 0 20 1;
-#X connect 14 0 15 0;
-#X connect 15 0 20 0;
-#X connect 16 0 21 0;
-#X connect 17 0 20 0;
-#X connect 18 0 20 0;
-#X connect 19 0 18 0;
-#X connect 20 0 3 0;
-#X connect 20 1 13 0;
-#X connect 21 0 1 0;
+#X obj 180 392 u_multisamplebank2 \$0-filename;
+#X obj 449 267 u_multisamplebank2 \$0-filename2;
+#X connect 0 0 26 0;
+#X connect 1 0 6 0;
+#X connect 2 0 3 0;
+#X connect 4 0 25 0;
+#X connect 5 0 13 0;
+#X connect 7 0 13 0;
+#X connect 8 0 7 1;
+#X connect 9 0 7 0;
+#X connect 10 0 9 0;
+#X connect 11 0 25 1;
+#X connect 13 0 14 0;
+#X connect 14 0 25 0;
+#X connect 15 0 26 0;
+#X connect 16 0 25 0;
+#X connect 17 0 25 0;
+#X connect 18 0 17 0;
+#X connect 25 0 2 0;
+#X connect 25 1 12 0;
+#X connect 26 0 1 0;
