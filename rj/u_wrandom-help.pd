@@ -1,26 +1,26 @@
-#N canvas 239 116 682 622 10;
-#X msg 167 312 bang;
-#X floatatom 133 407 5 0 0 0 - - -;
-#X obj 125 478 tabread \$0-rand;
-#X obj 125 456 t a a;
-#X obj 125 311 until;
-#X obj 125 503 + 0.001;
-#X obj 125 527 tabwrite \$0-rand;
-#X msg 125 285 1000;
-#X msg 168 336 seed 12123;
-#X floatatom 204 406 5 0 0 1 length - -;
-#N canvas 0 0 450 300 (subpatch) 0;
+#N canvas 89 22 977 641 10;
+#X msg 559 159 bang;
+#X floatatom 525 254 5 0 0 0 - - -;
+#X obj 517 325 tabread \$0-rand;
+#X obj 517 303 t a a;
+#X obj 517 158 until;
+#X obj 517 350 + 0.001;
+#X obj 517 374 tabwrite \$0-rand;
+#X msg 517 132 1000;
+#X msg 560 183 seed 12123;
+#X floatatom 596 253 5 0 0 1 length - -;
+#N canvas 0 22 450 300 (subpatch) 0;
 #X array \$0-rand 10 float 0;
 #X coords 0 1 9 0 200 140 1;
-#X restore 310 409 graph;
-#N canvas 0 0 450 300 (subpatch) 0;
+#X restore 702 256 graph;
+#N canvas 0 22 450 300 (subpatch) 0;
 #X array \$0-dist 10 float 0;
 #X coords 0 1 9 0 200 140 1;
-#X restore 310 409 graph;
-#X obj 251 336 t a a;
-#X msg 309 285 3 8 0 2 3 5 1 4 7 2;
-#X msg 251 285 1 0 0 1;
-#N canvas 0 0 450 300 write-to-tables 0;
+#X restore 702 256 graph;
+#X obj 643 183 t a a;
+#X msg 701 132 3 8 0 2 3 5 1 4 7 2;
+#X msg 643 132 1 0 0 1;
+#N canvas 0 22 450 300 write-to-tables 0;
 #X obj 308 180 s \$0-rand;
 #X obj 115 103 list prepend 0;
 #X obj 115 128 s \$0-dist;
@@ -41,17 +41,9 @@
 #X connect 8 0 7 0;
 #X connect 9 0 6 0;
 #X connect 9 0 4 0;
-#X restore 283 363 pd write-to-tables;
-#X msg 456 285 10 20 70;
-#X msg 164 286 100;
-#X text 112 87 Inlets;
-#X text 132 142 1: list of random weights. The weigths are used as
-probabilities for their positions (zero-based);
-#X text 111 179 Outlets:;
-#X text 127 199 0: random number;
-#X text 127 214 1: size of probability table (for convenience);
-#X text 131 109 0: connected to [random] internally. "bang" to make
-random choice \, "seed X" to seed;
+#X restore 675 210 pd write-to-tables;
+#X msg 848 132 10 20 70;
+#X msg 556 133 100;
 #N canvas 262 240 530 406 markov-example 0;
 #X text 32 19 Simple markov chain;
 #X obj 77 172 select 0 1 2;
@@ -104,25 +96,47 @@ random choice \, "seed X" to seed;
 #X connect 22 0 18 1;
 #X connect 22 1 19 1;
 #X connect 22 2 20 1;
-#X restore 125 563 pd markov-example;
-#X obj 125 379 u_wrandom;
-#X text 113 44 Use a list as a probability table for weighted random
-numbers. (Clone of [list-wrandom]);
-#X text 79 20 u_wrandom - generate weighted random numbers;
-#X connect 0 0 25 0;
+#X restore 517 410 pd markov-example;
+#X obj 517 226 u_wrandom;
+#N canvas 18 77 582 570 REFERENCE 0;
+#X text 24 434 Tags:;
+#X text 24 334 See also:;
+#X text 24 234 Description: Use this as a template for writing other
+help patches.;
+#X text 24 31 Name: u_wrandom;
+#X text 24 51 Summary: Use a list as a probability table for weighted
+random numbers. (Clone of [list-wrandom]);
+#X text 24 111 Inlet 0: connected to [random] internally. "bang" to
+make random choice \, "seed X" to seed;
+#X text 24 144 Inlet 1: list of random weights. The weigths are used
+as probabilities for their positions (zero-based);
+#X text 24 179 Outlet 0: random number;
+#X text 24 202 Outlet 1: size of probability table (for convenience)
+;
+#X text 24 91;
+#X coords 0 -1 1 1 450 450 1 10 10;
+#X restore 15 58 pd REFERENCE;
+#X obj 15 28 cnv 15 450 20 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X text 478 61 Example:;
+#X text 576 595 RjDj Library (https://github.com/rjdj/rjlib) - 2011
+;
+#X obj 18 30 u_wrandom;
+#X text 139 31 - generate weighted random numbers;
+#X connect 0 0 19 0;
 #X connect 2 0 5 0;
 #X connect 3 0 2 0;
 #X connect 3 1 6 1;
-#X connect 4 0 25 0;
+#X connect 4 0 19 0;
 #X connect 5 0 6 0;
 #X connect 7 0 4 0;
-#X connect 8 0 25 0;
-#X connect 12 0 25 1;
+#X connect 8 0 19 0;
+#X connect 12 0 19 1;
 #X connect 12 1 15 0;
 #X connect 13 0 12 0;
 #X connect 14 0 12 0;
 #X connect 16 0 12 0;
 #X connect 17 0 4 0;
-#X connect 25 0 1 0;
-#X connect 25 0 3 0;
-#X connect 25 1 9 0;
+#X connect 19 0 1 0;
+#X connect 19 0 3 0;
+#X connect 19 1 9 0;
