@@ -1,86 +1,75 @@
-#N canvas 278 22 807 736 10;
-#X declare -path .;
-#X obj 620 239 pack 0 0;
-#X msg 620 141 40 \, 44 \, 56 \, 60;
-#X obj 620 49 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#N canvas 43 28 902 517 10;
+#X obj 503 194 pack 0 0;
+#X obj 503 94 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
-#X floatatom 756 205 5 0 0 0 - - -;
-#X msg 527 259 clear;
-#X msg 491 259 stop;
-#X obj 619 395 soundoutput;
-#X obj 830 255 hsl 128 15 0 1 0 0 empty empty tone_(0...1) 20 7 1 10
+#X obj 503 410 soundoutput;
+#X obj 701 169 hsl 128 15 0 1 0 0 empty empty tone_(0...1) 20 7 1 10
 -262144 -1 -1 0 1;
-#X msg 827 276 tone \$1;
-#X obj 790 68 u_loadmeter;
-#X text 479 239 [poly] messages;
-#X msg 653 163 40 \, 46 \, 58 \, 62;
-#X obj 620 91 random 2;
-#X obj 620 118 select 0 1;
-#X obj 620 69 metro 500;
-#X obj 620 331 u_makepoly 8 1 s_rhodey MYINST;
-#X obj 620 204 makenote 80 1000;
-#X floatatom 972 255 5 0 0 0 - - -;
-#X floatatom 1084 254 5 0 0 0 - - -;
-#X msg 972 276 vib-freq \$1;
-#X msg 1084 276 vib-depth \$1;
-#X text 567 466 The instruments to make polyphonc should have two inlets
-and (up to) two outlet~s. Up to 4 arguments can be passed as arguments
-to the instrument.;
-#X text 854 332 2nd inlet is for instrument messages.;
-#X text 684 359 The output is unscaled \, so scale as you like;
-#X obj 619 360 *~ 0.25;
-#X obj 823 138 declare -path .;
-#X text 819 116 You should use a declaration like this:;
-#X text 819 161 in your Scene's "_main.pd" to let u_makepoly find your
-instruments there.;
-#X text 759 391 Note: s_rhodey is a mono instrument \, so the second
-audio outlet is unused in this case and you get some errors in the
-console. Just ignore them...;
-#X text 628 307 1st: <note> <vel> pairs;
-#N canvas 46 52 582 570 REFERENCE 0;
-#X text 24 294 Description: Use this as a template for writing other
-help patches.;
+#X msg 698 190 tone \$1;
+#X obj 503 159 makenote 80 1000;
+#X floatatom 727 228 5 0 0 0 - - -;
+#X msg 727 249 vib-freq \$1;
+#X obj 503 375 *~ 0.25;
+#N canvas 7 371 582 570 REFERENCE 0;
 #X text 24 31 Name: [u_makepoly];
-#X text 24 51 Summary: make midi-like instruments polyphonic;
-#X text 24 91 Argument 0: <max polyphony>;
-#X text 24 111 Argument 1: <voice stealing 0/1>;
-#X text 24 131 Argument 2: <poly-abstraction name>;
-#X text 24 151 Argument 3:;
-#X text 24 184 Inlet 0: <pair: note velocity> <custom>;
-#X text 24 204 Inlet 1: <pair: num abstraction_name>;
-#X text 24 357 See also: [poly]-clone which automatically creates abstractions
-to be played.;
-#X text 24 244;
-#X text 24 226 Outlet 0: up to two outlet~s;
 #X text 24 434 Tags: Audio;
+#X text 24 344 Description: creates a polyphonic version of midi-controlled
+instruments. The creation arguments set the max number of polphony
+and can switch voice stealing on.;
+#X text 24 266 Outlet 0: Main audio signal output. If the instrument
+is stereo this outlet becomes the left channel.;
+#X text 24 301 Outlet 1: Right audio signal output. This is unused
+if a mono instrument is being used.;
+#X text 24 81 Argument 0: <integer> - Max Polyphony.;
+#X text 24 51 Summary: make midi-like instruments polyphonic.;
+#X text 24 121 Argument 2: <symbol> - Instrument name.;
+#X text 24 101 Argument 1: <bool> - Voice stealing (0/1).;
+#X text 24 141 Argument 3: <symbol> - Unique Name.;
+#X text 24 204 Inlet 0: <float float> - Midi note number and velocity.
+;
+#X text 24 224 Inlet 1: <various> - Control inlet \, messages depend
+on the instrument used.;
+#X text 24 397 See also: [u_makepoly] [u_robinpoly] [u_robinpolymono]
+;
+#X text 24 161 Argument 4..7: <various> - Up to four more arguments
+can be passed through to the object in use.;
 #X coords 0 -1 1 1 450 450 1 10 10;
 #X restore 15 58 pd REFERENCE;
 #X obj 15 28 cnv 15 450 20 empty empty empty 20 12 0 14 -261234 -66577
 0;
 #X text 478 61 Example:;
-#X text 576 595 RjDj Library (https://github.com/rjdj/rjlib) - 2011
+#X text 572 485 RjDj Library (https://github.com/rjdj/rjlib) - 2011
 ;
 #X obj 18 30 u_makepoly;
 #X text 139 31 - make midi-like instruments polyphonic;
-#X connect 0 0 15 0;
-#X connect 1 0 16 0;
-#X connect 2 0 14 0;
-#X connect 3 0 16 2;
-#X connect 4 0 15 0;
-#X connect 5 0 15 0;
-#X connect 7 0 8 0;
-#X connect 8 0 15 1;
-#X connect 11 0 16 0;
-#X connect 12 0 13 0;
-#X connect 13 0 1 0;
-#X connect 13 1 11 0;
-#X connect 14 0 12 0;
-#X connect 15 0 24 0;
-#X connect 16 0 0 0;
-#X connect 16 1 0 1;
-#X connect 17 0 19 0;
-#X connect 18 0 20 0;
-#X connect 19 0 15 1;
-#X connect 20 0 15 1;
-#X connect 24 0 6 0;
-#X connect 24 0 6 1;
+#N canvas 0 22 236 241 PLAY 0;
+#X msg 54 119 40 \, 44 \, 56 \, 60;
+#X msg 87 141 40 \, 46 \, 58 \, 62;
+#X obj 54 69 random 2;
+#X obj 54 96 select 0 1;
+#X obj 54 47 metro 500;
+#X obj 54 23 inlet;
+#X obj 54 177 outlet;
+#X connect 0 0 6 0;
+#X connect 1 0 6 0;
+#X connect 2 0 3 0;
+#X connect 3 0 0 0;
+#X connect 3 1 1 0;
+#X connect 4 0 2 0;
+#X connect 5 0 4 0;
+#X restore 503 123 pd PLAY;
+#X obj 503 286 u_makepoly 8 1 s_rhodey \$0-MYINST;
+#X text 535 310 Note: [s_rhodey] is a mono instrument so the second
+outlet is not used.;
+#X connect 0 0 16 0;
+#X connect 1 0 15 0;
+#X connect 3 0 4 0;
+#X connect 4 0 16 1;
+#X connect 5 0 0 0;
+#X connect 5 1 0 1;
+#X connect 6 0 7 0;
+#X connect 7 0 16 1;
+#X connect 8 0 2 0;
+#X connect 8 0 2 1;
+#X connect 15 0 5 0;
+#X connect 16 0 8 0;
