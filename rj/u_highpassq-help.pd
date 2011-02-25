@@ -1,8 +1,8 @@
-#N canvas 240 143 845 532 10;
-#X obj 423 224 mtof;
-#X floatatom 497 193 5 0 0 2 Q - -;
-#X floatatom 423 192 5 0 0 2 freq - -;
-#N canvas 0 0 450 300 show 0;
+#N canvas 297 235 1082 517 10;
+#X obj 452 170 mtof;
+#X floatatom 526 139 5 0 0 2 Q - -;
+#X floatatom 452 138 5 0 0 2 freq - -;
+#N canvas 0 22 450 300 show 0;
 #X obj 41 39 inlet;
 #X obj 186 36 inlet;
 #X obj 41 124 outlet;
@@ -14,31 +14,50 @@
 #X connect 3 0 2 0;
 #X connect 4 0 5 0;
 #X connect 5 0 2 0;
-#X restore 423 294 pd show;
-#X msg 423 327;
-#X text 513 265 args: <freq> <BW>;
-#X obj 209 187 noise~;
-#X obj 108 346 env~;
-#X obj 210 233 *~ 0.3;
-#X obj 170 302 e_beequad;
-#X obj 171 437 soundoutput;
-#X obj 171 404 c_xfade;
-#X msg 481 294 reset;
-#X obj 255 304 biquad~;
-#X obj 108 369 - 100;
-#X obj 109 393 vu 15 80 empty empty -1 -8 0 10 -66577 -1 0 0;
-#X obj 293 345 env~;
-#X obj 293 368 - 100;
-#X obj 294 392 vu 15 80 empty empty -1 -8 0 10 -66577 -1 0 0;
-#X obj 220 383 hsl 32 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+#X restore 452 240 pd show;
+#X msg 452 273;
+#X text 542 211 args: <freq> <BW>;
+#X obj 238 133 noise~;
+#X obj 137 292 env~;
+#X obj 239 179 *~ 0.3;
+#X obj 199 248 e_beequad;
+#X obj 200 383 soundoutput;
+#X obj 200 350 c_xfade;
+#X msg 510 240 reset;
+#X obj 284 250 biquad~;
+#X obj 137 315 - 100;
+#X obj 138 339 vu 15 80 empty empty -1 -8 0 10 -66577 -1 0 0;
+#X obj 322 291 env~;
+#X obj 322 314 - 100;
+#X obj 323 338 vu 15 80 empty empty -1 -8 0 10 -66577 -1 0 0;
+#X obj 249 329 hsl 32 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
-#X text 121 129 Both inlets are hot and trigger new coefficients.;
-#X obj 423 262 u_highpassq;
-#X text 66 26 u_highpassq;
-#X text 120 48 Compute biquad coefficients for a resonant highpass
-filter with Q inlet. Designed to be used with [biquad~] or [e_beequad]
+#X text 150 75 Both inlets are hot and trigger new coefficients.;
+#X obj 452 208 u_highpassq;
+#N canvas 305 53 582 570 REFERENCE 0;
+#X text 24 31 Name: u_highpassq;
+#X text 24 91 Argument 0: <frequency>;
+#X text 23 117 Argument 1: <bandwidth>;
+#X text 25 154 Inlet 0: frequency number;
+#X text 26 174 Inlet 1: bandwidth "Q";
+#X text 24 51 Summary: compute biquad coefficients for a resonant highpass
+filter with Q inlet.;
+#X text 25 214 Outlet 0: biquad coefficients.;
+#X text 25 262 Description: Compute biquad coefficients for a resonant
+highpass filter with Q inlet. Designed to be used with [biquad~] or
+[e_beequad]. u_highpassq is controlled by a Q quality factor.;
+#X text 24 352 See also: [bigquad~] [e_beequad];
+#X text 24 434 Tags: utility \, eq;
+#X coords 0 -1 1 1 450 450 1 10 10;
+#X restore -395 58 pd REFERENCE;
+#X obj -395 24 cnv 15 450 30 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X text 68 61 Example:;
+#X text 175 475 RjDj Library (https://github.com/rjdj/rjlib) - 2011
 ;
-#X text 120 101 u_highpassq is controlled by a Q quality factor.;
+#X obj -392 30 u_highpassq;
+#X text -279 24 - compute biquad coefficients for a resonant highpass
+filter with Q inlet.;
 #X connect 0 0 21 0;
 #X connect 1 0 21 1;
 #X connect 2 0 0 0;
