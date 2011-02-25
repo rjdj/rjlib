@@ -1,10 +1,34 @@
-#N canvas 279 168 450 300 10;
-#X text 14 21 Create a named fader \, useful for automatic mixing;
-#X obj 63 60 osc~ 220;
-#X obj 63 131 u_fade myfade 0.1;
-#X obj 39 199 soundoutput;
-#X msg 268 60 \; myfade 0 500;
-#X msg 269 111 \; myfade 0.3 500;
+#N canvas 350 143 973 570 10;
+#X obj 58 123 osc~ 220;
+#X obj 58 194 u_fade myfade 0.1;
+#X obj 34 262 soundoutput;
+#N canvas 208 165 582 570 REFERENCE 0;
+#X text 23 370 See also:;
+#X text 24 31 Name: u_fade;
+#X text 24 51 Summary: create a named fader \, useful for automatic
+mixing.;
+#X text 26 246 Outlet 0: audio output;
+#X text 26 183 Inlet 0: audio input;
+#X text 22 434 Tags: utility \, audio;
+#X text 24 303 Description: Create a named fader \, useful for automatic
+mixing.;
+#X text 24 91 Argument 0: <fader name>;
+#X text 24 114 Argument 1: <volume> value from 0-1;
+#X text 24 138 Argument 3: <time> fade time in ms;
+#X text 26 214 Inlet 1: <message> with name \, volume and time arguments
+;
+#X coords 0 -1 1 1 450 450 1 10 10;
+#X restore -454 58 pd REFERENCE;
+#X obj -455 28 cnv 15 450 20 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X text 8 61 Example:;
+#X text 40 490 RjDj Library (https://github.com/rjdj/rjlib) - 2011
+;
+#X obj -452 30 u_fade;
+#X text -366 29 - create a named fader \, useful for automatic mixing
+;
+#X msg 263 123 \; myfade 0 500;
+#X msg 264 174 \; myfade 0.3 500;
+#X connect 0 0 1 0;
 #X connect 1 0 2 0;
-#X connect 2 0 3 0;
-#X connect 2 0 3 1;
+#X connect 1 0 2 1;
