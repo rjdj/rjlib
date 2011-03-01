@@ -1,13 +1,13 @@
-#N canvas 3 35 823 522 10;
+#N canvas 488 22 823 522 10;
 #X floatatom 655 246 5 0 0 1 n - -;
 #X msg 592 141 0 1 2 3 4 5 6;
 #X msg 614 203 a b c d e;
-#X msg 592 372 6;
+#X msg 592 372 b;
 #X msg 609 169 list x y z;
 #X obj 592 267 u_listnth 2;
 #X obj 592 308 list prepend set;
 #X obj 592 329 list trim;
-#N canvas 744 370 582 570 REFERENCE 0;
+#N canvas 505 22 582 570 REFERENCE 0;
 #X text 24 31 Name: [u_listnth];
 #X text 24 61 Summary: Look up the nth element in a list.;
 #X text 24 101 Argument 0: <integer> - Element position to look up
@@ -18,7 +18,7 @@ Zero-based \, positive.;
 #X text 24 354 See also: [u_list drip] [u_listequal] [u_listfilter]
 [u_listloop] [u_listmap] [u_listrandom] [u_listreduce] [u_listser]
 ;
-#X text 24 284 Description: Returns the nth element in a list. 'n'
+#X text 24 283 Description: Returns the nth element in a list. 'n'
 has to be positive and is zero based (where the first index is 0 instead
 of 1). Non-lists get converted to proper lists.;
 #X text 24 223 Outlet 0: Nth element in input list.;

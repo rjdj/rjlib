@@ -1,11 +1,11 @@
-#N canvas 367 75 578 673 10;
+#N canvas 486 34 578 673 10;
 #X obj 226 453 mod 2;
 #X obj 226 483 != 0;
 #X obj 274 454 mod 3;
 #X obj 274 483 != 0;
 #X obj 226 517 &&;
 #X obj 226 426 t a a;
-#N canvas 0 0 450 300 show 0;
+#N canvas 0 22 450 300 show 0;
 #X obj 129 107 list prepend set;
 #X obj 129 129 list trim;
 #X obj 129 79 inlet;
@@ -14,7 +14,7 @@
 #X connect 1 0 3 0;
 #X connect 2 0 0 0;
 #X restore 70 548 pd show;
-#X msg 70 574;
+#X msg 70 574 5 7 11 13 17 19 23;
 #X text 62 27 [u_listfilter];
 #X text 66 58 [u_listfilter] returns a sequence consisting of those
 items from the sequence for which the user-defined operation cross-connected
@@ -22,7 +22,7 @@ to the rightmost in- and outlet is true.;
 #X text 66 112 Everything that is not 0 is considered a TRUE value.
 Internally [select 0] is used.;
 #X msg 70 213 0 1 2 3 4 5;
-#N canvas 0 0 450 300 show 0;
+#N canvas 0 22 450 300 show 0;
 #X obj 129 107 list prepend set;
 #X obj 129 129 list trim;
 #X obj 129 79 inlet;
@@ -31,13 +31,14 @@ Internally [select 0] is used.;
 #X connect 1 0 3 0;
 #X connect 2 0 0 0;
 #X restore 70 306 pd show;
-#X msg 70 332;
+#X msg 70 332 0 1 2 3 4 5;
 #X obj 167 266 >= 3;
 #X text 67 163 Examples:;
 #X text 217 266 remove values smaller than 3 from list;
 #X obj 160 212 t b a;
 #X floatatom 160 193 5 0 0 0 - - -;
-#X text 200 212 "bang" to [u_listfilter] will resend the last list;
+#X text 200 212 "bang" to [u_listfilter] will resend the last list
+;
 #X text 70 362 Calculate some small primes:;
 #X msg 70 387 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22
 23 24;

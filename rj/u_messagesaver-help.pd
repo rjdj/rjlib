@@ -1,12 +1,13 @@
-#N canvas 0 0 989 558 10;
-#N canvas 111 80 827 710 REFERENCE 0;
+#N canvas 504 22 989 558 10;
+#N canvas 485 22 827 710 REFERENCE 0;
 #X text 114 121 Name: u_messagesaver;
 #X text 114 141 Summary: collect presets into message boxes;
 #X text 113 170 Argument 0: name of abstration to save (required);
-#X text 114 194 Argument 1: tag of object to save (required=;
 #X text 114 214 Inlet 0: bang to save;
 #X text 114 234 Outlet 0: settings of abstraction with tag formatted
 to set a message box.;
+#X text 115 529 Tags: preset \, settings \, saving \, sssad;
+#X text 113 443;
 #X text 112 301 Description: u_messagesaver can be used to collect
 the settings of most rj-objects into a message box. To use it to save
 an object tagged with e.g. "TAG" create a [u_messagesaver] with the
@@ -14,14 +15,14 @@ name of the abstraction to save and the "TAG" as first and second argument
 \, and connect a message box to its outlet. Then just send a bang to
 the u_messagesaver's inlet to have it set the message box content to
 the latest settings. If there is more than one object tagged with the
-same tag \, settings will occur duplicated as many times.;
-#X text 113 443 [u_messagesaver] will only save objects that use the
-[u_dispatch] / [u_loader] mechanism provided in the rj library.;
-#X text 115 529 Tags: preset \, settings \, saving \, sssad;
+same tag \, settings will occur duplicated as many times. [u_messagesaver]
+will only save objects that use the [u_dispatch] / [u_loader] mechanism
+provided in the rj library.;
+#X text 114 194 Argument 1: tag of object to save (required);
 #X coords 0 -1 1 1 450 450 1 100 100;
 #X restore 5 48 pd REFERENCE;
 #X text 7 14 u_messagesaver - collect presets into message boxes;
-#N canvas 0 0 997 612 FM4-example 0;
+#N canvas 0 22 997 612 FM4-example 0;
 #X msg 108 129 bang;
 #X obj 108 157 u_messagesaver s_fm4 MYTAG;
 #X obj 121 319 r \$0-fm4;
@@ -30,7 +31,7 @@ same tag \, settings will occur duplicated as many times.;
 \,;
 #X msg 533 163 set;
 #X obj 34 319 s_fm4 MYTAG;
-#N canvas 310 14 696 722 GUI 0;
+#N canvas 310 22 696 722 GUI 0;
 #X obj 121 136 g_nbx ratio1;
 #X obj 121 232 g_nbx D1;
 #X obj 121 262 g_nbx S1;
@@ -108,11 +109,11 @@ same tag \, settings will occur duplicated as many times.;
 #X connect 7 0 6 0;
 #X restore 486 444 pd FM4-example;
 #X obj 589 106 s_osc MYOSCILLATOR;
-#N canvas 0 0 738 528 waveform 0;
+#N canvas 0 22 738 528 waveform 0;
 #X obj 275 362 outlet;
 #X obj 109 56 inlet;
 #X obj 109 118 nbx 7 14 0 3 0 0 empty empty empty 0 -8 0 10 -262144
--1 -1 1 256;
+-1 -1 0 256;
 #X obj 105 116 cnv 15 75 15 empty empty empty 20 12 0 14 -233017 -66577
 0;
 #X symbolatom 107 118 10 0 0 0 - - -;
@@ -150,7 +151,7 @@ same tag \, settings will occur duplicated as many times.;
 #X coords 0 -1 1 1 85 35 1 100 100;
 #X restore 712 63 pd waveform;
 #X obj 712 39 hradio 15 1 0 4 empty empty empty 0 -8 0 10 -262144 -1
--1 1;
+-1 0;
 #X text 710 18 Select waveforms:;
 #X obj 484 169 u_messagesaver s_osc MYOSCILLATOR;
 #X msg 484 145 bang;
