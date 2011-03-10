@@ -1,6 +1,6 @@
-#N struct 1113-symarray float x array symbols 1113-sym;
-#N struct 1113-sym symbol name float on;
-#N canvas 34 60 877 510 10;
+#N struct 1073-symarray float x array symbols 1073-sym;
+#N struct 1073-sym symbol name float on;
+#N canvas 426 75 877 510 10;
 #X declare -path .;
 #X declare -path .;
 #N canvas 219 25 1041 569 detailed_help 0;
@@ -68,11 +68,11 @@ accepts. They all expect values in a range of 0-1.;
 #X symbolatom 350 271 20 0 0 0 - - -;
 #X obj 452 251 s \$0-GUI;
 #X obj 350 200 nbx 3 20 0 256 0 0 empty empty empty 0 -8 0 16 -260097
--262144 -1 11 256;
+-262144 -1 0 256;
 #X obj 350 177 pgmin 1;
 #X obj 20 154 makenote 127 300;
 #X obj 307 157 hradio 15 1 0 15 empty empty empty 0 -8 0 10 -262144
--1 -1 11;
+-1 -1 0;
 #X msg 144 316 name fatbass \, mod3d 0 \, mod3c 0 \, mod3b 0.34685
 \, mod3a 0 \, mod2d 0 \, mod2c 0 \, mod2b 0 \, mod2a 0 \, mod1d 0 \,
 mod1c 0.0629921 \, mod1b 0.732283 \, mod1a 0.76378 \, osc3d 0 \, osc3c
@@ -83,7 +83,7 @@ mod1c 0.0629921 \, mod1b 0.732283 \, mod1a 0.76378 \, osc3d 0 \, osc3c
 1 \, env2a 0 \, env1r 0.0331496 \, env1s 0 \, env1d 0.0637795 \, env1a
 0.000708661 \,;
 #X obj 575 60 g_synthcontrol;
-#N canvas 0 0 1086 675 chip_presets 0;
+#N canvas 0 22 1086 675 chip_presets 0;
 #X obj 91 26 inlet;
 #X obj 151 615 outlet name;
 #X obj 151 590 symbol;
@@ -315,8 +315,8 @@ mod1c 0.0629921 \, mod1b 0.732283 \, mod1a 0.76378 \, osc3d 0 \, osc3c
 #X connect 29 0 1 0;
 #X connect 29 0 1 1;
 #X connect 29 1 13 0;
-#X restore 565 253 pd detailed_help;
-#N canvas 175 0 827 680 REFERENCE 0;
+#X restore 565 443 pd detailed_help;
+#N canvas 12 51 827 680 REFERENCE 0;
 #X text 114 174 Argument 0: name for state saving (required);
 #X text 114 214 Inlet 0: pitch/velocity pairs.;
 #X text 114 357 Outlet 0: synth audio signal.;
@@ -330,7 +330,6 @@ help for details. Possible message are (in alphabetical order): env1a
 \, osc1b \, osc1c \, osc1d \, osc2a \, osc2b \, osc2c \, osc2d \, osc3a
 \, osc3b \, osc3c \, osc3d. They all accept a float in the range 0-1
 ;
-#X text 114 121 Name: chip;
 #X text 113 140 Summary: grungy and grainy console and cheap synth
 sounds;
 #X text 113 411 Description: Based on a scanned \, filtered and decimated
@@ -338,18 +337,18 @@ binary table \, a development of an idea by Matt (Hardoff). This synth
 is dedicated to the wisdom of La Roux manager "8 bit" Aaron. ajf2010
 ;
 #X text 121 529 Tags: Glitch \, 8-bit \, old game music;
+#X text 114 121 Name: s_chip;
 #X coords 0 -1 1 1 450 450 1 100 100;
 #X restore 4 48 pd REFERENCE;
-#X text 498 230 Please see inside for help and an example.;
-#X text 658 97 control inlet;
-#X text 657 143 preset outlet;
-#X text 7 14 s_chip is an 8 bit chip tune/Casio style source;
-#X obj 569 166 soundoutput;
-#X obj 570 89 pack;
-#X obj 570 52 notein;
-#X obj 570 119 s_chip \$0-TAG;
-#X connect 7 0 9 0;
-#X connect 8 0 7 0;
-#X connect 8 1 7 1;
-#X connect 9 0 6 0;
-#X connect 9 0 6 1;
+#X text 498 420 Please see inside for help and an example.;
+#X text 658 287 control inlet;
+#X text 657 333 preset outlet;
+#X obj 569 356 soundoutput;
+#X obj 570 279 pack;
+#X obj 570 242 notein;
+#X obj 570 309 s_chip \$0-TAG;
+#X connect 6 0 8 0;
+#X connect 7 0 6 0;
+#X connect 7 1 6 1;
+#X connect 8 0 5 0;
+#X connect 8 0 5 1;

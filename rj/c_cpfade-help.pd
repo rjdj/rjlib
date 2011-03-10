@@ -1,12 +1,12 @@
-#N canvas 49 28 901 522 10;
-#X text 584 66 signal 2;
-#X floatatom 628 134 5 0 0 0 - - -;
-#X obj 631 111 hsl 128 15 0 1 0 0 empty empty crossfader_0-1 -2 -8
+#N canvas 50 28 901 522 10;
+#X text 584 126 signal 2;
+#X floatatom 628 194 5 0 0 0 - - -;
+#X obj 631 171 hsl 128 15 0 1 0 0 empty empty crossfader_0-1 -2 -8
 1 10 -262144 -1 -1 0 1;
 #X obj 502 363 *~ 0.5;
-#X text 544 37 signal 1;
-#X obj 542 85 osc~ 800;
-#X obj 502 56 osc~ 400;
+#X text 544 97 signal 1;
+#X obj 542 145 osc~ 800;
+#X obj 502 116 osc~ 400;
 #X obj 621 325 vu 15 120 empty empty -1 -8 0 8 -66577 -1 1 0;
 #X obj 620 276 env~;
 #X obj 620 301 - 100;
@@ -35,7 +35,6 @@ but it's cheaper than c_cpfade.;
 \, where 0 is all left \, 1 is all right.;
 #X coords 0 -1 1 1 450 450 1 100 100;
 #X restore 18 39 pd REFERENCE;
-#X text 18 16 c_cpfade - constant power crossfade;
 #X text 737 257 "hole in middle";
 #X connect 1 0 10 2;
 #X connect 1 0 16 2;

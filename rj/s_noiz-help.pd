@@ -66,12 +66,12 @@ accepts. They all expect values in a range of 0-1.;
 #X symbolatom 350 271 20 0 0 0 - - -;
 #X obj 466 249 s \$0-GUI;
 #X obj 350 200 nbx 3 20 0 256 0 0 empty empty empty 0 -8 0 16 -260097
--262144 -1 7 256;
+-262144 -1 0 256;
 #X obj 350 177 pgmin 1;
 #X obj 21 154 makenote 127 300;
 #X floatatom 112 62 5 0 0 0 - - -;
 #X obj 307 157 hradio 15 1 0 16 empty empty empty 0 -8 0 10 -262144
--1 -1 7;
+-1 -1 0;
 #X msg 144 317 name helicopter \, mod3d 0 \, mod3c label _ \, mod3b
 0.0740945 \, mod3a 0 \, mod2d 0 \, mod2c 0 \, mod2b 0.385827 \, mod2a
 0.393701 \, mod1d 0 \, mod1c 0.244094 \, mod1b 0.0708661 \, mod1a 0
@@ -82,7 +82,7 @@ env3s 1 \, env3d 0 \, env3a 0 \, env2r 0.0213386 \, env2s 0.0314961
 \, env2d 0.035748 \, env2a 0 \, env1r 0.0393701 \, env1s 1 \, env1d
 0 \, env1a 0 \,;
 #X obj 575 63 g_synthcontrol;
-#N canvas 0 0 1227 693 noizer_presets 0;
+#N canvas 0 22 1227 693 noizer_presets 0;
 #X obj 91 26 inlet;
 #X obj 134 647 outlet name;
 #X obj 118 611 symbol;
@@ -324,8 +324,8 @@ env3s 1 \, env3d 0 \, env3a 0 \, env2r 0.0213386 \, env2s 0.0314961
 #X connect 28 0 1 0;
 #X connect 28 0 1 1;
 #X connect 28 1 11 0;
-#X restore 565 253 pd detailed_help;
-#N canvas 175 0 827 680 REFERENCE 0;
+#X restore 565 453 pd detailed_help;
+#N canvas 56 22 827 680 REFERENCE 0;
 #X text 114 174 Argument 0: name for state saving (required);
 #X text 114 214 Inlet 0: pitch/velocity pairs.;
 #X text 114 357 Outlet 0: synth audio signal.;
@@ -347,14 +347,13 @@ modulation. Great for making noise sounds \, snaps \, whistles \, whooshes.
 ajf2010;
 #X coords 0 -1 1 1 450 450 1 100 100;
 #X restore 4 48 pd REFERENCE;
-#X text 498 230 Please see inside for help and an example.;
-#X text 658 97 control inlet;
-#X text 657 143 preset outlet;
-#X obj 570 172 soundoutput;
-#X obj 570 89 pack;
-#X obj 570 52 notein;
-#X obj 570 119 s_noiz \$0-TAG;
-#X text 7 14 s_noiz - multiband noise synth with modulation;
+#X text 498 430 Please see inside for help and an example.;
+#X text 658 297 control inlet;
+#X text 657 343 preset outlet;
+#X obj 570 372 soundoutput;
+#X obj 570 289 pack;
+#X obj 570 252 notein;
+#X obj 570 319 s_noiz \$0-TAG;
 #X connect 6 0 8 0;
 #X connect 7 0 6 0;
 #X connect 7 1 6 1;

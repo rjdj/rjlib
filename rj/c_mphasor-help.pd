@@ -1,32 +1,32 @@
 #N canvas 166 121 947 497 10;
-#X obj 545 191 hsl 128 15 0 1 0 0 empty empty 0...1 10 7 1 10 -262144
--1 -1 2154 1;
-#X msg 542 60 on \$1;
-#X obj 542 41 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#X obj 545 258 hsl 128 15 0 1 0 0 empty empty 0...1 10 7 1 10 -262144
+-1 -1 2718 1;
+#X msg 542 127 on \$1;
+#X obj 542 108 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 488 243 timer;
-#X obj 488 221 t b b;
-#X floatatom 488 267 5 0 0 0 - - -;
-#X floatatom 542 155 5 0 0 0 - - -;
-#X obj 724 58 hsl 128 15 0 1 0 0 empty empty phase(0...1) -2 -8 1 10
--262144 -1 -1 0 1;
-#X floatatom 495 40 5 0 0 2 freq - -;
-#X obj 495 60 / 100;
-#X msg 592 60 updates \$1;
-#X floatatom 592 40 5 0 0 0 - - -;
-#X floatatom 721 79 5 0 0 1 phase - -;
-#X obj 721 99 / 100;
-#X obj 542 125 c_mphasor 0.3 20;
-#X obj 736 366 table \$0-sinewave 1024;
-#X obj 737 343 s \$0-sinewave;
-#X msg 737 320 sinesum 1024 1;
-#X obj 737 295 loadbang;
-#X obj 737 201 * 1024;
-#X obj 737 224 + 1;
-#X obj 737 248 tabread \$0-sinewave;
-#X obj 740 272 hsl 128 15 -1 1 0 0 empty empty -1...1 10 7 1 10 -262144
--1 -1 11894 1;
-#X text 722 124 phases wrap around;
+#X obj 488 310 timer;
+#X obj 488 288 t b b;
+#X floatatom 488 334 5 0 0 0 - - -;
+#X floatatom 542 222 5 0 0 0 - - -;
+#X obj 724 125 hsl 128 15 0 1 0 0 empty empty phase(0...1) -2 -8 1
+10 -262144 -1 -1 0 1;
+#X floatatom 495 107 5 0 0 2 freq - -;
+#X obj 495 127 / 100;
+#X msg 592 127 updates \$1;
+#X floatatom 592 107 5 0 0 0 - - -;
+#X floatatom 721 146 5 0 0 1 phase - -;
+#X obj 721 166 / 100;
+#X obj 542 192 c_mphasor 0.3 20;
+#X obj 736 433 table \$0-sinewave 1024;
+#X obj 737 410 s \$0-sinewave;
+#X msg 737 387 sinesum 1024 1;
+#X obj 737 362 loadbang;
+#X obj 737 268 * 1024;
+#X obj 737 291 + 1;
+#X obj 737 315 tabread \$0-sinewave;
+#X obj 740 339 hsl 128 15 -1 1 0 0 empty empty -1...1 10 7 1 10 -262144
+-1 -1 12537 1;
+#X text 722 191 phases wrap around;
 #N canvas 550 144 695 621 REFERENCE 0;
 #X text 114 121 Name: c_mphasor;
 #X text 114 141 Summary: message rate phasor object;
@@ -43,8 +43,7 @@ is 0-1 \, values outside this are wrapped around.;
 between 0...1 with variable frequency and update period.;
 #X coords 0 -1 1 1 450 450 1 100 100;
 #X restore 9 30 pd REFERENCE;
-#X text 7 5 c_mphasor - message rate phasor object;
-#X text 549 395 c_mphasor can be used to make a sinewave LFO \, too.
+#X text 549 462 c_mphasor can be used to make a sinewave LFO \, too.
 ;
 #X connect 1 0 14 0;
 #X connect 2 0 1 0;

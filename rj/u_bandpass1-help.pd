@@ -1,7 +1,7 @@
 #N canvas 79 87 1201 689 10;
-#X obj 804 161 mtof;
-#X floatatom 941 133 5 0 0 2 BW - -;
-#X floatatom 804 129 5 0 0 2 freq - -;
+#X obj 774 264 mtof;
+#X floatatom 911 236 5 0 0 2 BW - -;
+#X floatatom 774 232 5 0 0 2 freq - -;
 #N canvas 0 22 450 300 show 0;
 #X obj 41 39 inlet;
 #X obj 186 36 inlet;
@@ -14,27 +14,27 @@
 #X connect 3 0 2 0;
 #X connect 4 0 5 0;
 #X connect 5 0 2 0;
-#X restore 804 231 pd show;
-#X msg 804 264 1.93842 -0.958266 0.0695157 0 -0.0695157;
-#X text 931 198 args: <freq> <BW>;
-#X obj 590 124 noise~;
-#X obj 489 283 env~;
-#X obj 591 170 *~ 0.3;
-#X obj 551 239 e_beequad;
-#X obj 552 374 soundoutput;
-#X obj 552 341 c_xfade;
-#X msg 862 231 reset;
-#X obj 636 241 biquad~;
-#X obj 489 306 - 100;
-#X obj 490 330 vu 15 80 empty empty -1 -8 0 10 -66577 -1 0 0;
-#X obj 674 282 env~;
-#X obj 674 305 - 100;
-#X obj 675 329 vu 15 80 empty empty -1 -8 0 10 -66577 -1 0 0;
-#X obj 601 320 hsl 32 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+#X restore 774 334 pd show;
+#X msg 774 367 1.93842 -0.958266 0.0695157 0 -0.0695157;
+#X text 901 301 args: <freq> <BW>;
+#X obj 590 204 noise~;
+#X obj 489 363 env~;
+#X obj 591 250 *~ 0.3;
+#X obj 551 319 e_beequad;
+#X obj 552 454 soundoutput;
+#X obj 552 421 c_xfade;
+#X msg 832 334 reset;
+#X obj 636 321 biquad~;
+#X obj 489 386 - 100;
+#X obj 490 410 vu 15 80 empty empty -1 -8 0 10 -66577 -1 0 0;
+#X obj 674 362 env~;
+#X obj 674 385 - 100;
+#X obj 675 409 vu 15 80 empty empty -1 -8 0 10 -66577 -1 0 0;
+#X obj 601 400 hsl 32 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
-#X obj 805 199 u_bandpass1 1000 100;
-#X msg 847 162 bang;
-#N canvas 300 39 582 570 REFERENCE 0;
+#X obj 775 302 u_bandpass1 1000 100;
+#X msg 817 265 bang;
+#N canvas 19 22 582 570 REFERENCE 0;
 #X text 24 51 Summary: Compute biquad coefficients for a bandpass filter
 with constant skirt gain \, peak gain specified by BW. Designed to
 be used with [biquad~] or [e_beequad].;
@@ -44,7 +44,7 @@ be used with [biquad~] or [e_beequad].;
 #X text 24 154 Inlet 0: freq;
 #X text 24 174 Inlet 1: bandwidth;
 #X text 24 194 Outlet 0: biquad coefficients;
-#X text 23 214;
+#X text 23 214 comment;
 #X text 24 244 Description: Compute biquad coefficients for a bandpass
 filter with constant skirt gain \, peak gain specified by BW. Designed
 to be used with [biquad~] or [e_beequad]. A bandwidth of 100 is equivalent
@@ -53,14 +53,6 @@ to one octave. Both inlets are hot and trigger new coefficients.;
 #X text 24 434 Tags: Utilities \, Filter;
 #X coords 0 -1 1 1 450 450 1 10 10;
 #X restore 15 58 pd REFERENCE;
-#X obj 15 28 cnv 15 450 25 empty empty empty 20 12 0 14 -261234 -66577
-0;
-#X text 478 61 Example:;
-#X text 499 517 RjDj Library (https://github.com/rjdj/rjlib) - 2011
-;
-#X obj 18 30 u_bandpass1;
-#X text 126 25 - Compute biquad coefficients for a bandpass filter
-with constant skirt gain \, peak gain specified by BW.;
 #X connect 0 0 20 0;
 #X connect 1 0 20 1;
 #X connect 2 0 0 0;

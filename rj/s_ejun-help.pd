@@ -1,5 +1,5 @@
-#N struct 1113-symarray float x array symbols 1113-sym;
-#N struct 1113-sym symbol name float on;
+#N struct 1907-symarray float x array symbols 1907-sym;
+#N struct 1907-sym symbol name float on;
 #N canvas 34 60 877 510 10;
 #X declare -path .;
 #X declare -path .;
@@ -10,7 +10,7 @@
 #X obj 575 9 r \$0-GUI;
 #X obj 21 132 m_majorscale 50;
 #X obj 21 78 metro 500;
-#X obj 21 54 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+#X obj 21 54 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
 ;
 #X obj 21 211 pack;
 #N canvas 0 58 1013 367 midi-control 0;
@@ -67,7 +67,7 @@ accepts. They all expect values in a range of 0-1.;
 #X symbolatom 350 271 20 0 0 0 - - -;
 #X obj 452 250 s \$0-GUI;
 #X obj 350 200 nbx 3 20 0 256 0 0 empty empty empty 0 -8 0 16 -260097
--262144 -1 5 256;
+-262144 -1 0 256;
 #X obj 350 177 pgmin 1;
 #X obj 21 154 makenote 127 300;
 #X floatatom 112 62 5 0 0 0 - - -;
@@ -82,7 +82,7 @@ osc1b 0.80315 \, osc1a 0.913386 \, env3r 0.110236 \, env3s 0.0314961
 \, env2d 0.278189 \, env2a 0.173228 \, env1r 0.0356693 \, env1s 0.472441
 \, env1d 0.23622 \, env1a 0.133858 \,;
 #X obj 575 55 g_synthcontrol;
-#N canvas 0 0 1108 693 ejun_presets 0;
+#N canvas 0 22 1108 693 ejun_presets 0;
 #X obj 91 26 inlet;
 #X obj 83 653 outlet name;
 #X obj 83 630 symbol;
@@ -219,7 +219,7 @@ osc1b 0.80315 \, osc1a 0.913386 \, env3r 0.110236 \, env3s 0.0314961
 #X connect 17 0 4 0;
 #X restore 350 229 pd ejun_presets;
 #X obj 349 154 hradio 15 1 0 10 empty empty empty 0 -8 0 10 -262144
--1 -1 5;
+-1 -1 0;
 #X obj 21 104 random 10;
 #X obj 21 243 s_ejun \$0-TAG;
 #X connect 2 0 12 0;
@@ -250,8 +250,8 @@ osc1b 0.80315 \, osc1a 0.913386 \, env3r 0.110236 \, env3s 0.0314961
 #X connect 29 0 1 0;
 #X connect 29 0 1 1;
 #X connect 29 1 11 0;
-#X restore 565 253 pd detailed_help;
-#N canvas 175 22 827 680 REFERENCE 0;
+#X restore 575 453 pd detailed_help;
+#N canvas 57 22 615 653 REFERENCE 0;
 #X text 114 174 Argument 0: name for state saving (required);
 #X text 114 214 Inlet 0: pitch/velocity pairs.;
 #X text 114 357 Outlet 0: synth audio signal.;
@@ -277,16 +277,15 @@ ajf 2010;
 rave \, bass;
 #X coords 0 -1 1 1 450 450 1 100 100;
 #X restore 4 48 pd REFERENCE;
-#X text 498 230 Please see inside for help and an example.;
-#X text 658 97 control inlet;
-#X text 657 143 preset outlet;
-#X text 7 14 s_ejun - a juno/jupiter type analogue sound;
-#X obj 570 166 soundoutput;
-#X obj 570 86 pack;
-#X obj 570 49 notein;
-#X obj 570 118 s_ejun \$0-TAG;
-#X connect 7 0 9 0;
-#X connect 8 0 7 0;
-#X connect 8 1 7 1;
-#X connect 9 0 6 0;
-#X connect 9 0 6 1;
+#X text 508 430 Please see inside for help and an example.;
+#X text 668 297 control inlet;
+#X text 667 343 preset outlet;
+#X obj 580 366 soundoutput;
+#X obj 580 286 pack;
+#X obj 580 249 notein;
+#X obj 580 318 s_ejun \$0-TAG;
+#X connect 6 0 8 0;
+#X connect 7 0 6 0;
+#X connect 7 1 6 1;
+#X connect 8 0 5 0;
+#X connect 8 0 5 1;

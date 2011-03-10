@@ -1,5 +1,5 @@
-#N struct 1113-symarray float x array symbols 1113-sym;
-#N struct 1113-sym symbol name float on;
+#N struct 1387-symarray float x array symbols 1387-sym;
+#N struct 1387-sym symbol name float on;
 #N canvas 34 60 877 510 10;
 #X declare -path .;
 #X declare -path .;
@@ -10,7 +10,7 @@
 #X obj 575 9 r \$0-GUI;
 #X obj 21 132 m_majorscale 50;
 #X obj 21 78 metro 500;
-#X obj 21 54 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+#X obj 21 54 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
 ;
 #X obj 21 211 pack;
 #N canvas 0 58 1013 367 midi-control 0;
@@ -66,12 +66,12 @@ accepts. They all expect values in a range of 0-1.;
 #X symbolatom 350 271 20 0 0 0 - - -;
 #X obj 452 248 s \$0-GUI;
 #X obj 350 200 nbx 3 20 0 256 0 0 empty empty empty 0 -8 0 16 -260097
--262144 -1 4 256;
+-262144 -1 0 256;
 #X obj 350 177 pgmin 1;
 #X obj 21 154 makenote 127 300;
 #X floatatom 112 62 5 0 0 0 - - -;
 #X obj 307 157 hradio 15 1 0 5 empty empty empty 0 -8 0 10 -262144
--1 -1 4;
+-1 -1 0;
 #X msg 144 317 mod3d 0 \, mod3c 0 \, mod3b 0.520079 \, mod3a 0 \, mod2d
 0 \, mod2c 0 \, mod2b 0 \, mod2a 0 \, mod1d 0 \, mod1c 0.284409 \,
 mod1b 0.103622 \, mod1a 0.724882 \, osc3d 0 \, osc3c 0 \, osc3b 0 \,
@@ -81,7 +81,7 @@ env3s 0 \, env3d 0 \, env3a 0 \, env2r 0.0244882 \, env2s 0.992992
 \, env2d 0.0708661 \, env2a 0.00787402 \, env1r 0.00952756 \, env1s
 0.889764 \, env1d 0.111024 \, env1a 0.0173228 \,;
 #X obj 575 56 g_synthcontrol;
-#N canvas 0 0 1152 704 spad_presets 0;
+#N canvas 0 22 1152 704 spad_presets 0;
 #X obj 91 26 inlet;
 #X obj 134 647 outlet name;
 #X obj 118 611 symbol;
@@ -210,8 +210,8 @@ osc1d 0.646142 \, osc1c 0.974882 \, osc1b 0.244094 \, osc1a 0.228346
 #X connect 28 0 1 0;
 #X connect 28 0 1 1;
 #X connect 28 1 11 0;
-#X restore 565 253 pd detailed_help;
-#N canvas 175 0 827 680 REFERENCE 0;
+#X restore 565 453 pd detailed_help;
+#N canvas -12 22 827 680 REFERENCE 0;
 #X text 114 174 Argument 0: name for state saving (required);
 #X text 114 214 Inlet 0: pitch/velocity pairs.;
 #X text 114 357 Outlet 0: synth audio signal.;
@@ -232,16 +232,15 @@ help for details. Possible message are (in alphabetical order): env1a
 dense slow synth pads without too much CPU;
 #X coords 0 -1 1 1 450 450 1 100 100;
 #X restore 4 48 pd REFERENCE;
-#X text 498 230 Please see inside for help and an example.;
-#X text 658 97 control inlet;
-#X text 657 143 preset outlet;
-#X text 7 14 s_spad efficient slow synthpad generator;
-#X obj 568 169 soundoutput;
-#X obj 569 89 pack;
-#X obj 569 52 notein;
-#X obj 569 119 s_spad \$0-TAG;
-#X connect 7 0 9 0;
-#X connect 8 0 7 0;
-#X connect 8 1 7 1;
-#X connect 9 0 6 0;
-#X connect 9 0 6 1;
+#X text 498 430 Please see inside for help and an example.;
+#X text 658 297 control inlet;
+#X text 657 343 preset outlet;
+#X obj 568 369 soundoutput;
+#X obj 569 289 pack;
+#X obj 569 252 notein;
+#X obj 569 319 s_spad \$0-TAG;
+#X connect 6 0 8 0;
+#X connect 7 0 6 0;
+#X connect 7 1 6 1;
+#X connect 8 0 5 0;
+#X connect 8 0 5 1;

@@ -1,13 +1,5 @@
-#N canvas 118 17 879 550 10;
-#N canvas 0 0 450 300 (subpatch) 0;
-#X array \$0-s 100 float 0;
-#X coords 0 1 99 -1 200 140 1;
-#X restore 529 255 graph;
-#X obj 630 206 tabwrite~ \$0-s;
-#X obj 630 60 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
-#X obj 630 85 metro 150;
-#N canvas 377 58 827 710 REFERENCE 0;
+#N canvas 118 22 879 550 10;
+#N canvas 47 30 827 710 REFERENCE 0;
 #X text 114 141 Summary: phasor~ clone with sample accurate phase setting
 ;
 #X text 114 121 Name: s_vphasor;
@@ -23,21 +15,20 @@ accuracy and it does not support setting its frequency with an argument.
 Based on an approach by Mike Moser-Booth.;
 #X coords 0 -1 1 1 450 450 1 100 100;
 #X restore 5 48 pd REFERENCE;
-#X text 5 13 s_vphasor - phasor~ clone with sample accurate phase setting
-;
-#X obj 526 161 s_vphasor;
-#X obj 527 90 sig~ 1234;
-#X msg 586 125 0.25;
-#X floatatom 527 62 5 0 0 0 - - -;
+#X obj 676 408 s_vphasor;
+#X obj 676 357 sig~ 1234;
+#X msg 746 391 0.25;
+#X floatatom 676 331 5 0 0 0 - - -;
 #X msg 528 454 yticks 0 0.1 5;
 #X obj 528 475 s \$0-s;
 #X obj 528 432 loadbang;
-#X connect 2 0 3 0;
-#X connect 3 0 1 0;
-#X connect 3 0 8 0;
-#X connect 6 0 1 0;
-#X connect 7 0 6 0;
-#X connect 8 0 6 1;
-#X connect 9 0 7 0;
-#X connect 10 0 11 0;
-#X connect 12 0 10 0;
+#X obj 676 452 soundoutput;
+#X obj 746 368 loadbang;
+#X connect 1 0 8 0;
+#X connect 1 0 8 1;
+#X connect 2 0 1 0;
+#X connect 3 0 1 1;
+#X connect 4 0 2 0;
+#X connect 5 0 6 0;
+#X connect 7 0 5 0;
+#X connect 9 0 3 0;

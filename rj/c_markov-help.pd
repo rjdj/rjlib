@@ -1,5 +1,5 @@
 #N canvas 104 114 1003 515 10;
-#N canvas 0 0 450 300 enumerate 0;
+#N canvas 0 22 450 300 enumerate 0;
 #N canvas 473 338 450 300 count 0;
 #X obj 131 154 f 0;
 #X obj 163 154 + 1;
@@ -29,21 +29,20 @@
 #X connect 2 0 4 0;
 #X connect 3 0 1 0;
 #X connect 5 0 0 1;
-#X restore 602 154 pd enumerate;
-#X msg 602 119 0 1 0 0 \, 1 0 0 1 \, 0 1 1 0 \, 0 1 1 0;
-#X msg 545 144 bang;
-#X floatatom 535 216 5 0 0 0 - - -;
-#X obj 602 90 t b b;
-#X msg 602 68 bang;
-#X obj 535 86 hradio 15 1 0 4 empty empty empty 0 -8 0 10 -262144 -1
--1 0;
-#X floatatom 535 109 5 0 0 0 - - -;
-#X obj 535 236 hradio 15 1 0 4 empty empty empty 0 -8 0 10 -262144
+#X restore 602 214 pd enumerate;
+#X msg 602 179 0 1 0 0 \, 1 0 0 1 \, 0 1 1 0 \, 0 1 1 0;
+#X msg 545 204 bang;
+#X floatatom 535 276 5 0 0 0 - - -;
+#X obj 602 150 t b b;
+#X msg 602 128 bang;
+#X obj 535 146 hradio 15 1 0 4 empty empty empty 0 -8 0 10 -262144
+-1 -1 1;
+#X floatatom 535 169 5 0 0 0 - - -;
+#X obj 535 296 hradio 15 1 0 4 empty empty empty 0 -8 0 10 -262144
 -1 -1 0;
-#X text 9 10 c_markov - 1st order markov chain;
-#X obj 535 184 c_markov 4;
-#N canvas 0 0 944 702 2nd-order-chain 0;
-#N canvas 0 0 450 300 enumerate 0;
+#X obj 535 244 c_markov 4;
+#N canvas 0 22 944 702 2nd-order-chain 0;
+#N canvas 0 22 450 300 enumerate 0;
 #N canvas 473 338 450 300 count 0;
 #X obj 131 154 f 0;
 #X obj 163 154 + 1;
@@ -79,7 +78,7 @@
 #X obj 50 119 t b b;
 #X msg 50 93 bang;
 #X text 242 39 three 3-state matrixes;
-#N canvas 0 0 450 300 enumerate 0;
+#N canvas 0 22 450 300 enumerate 0;
 #N canvas 473 338 450 300 count 0;
 #X obj 131 154 f 0;
 #X obj 163 154 + 1;
@@ -113,7 +112,7 @@
 #X msg 329 174 reset counter;
 #X obj 248 116 t b b;
 #X msg 248 90 bang;
-#N canvas 0 0 450 300 enumerate 0;
+#N canvas 0 22 450 300 enumerate 0;
 #N canvas 473 338 450 300 count 0;
 #X obj 131 154 f 0;
 #X obj 163 154 + 1;
@@ -231,14 +230,14 @@
 #X connect 45 0 4 0;
 #X connect 45 0 9 0;
 #X connect 45 0 13 0;
-#X restore 514 313 pd 2nd-order-chain;
-#X text 505 273 You can use c_markov to build 2nnd order chains as
+#X restore 514 373 pd 2nd-order-chain;
+#X text 505 333 You can use c_markov to build 2nnd order chains as
 shown in this subpatch:;
-#X text 482 342 Also see:;
-#X obj 508 364 u_dumpfile;
-#X text 588 364 is very handy to load markov chains from textfile.
+#X text 482 402 Also see:;
+#X obj 508 424 u_dumpfile;
+#X text 588 424 is very handy to load markov chains from textfile.
 ;
-#X text 510 391 Use its "numdump" dumping method.;
+#X text 510 451 Use its "numdump" dumping method.;
 #N canvas 550 144 695 621 REFERENCE 0;
 #X text 114 121 Name: c_markov;
 #X text 114 148 Summary: 1st order markov chain;
@@ -255,13 +254,13 @@ order Markov chain rules.;
 #X text 118 401 Tags: random \, markov chain \, state machine;
 #X coords 0 -1 1 1 450 450 1 100 100;
 #X restore 11 35 pd REFERENCE;
-#X connect 0 0 10 1;
+#X connect 0 0 9 1;
 #X connect 1 0 0 0;
-#X connect 2 0 10 0;
+#X connect 2 0 9 0;
 #X connect 3 0 8 0;
 #X connect 4 0 1 0;
 #X connect 4 1 0 1;
 #X connect 5 0 4 0;
 #X connect 6 0 7 0;
-#X connect 7 0 10 0;
-#X connect 10 0 3 0;
+#X connect 7 0 9 0;
+#X connect 9 0 3 0;

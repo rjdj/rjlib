@@ -1,7 +1,7 @@
 #N canvas 240 143 845 532 10;
-#X obj 794 191 mtof;
-#X floatatom 931 163 5 0 0 2 BW - -;
-#X floatatom 794 159 5 0 0 2 freq - -;
+#X obj 794 264 mtof;
+#X floatatom 911 266 5 0 0 2 BW - -;
+#X floatatom 794 242 5 0 0 2 freq - -;
 #N canvas 0 22 450 300 show 0;
 #X obj 41 39 inlet;
 #X obj 186 36 inlet;
@@ -14,27 +14,26 @@
 #X connect 3 0 2 0;
 #X connect 4 0 5 0;
 #X connect 5 0 2 0;
-#X restore 794 261 pd show;
-#X msg 794 294;
-#X obj 580 154 noise~;
-#X obj 479 313 env~;
-#X obj 581 200 *~ 0.3;
-#X obj 541 269 e_beequad;
-#X obj 542 404 soundoutput;
-#X obj 542 371 c_xfade;
-#X msg 852 261 reset;
-#X obj 626 271 biquad~;
-#X obj 479 336 - 100;
-#X obj 480 360 vu 15 80 empty empty -1 -8 0 10 -66577 -1 0 0;
-#X obj 664 312 env~;
-#X obj 664 335 - 100;
-#X obj 665 359 vu 15 80 empty empty -1 -8 0 10 -66577 -1 0 0;
-#X obj 591 350 hsl 32 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+#X restore 794 324 pd show;
+#X msg 794 357;
+#X obj 581 214 noise~;
+#X obj 479 353 env~;
+#X obj 581 240 *~ 0.3;
+#X obj 541 309 e_beequad;
+#X obj 542 444 soundoutput;
+#X obj 542 411 c_xfade;
+#X msg 852 324 reset;
+#X obj 626 311 biquad~;
+#X obj 479 376 - 100;
+#X obj 480 400 vu 15 80 empty empty -1 -8 0 10 -66577 -1 0 0;
+#X obj 664 352 env~;
+#X obj 664 375 - 100;
+#X obj 665 399 vu 15 80 empty empty -1 -8 0 10 -66577 -1 0 0;
+#X obj 591 390 hsl 32 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
-#X msg 837 192 bang;
-#X obj 794 229 u_bandpass2 1000 200;
-#N canvas 377 58 582 570 REFERENCE 0;
-#X text 24 31 Name: [u_bandpass2];
+#X msg 837 265 bang;
+#X obj 794 292 u_bandpass2 1000 200;
+#N canvas 88 41 582 570 REFERENCE 0;
 #X text 24 61 Summary: Compute biquad coefficients for a bandpass filter
 with constant 0 dB peak gain and BW inlet. Designed to be used with
 [biquad~] or [e_beequad].;
@@ -50,16 +49,9 @@ coefficients. Both inlets are hot and trigger new coefficients. BW=100
 per octave.;
 #X text 24 374 See also: [biquad~] [e_beequad];
 #X text 24 434 Tags: Utilities \, Filter;
+#X text 24 31 Name:u_bandpass2;
 #X coords 0 -1 1 1 450 450 1 10 10;
 #X restore 15 58 pd REFERENCE;
-#X obj 15 28 cnv 15 450 25 empty empty empty 20 12 0 14 -261234 -66577
-0;
-#X text 478 61 Example:;
-#X obj 18 30 u_bandpass2;
-#X text 126 25 - Compute biquad coefficients for a bandpass filter
-with constant 0 dB peak gain and BW inlet.;
-#X text 488 505 RjDj Library (https://github.com/rjdj/rjlib) - 2011
-;
 #X connect 0 0 20 0;
 #X connect 1 0 20 1;
 #X connect 2 0 0 0;

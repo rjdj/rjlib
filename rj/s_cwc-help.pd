@@ -1,9 +1,9 @@
-#N struct 1113-symarray float x array symbols 1113-sym;
-#N struct 1113-sym symbol name float on;
+#N struct 1343-symarray float x array symbols 1343-sym;
+#N struct 1343-sym symbol name float on;
 #N canvas 34 60 877 510 10;
 #X declare -path .;
 #X declare -path .;
-#N canvas 0 12 1081 586 detailed_help 0;
+#N canvas 0 22 1081 586 detailed_help 0;
 #X obj 719 26 declare -path .;
 #X obj 21 291 soundoutput;
 #X msg 177 132 save;
@@ -12,7 +12,7 @@
 #X obj 575 9 r \$0-GUI;
 #X obj 21 132 m_majorscale 50;
 #X obj 21 78 metro 500;
-#X obj 21 54 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+#X obj 21 54 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
 ;
 #X obj 21 211 pack;
 #N canvas 0 58 1013 367 midi-control 0;
@@ -69,7 +69,7 @@ accepts. They all expect values in a range of 0-1.;
 #X symbolatom 350 271 20 0 0 0 - - -;
 #X obj 445 250 s \$0-GUI;
 #X obj 350 200 nbx 3 20 0 256 0 0 empty empty empty 0 -8 0 16 -260097
--262144 -1 4 256;
+-262144 -1 0 256;
 #X obj 350 177 pgmin 1;
 #X obj 21 154 makenote 127 300;
 #X floatatom 112 62 5 0 0 0 - - -;
@@ -84,7 +84,7 @@ mod2a 0.984252 \, mod1d 0 \, mod1c 0.338583 \, mod1b 0.0314961 \, mod1a
 \, env2s 0 \, env2d 0 \, env2a 0.11811 \, env1r 0.0011811 \, env1s
 0 \, env1d 0.00787402 \, env1a 0.125984 \,;
 #X obj 575 58 g_synthcontrol;
-#N canvas 0 0 1021 604 cwc_presets 0;
+#N canvas 0 22 1021 604 cwc_presets 0;
 #X obj 91 26 inlet;
 #X obj 117 559 outlet name;
 #X obj 117 536 symbol;
@@ -331,7 +331,7 @@ mod2a 0.984252 \, mod1d 0 \, mod1c 0.338583 \, mod1b 0.0314961 \, mod1a
 #X connect 27 17 26 0;
 #X restore 350 228 pd cwc_presets;
 #X obj 299 151 hradio 15 1 0 18 empty empty empty 0 -8 0 10 -262144
--1 -1 4;
+-1 -1 0;
 #X obj 21 105 random 10;
 #X connect 2 0 14 0;
 #X connect 4 0 3 0;
@@ -362,8 +362,8 @@ mod2a 0.984252 \, mod1d 0 \, mod1c 0.338583 \, mod1b 0.0314961 \, mod1a
 #X connect 29 1 21 0;
 #X connect 30 0 22 0;
 #X connect 31 0 6 0;
-#X restore 565 253 pd detailed_help;
-#N canvas 197 0 827 684 REFERENCE 0;
+#X restore 595 413 pd detailed_help;
+#N canvas 124 167 827 684 REFERENCE 0;
 #X text 114 174 Argument 0: name for state saving (required);
 #X text 114 214 Inlet 0: pitch/velocity pairs.;
 #X text 114 357 Outlet 0: synth audio signal.;
@@ -386,16 +386,15 @@ a waveshaper and FM stage. A range of digital textures and sweeps can
 be made. ajf2010.;
 #X coords 0 -1 1 1 450 450 1 100 100;
 #X restore 4 48 pd REFERENCE;
-#X text 498 230 Please see inside for help and an example.;
-#X text 658 97 control inlet;
-#X text 657 143 preset outlet;
-#X text 7 14 s_cwc - a harmonic waveshaper;
-#X obj 575 167 soundoutput;
-#X obj 575 87 pack;
-#X obj 575 50 notein;
-#X obj 575 119 s_cwc \$0-TAG;
-#X connect 7 0 9 0;
-#X connect 8 0 7 0;
-#X connect 8 1 7 1;
-#X connect 9 0 6 0;
-#X connect 9 0 6 1;
+#X text 528 390 Please see inside for help and an example.;
+#X text 688 257 control inlet;
+#X text 687 303 preset outlet;
+#X obj 605 327 soundoutput;
+#X obj 605 247 pack;
+#X obj 605 210 notein;
+#X obj 605 279 s_cwc \$0-TAG;
+#X connect 6 0 8 0;
+#X connect 7 0 6 0;
+#X connect 7 1 6 1;
+#X connect 8 0 5 0;
+#X connect 8 0 5 1;

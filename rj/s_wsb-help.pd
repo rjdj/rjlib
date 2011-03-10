@@ -1,5 +1,5 @@
-#N struct 1113-symarray float x array symbols 1113-sym;
-#N struct 1113-sym symbol name float on;
+#N struct 1740-symarray float x array symbols 1740-sym;
+#N struct 1740-sym symbol name float on;
 #N canvas 34 60 877 510 10;
 #X declare -path .;
 #X declare -path .;
@@ -10,7 +10,7 @@
 #X obj 575 9 r \$0-GUI;
 #X obj 21 132 m_majorscale 50;
 #X obj 21 78 metro 500;
-#X obj 21 54 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+#X obj 21 54 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
 ;
 #X obj 21 211 pack;
 #N canvas 0 58 1013 367 midi-control 0;
@@ -66,7 +66,7 @@ accepts. They all expect values in a range of 0-1.;
 #X symbolatom 350 271 20 0 0 0 - - -;
 #X obj 452 248 s \$0-GUI;
 #X obj 350 200 nbx 3 20 0 256 0 0 empty empty empty 0 -8 0 16 -260097
--262144 -1 8 256;
+-262144 -1 0 256;
 #X obj 350 177 pgmin 1;
 #X obj 21 154 makenote 127 300;
 #X floatatom 112 62 5 0 0 0 - - -;
@@ -81,9 +81,9 @@ label _ \, mod2a 0.771654 \, mod1d label _ \, mod1c 0.527559 \, mod1b
 env2a 0 \, env1r 0.165354 \, env1s 0.244094 \, env1d 0.0787402 \, env1a
 0 \,;
 #X obj 307 157 hradio 15 1 0 13 empty empty empty 0 -8 0 10 -262144
--1 -1 8;
+-1 -1 0;
 #X obj 575 50 g_synthcontrol;
-#N canvas 0 0 1256 687 ewsb_presets 0;
+#N canvas 0 22 1256 687 ewsb_presets 0;
 #X obj 171 26 inlet;
 #X obj 163 653 outlet name;
 #X obj 163 630 symbol;
@@ -301,8 +301,8 @@ env2a 0 \, env1r 0.165354 \, env1s 0.244094 \, env1d 0.0787402 \, env1a
 #X connect 27 0 1 1;
 #X connect 27 1 11 0;
 #X connect 28 0 4 0;
-#X restore 565 253 pd detailed_help;
-#N canvas 175 0 827 680 REFERENCE 0;
+#X restore 565 463 pd detailed_help;
+#N canvas 3 26 827 680 REFERENCE 0;
 #X text 114 174 Argument 0: name for state saving (required);
 #X text 114 214 Inlet 0: pitch/velocity pairs.;
 #X text 114 357 Outlet 0: synth audio signal.;
@@ -324,14 +324,13 @@ several stages each feeding one another \, controls determine the degree
 of shaping at each stage. ajf2010;
 #X coords 0 -1 1 1 450 450 1 100 100;
 #X restore 4 48 pd REFERENCE;
-#X text 498 230 Please see inside for help and an example.;
-#X text 658 97 control inlet;
-#X text 657 143 preset outlet;
-#X obj 576 173 soundoutput;
-#X obj 575 88 pack;
-#X obj 575 51 notein;
-#X obj 575 120 s_wsb \$0-TAG;
-#X text 7 14 s_wsb - waveshaping synth type B;
+#X text 498 440 Please see inside for help and an example.;
+#X text 658 307 control inlet;
+#X text 657 353 preset outlet;
+#X obj 576 383 soundoutput;
+#X obj 575 298 pack;
+#X obj 575 261 notein;
+#X obj 575 330 s_wsb \$0-TAG;
 #X connect 6 0 8 0;
 #X connect 7 0 6 0;
 #X connect 7 1 6 1;
