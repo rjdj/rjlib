@@ -1,0 +1,58 @@
+#N canvas 137 22 1125 650 10;
+#N canvas 377 58 827 710 REFERENCE 0;
+#X text 114 141 Summary: random float number between two limits;
+#X text 114 121 Name: c_frand;
+#X text 114 174 Argument 0: limit_0 (default 0);
+#X text 114 194 Argument 1: limit_1 (default 1);
+#X text 114 214 Inlet 0: bang: generate random number. seed <float>:
+seed random number generatoe;
+#X text 112 321 Description: generates a random floating point number
+between to limits. Limits can be negative.;
+#X text 122 529 Tags: random \, between;
+#X text 114 287 Outlet 0: random floating point number between limit_0
+and limit_1 (excluding limit_1 itself);
+#X text 114 244 Inlet 1: float to set limit_0 (default 0);
+#X text 114 264 Inlet 2: float to set limit_1 (default 1);
+#X coords 0 -1 1 1 450 450 1 100 100;
+#X restore 5 48 pd REFERENCE;
+#X floatatom 502 303 5 0 0 0 - - -;
+#X msg 502 151 bang;
+#X msg 517 181 seed 123;
+#X floatatom 525 234 5 0 0 1 limit_0 - -;
+#X floatatom 548 253 5 0 0 1 limit_1 - -;
+#X msg 690 168 bang;
+#X floatatom 690 215 5 0 0 0 - - -;
+#X obj 690 193 c_frand 10 20;
+#X obj 502 277 c_frand;
+#X obj 507 543 c_adsrj \$0-myadsr;
+#X obj 713 493 c_frand;
+#X obj 660 439 unpack s 0 0;
+#X obj 660 461 t a b;
+#X obj 660 520 pack s 0;
+#X text 501 345 Useful idiom: [c_frand] can be used to randomize settings
+of other objects like this:;
+#X text 729 517 repack and send to object;
+#X text 759 442 unpack and set range;
+#X msg 660 411 A 5 20 \, D 20 80 \, S 0 100 \, R 10 500;
+#X obj 690 236 int;
+#X floatatom 690 257 5 0 0 0 - - -;
+#X text 734 258 random int between 10 and 20;
+#X text 503 389 Write comma-separated lists of: <param_name> <min>
+<max>;
+#X connect 2 0 9 0;
+#X connect 3 0 9 0;
+#X connect 4 0 9 1;
+#X connect 5 0 9 2;
+#X connect 6 0 8 0;
+#X connect 7 0 19 0;
+#X connect 8 0 7 0;
+#X connect 9 0 1 0;
+#X connect 11 0 14 1;
+#X connect 12 0 13 0;
+#X connect 12 1 11 1;
+#X connect 12 2 11 2;
+#X connect 13 0 14 0;
+#X connect 13 1 11 0;
+#X connect 14 0 10 1;
+#X connect 18 0 12 0;
+#X connect 19 0 20 0;

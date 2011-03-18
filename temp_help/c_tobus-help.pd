@@ -1,0 +1,31 @@
+#N canvas 208 109 943 552 10;
+#X obj 512 316 noise~;
+#X msg 572 296 ONE;
+#X msg 605 296 TWO;
+#X msg 641 296 set ONE;
+#X text 504 252 Sending to busses;
+#X text 502 188 First create busses. Bus names are globally visible.
+;
+#X text 700 296 renaming bus target;
+#N canvas 282 261 702 587 REFERENCE 0;
+#X text 114 140 Summary: send to a named audio bus (mono);
+#X text 114 121 Name: c_tobus;
+#X text 115 178 Argument 0: name of bus to send audio to.;
+#X text 114 194 Inlet 0: audio signal to send;
+#X text 114 209 Inlet 1: set <name>: rename target bus to <name>. <name>:
+rename target bus to <name> when <name> is not equal to "set";
+#X text 112 264 Description: [c_tobus] is meant to be used together
+with the [c_bus] object to send audio to a bus. Please see the [c_bus]
+help file for details.;
+#X coords 0 -1 1 1 450 450 1 100 100;
+#X restore 18 39 pd REFERENCE;
+#X obj 630 212 c_bus \$0-MYBUS;
+#X obj 512 343 c_tobus \$0-MYBUS;
+#X obj 514 463 c_bus \$0-xxx;
+#X obj 614 463 c_tobus \$0-xxx;
+#X obj 726 463 c_frombus \$0-xxx;
+#X text 513 440 Also see:;
+#X connect 0 0 9 0;
+#X connect 1 0 9 1;
+#X connect 2 0 9 1;
+#X connect 3 0 9 1;

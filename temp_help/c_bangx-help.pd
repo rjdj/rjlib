@@ -1,0 +1,44 @@
+#N canvas 0 22 917 517 10;
+#N canvas 377 58 827 710 REFERENCE 0;
+#X text 114 121 Name: c_bangx;
+#X text 114 140 Summary: bang x times with constant delay and stop
+;
+#X text 114 170 Inlet 0: float to set number of bangs to generate;
+#X text 114 208 Outlet 0: bangs;
+#X text 122 529 Tags: metro \, stop \, bang;
+#X text 115 186 Inlet 1: float to set delay time between bangs;
+#X text 115 264 Description: c_bangx start to bang as often as you
+tell it to bang through the first inlet. The second inlet will set
+the delay time between each bang. c_bangx will stop automatically.
+;
+#X coords 0 -1 1 1 450 450 1 100 100;
+#X restore 5 48 pd REFERENCE;
+#X obj 586 260 c_bangx;
+#X floatatom 632 228 5 0 0 0 - - -;
+#X obj 586 308 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 632 206 500;
+#X obj 632 184 loadbang;
+#X msg 593 221 2;
+#X msg 586 196 5;
+#X msg 673 207 100;
+#X obj 623 314 t b b;
+#X obj 623 341 timer;
+#X floatatom 623 368 5 0 0 0 - - -;
+#X obj 623 399 u_collect;
+#X msg 623 428;
+#X msg 683 376 clear;
+#X connect 1 0 3 0;
+#X connect 1 0 9 0;
+#X connect 2 0 1 1;
+#X connect 4 0 2 0;
+#X connect 5 0 4 0;
+#X connect 6 0 1 0;
+#X connect 7 0 1 0;
+#X connect 8 0 2 0;
+#X connect 9 0 10 0;
+#X connect 9 1 10 1;
+#X connect 10 0 11 0;
+#X connect 11 0 12 0;
+#X connect 12 0 13 0;
+#X connect 14 0 12 1;

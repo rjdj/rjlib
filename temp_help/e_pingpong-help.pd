@@ -1,0 +1,92 @@
+#N canvas 4 22 1200 551 10;
+#X obj 558 153 vline~;
+#X obj 546 200 noise~;
+#X obj 528 220 *~;
+#X obj 563 453 soundoutput;
+#X obj 613 375 sig~ 0;
+#X obj 558 90 bng 24 250 50 0 empty empty empty 17 7 0 10 -4034 -1
+-1;
+#X msg 558 128 0.8 10 \, 0 20 10;
+#X obj 613 261 vsl 15 100 0 2000 0 0 empty empty delay_time(ms) -10
+-9 1 10 -262144 -1 -1 0 1;
+#X text 634 54 WARNING: For stable operation the sum of direct feedback
+and cross-feedback on each channel must not be greater than 1;
+#X obj 598 220 *~;
+#X obj 616 200 osc~ 880;
+#X obj 715 415 r \$0-CTL;
+#N canvas 60 83 827 710 REFERENCE 0;
+#X text 114 501 See also:;
+#X text 114 121 Name: e_pingpong;
+#X text 114 211 Argument 1: <float> Maximum delay time in ms.;
+#X text 114 181 Argument 0: <symbol> Unique id \, has to be different
+to other instances of e_pingpong.;
+#X text 114 141 Summary: pingpong feedback delay line with lowpass
+filtered feedback path.;
+#X text 114 275 Inlet 2: Delay time left (audio rate);
+#X text 114 295 Inlet 3: Delay time right (audio rate);
+#X text 114 315 Inlet 4: control messages - see example.;
+#X text 114 234 Inlet 0: Audio input channel left;
+#X text 114 254 Inlet 1: Audio input channel right;
+#X text 114 360 Outlet 1: Audio output channel right;
+#X text 114 340 Outlet 0: Audio output channel left;
+#X text 114 526 Tags: Audio;
+#X text 114 461 WARNING: For stable operation the sum of direct feedback
+and cross-feedback on each channel must not be greater than 1;
+#X text 114 384 Description: A flexible stereo feedback delay unit
+with lowpass filtered feedback path. Set left and right channel delay
+times independently either as signals to Inlet 2 & 3 respectively or
+as control messages to Inlet 4 Cross-feedback between left and right
+channels can also be introduced.;
+#X coords 0 -1 1 1 450 450 1 100 100;
+#X restore 5 48 pd REFERENCE;
+#X obj 935 205 g_hsl lpfreq1 0 10000;
+#X obj 935 365 g_hsl x-feedback1 0 1;
+#X obj 935 394 g_hsl x-feedback2 0 1;
+#X obj 935 285 g_hsl feedback1 0 1;
+#X obj 935 315 g_hsl feedback2 0 1;
+#X obj 935 124 g_nbx delay1;
+#X obj 935 155 g_nbx delay2;
+#X obj 935 449 s \$0-CTL;
+#X obj 935 237 g_hsl lpfreq2 0 10000;
+#X msg 1094 210 lpfreq1 \$1;
+#X msg 1094 242 lpfreq2 \$1;
+#X text 852 144 Delay Time;
+#X text 772 224 Lowpass filter cut-off;
+#X text 822 304 Direct Feedback;
+#X text 832 384 Cross Feedback;
+#X obj 703 375 sig~ 0;
+#X obj 703 261 vsl 15 100 0 2000 0 0 empty empty delay_time(ms) -10
+-9 1 10 -262144 -1 -1 0 1;
+#X msg 1094 127 delayfreq1 \$1;
+#X msg 1094 162 delayfreq2 \$1;
+#X msg 1094 289 feedback1 \$1;
+#X msg 1094 319 feedback2 \$1;
+#X msg 1094 369 x-feedback1 \$1;
+#X msg 1094 398 x-feedback2 \$1;
+#X text 949 98 GUI;
+#X text 1110 98 No-GUI;
+#X obj 527 415 e_pingpong \$0-delay1 2000;
+#X obj 97 449 e_dubdel;
+#X connect 0 0 2 0;
+#X connect 0 0 9 0;
+#X connect 1 0 2 1;
+#X connect 2 0 38 0;
+#X connect 4 0 38 2;
+#X connect 5 0 6 0;
+#X connect 6 0 0 0;
+#X connect 7 0 4 0;
+#X connect 9 0 38 1;
+#X connect 10 0 9 1;
+#X connect 11 0 38 4;
+#X connect 13 0 21 0;
+#X connect 14 0 15 0;
+#X connect 15 0 20 0;
+#X connect 16 0 17 0;
+#X connect 17 0 14 0;
+#X connect 18 0 19 0;
+#X connect 19 0 13 0;
+#X connect 21 0 16 0;
+#X connect 28 0 38 3;
+#X connect 29 0 28 0;
+#X connect 38 0 3 0;
+#X connect 38 1 3 1;

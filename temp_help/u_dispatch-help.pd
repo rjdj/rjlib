@@ -1,0 +1,78 @@
+#N canvas 103 67 1279 724 10;
+#X obj 131 187 inlet;
+#X floatatom 185 209 5 0 0 0 - - -;
+#X floatatom 393 349 5 0 0 0 - - -;
+#X floatatom 392 540 5 0 0 0 - - -;
+#X obj 392 519 r \$0-float;
+#X floatatom 282 208 5 0 0 0 - - -;
+#X floatatom 535 210 5 0 0 0 - - -;
+#X floatatom 392 639 5 0 0 0 - - -;
+#X floatatom 332 209 5 0 0 0 - - -;
+#X obj 393 398 t a b;
+#X obj 393 422 list prepend set;
+#X obj 393 444 list trim;
+#X msg 393 467 a b c d 93;
+#X obj 392 618 r \$0-prep;
+#X obj 535 232 list prepend prep;
+#X msg 185 230 attack \$1;
+#X obj 131 327 u_dispatch \$0 attack;
+#X obj 393 328 r \$0-attack;
+#X obj 393 375 r \$0-alist;
+#X obj 332 231 list prepend alist a b c d;
+#X text 134 129 Useful for dispatching of inlet-messages if you create
+chains of [u_dispatch] objects like below:;
+#X text 284 327 sends to this:;
+#X text 281 373 sends to this:;
+#X text 278 517 sends to this:;
+#X text 278 618 sends to this:;
+#X msg 431 296 help;
+#X obj 131 518 u_dispatch \$0 float;
+#X obj 131 615 u_dispatch \$0 prep;
+#X obj 131 374 u_dispatch \$0 alist;
+#X text 428 277 special method "help" to print all active u_dispatch
+targets;
+#X obj 131 645 u_dispatch \$0 bang;
+#X obj 268 645 r \$0-bang;
+#X msg 145 230 bang;
+#X obj 268 673 print BANG;
+#X obj 535 636 u_dispatch \$0 symbol;
+#X text 507 617 This does not work \, don't use it:;
+#N canvas 53 166 582 570 REFERENCE 0;
+#X text 24 91 Argument 0:;
+#X text 24 124 Inlet 0:;
+#X text 24 31 Name: u_dispatch;
+#X text 24 51 Summary: dispatch messages by selector to local senders
+;
+#X text 24 434 Tags: utility \, messages;
+#X text 24 187 Outlet 0: non-matching messages passed to this outlet.
+;
+#X text 24 234 Description: Wrapper around [route] that automatically
+sends incoming messages to a receiver called "\$1-\$2" \, if they start
+with \$2. Useful for dispatching of inlet-messages if you create chains
+of [u_dispatch].;
+#X text 24 334 See also: [u_loader dispatch-tag \$0];
+#X coords 0 -1 1 1 450 450 1 10 10;
+#X restore -415 58 pd REFERENCE;
+#X connect 0 0 16 0;
+#X connect 1 0 15 0;
+#X connect 4 0 3 0;
+#X connect 5 0 16 0;
+#X connect 6 0 14 0;
+#X connect 8 0 19 0;
+#X connect 9 0 10 0;
+#X connect 9 1 10 0;
+#X connect 10 0 11 0;
+#X connect 11 0 12 0;
+#X connect 13 0 7 0;
+#X connect 14 0 16 0;
+#X connect 15 0 16 0;
+#X connect 16 0 28 0;
+#X connect 17 0 2 0;
+#X connect 18 0 9 0;
+#X connect 19 0 16 0;
+#X connect 25 0 16 0;
+#X connect 26 0 27 0;
+#X connect 27 0 30 0;
+#X connect 28 0 26 0;
+#X connect 31 0 33 0;
+#X connect 32 0 16 0;

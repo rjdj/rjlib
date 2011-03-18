@@ -1,0 +1,34 @@
+#N canvas 264 46 929 532 10;
+#X obj 237 277 u_listequal;
+#X msg 311 252 1 2 3 4 5;
+#X obj 237 304 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 237 332 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 311 228 loadbang;
+#X msg 237 172 1 2 3 4 5;
+#X msg 245 197 0 1 2 3 4;
+#X msg 250 221 1 2 3;
+#N canvas 341 158 582 570 REFERENCE 0;
+#X text 24 31 Name: u_listequal;
+#X text 25 71 Summary: compare two number lists;
+#X text 24 259 Description: checks if two lists containing only numbers
+are the same. If both are equal \, a 1 is send to the outlet \, else
+a 0 NOTE: u_listequal does not work with lists containing symbols!
+Check [list-compare] from the [list]-abs collection if you need to
+compare symbols.;
+#X text 26 356 See also: [list-compare] [list];
+#X text 24 434 Tags: utility \, list;
+#X text 24 124 Inlet 0: list.;
+#X text 23 191 Outlet 0: Outputs 0 if lists at inlets differ and 1
+if lists are equal.;
+#X text 24 144 Inlet 1: list we want to compare with Inlet 0;
+#X coords 0 -1 1 1 450 450 1 10 10;
+#X restore -355 58 pd REFERENCE;
+#X connect 0 0 2 0;
+#X connect 1 0 0 1;
+#X connect 2 0 3 0;
+#X connect 4 0 1 0;
+#X connect 5 0 0 0;
+#X connect 6 0 0 0;
+#X connect 7 0 0 0;
