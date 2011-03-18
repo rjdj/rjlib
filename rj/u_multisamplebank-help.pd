@@ -1,10 +1,10 @@
-#N struct 1011-symarray float x array symbols 1011-sym;
-#N struct 1011-sym symbol name float on;
-#N struct 1013-symarray float x array symbols 1013-sym;
-#N struct 1013-sym symbol name float on;
-#N struct 1015-symarray float x array symbols 1015-sym;
-#N struct 1015-sym symbol name float on;
-#N canvas 0 22 1088 616 10;
+#N struct 1305-symarray float x array symbols 1305-sym;
+#N struct 1305-sym symbol name float on;
+#N struct 1307-symarray float x array symbols 1307-sym;
+#N struct 1307-sym symbol name float on;
+#N struct 1309-symarray float x array symbols 1309-sym;
+#N struct 1309-sym symbol name float on;
+#N canvas 300 22 1088 616 10;
 #X symbolatom 342 323 10 0 0 0 - - -;
 #X symbolatom 82 460 10 0 0 0 - - -;
 #X obj 82 487 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
@@ -26,8 +26,7 @@
 #X msg 95 334 delete 2;
 #X msg 172 354 size \$1;
 #X floatatom 172 334 5 0 0 0 - - -;
-#N canvas 0 53 582 570 REFERENCE 0;
-#X text 24 124 Inlet 0:;
+#N canvas 489 22 582 570 REFERENCE 0;
 #X text 24 91 Argument 0: <table prefix \, will be the internal \$0
 if null>;
 #X text 29 356 Description: [u_multisamplebank] can be used to load
@@ -36,24 +35,27 @@ and filled. They get automatic names that are constructed from the
 first argument and an index number supplied by you. If no first argument
 was supplied \, the internal \$0 variable is used as a prefix. You
 can lookup the names of the available tables by an index number.;
-#X text 80 158 float: look up the table name stored at index <float>
-;
-#X text 80 180 reset: delete all tables.;
-#X text 79 122 open <filename> <index>: open a file and load it into
-a table called "prefix-index". Index must be a number.;
-#X text 80 236 size <index>: report size of table at <index> in samples
-to 2nd outlet. Will be 0 for a non-existing table \, 1 for an existing
-table without data and greater for an actually loaded sample.;
 #X text 28 306 Inlet 1:;
 #X text 82 306 Internally connected to an [m_symbolarray] that maps
 indices to table names.;
 #X text 24 31 Name: u_multisamplebank;
 #X text 23 60 Summary: Used to load many mono files into tables.;
-#X text 80 201 delete <index>: resizes table <index> to 1 and remove
-it from the index-lookup. Saves a bit of memory.;
 #X text 29 464 See also: [m_multisamplebank2] [u_samplebank] [s_playtable]
 [s_fplaytable] [m_symbolarray];
 #X text 22 536 Tags: Audio \, Playback;
+#X text 81 156;
+#X text 81 178;
+#X text 80 201;
+#X text 80 236;
+#X text 79 122;
+#X text 24 124 Inlet 0: open <filename> <index>: open a file and load
+it into a table called "prefix-index". Index must be a number. float:
+look up the table name stored at index <float>. reset: delete all tables.
+delete <index>: resizes table <index> to 1 and remove it from the index-lookup.
+Saves a bit of memory. size <index>: report size of table at <index>
+in samples to 2nd outlet. Will be 0 for a non-existing table \, 1 for
+an existing table without data and greater for an actually loaded sample.
+;
 #X coords 0 -1 1 1 450 550 1 10 10;
 #X restore -439 58 pd REFERENCE;
 #X obj -439 28 cnv 15 450 20 empty empty empty 20 12 0 14 -261234 -66577
