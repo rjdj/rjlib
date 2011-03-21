@@ -1,0 +1,26 @@
+#N canvas 350 143 973 570 10;
+#X obj 100 261 osc~ 220;
+#X obj 100 295 u_fade myfade 0.1;
+#X obj 100 341 soundoutput;
+#N canvas 208 165 582 570 REFERENCE 0;
+#X text 23 370 See also:;
+#X text 24 31 Name: u_fade;
+#X text 24 51 Summary: create a named fader \, useful for automatic
+mixing.;
+#X text 26 246 Outlet 0: audio output;
+#X text 26 183 Inlet 0: audio input;
+#X text 22 434 Tags: utility \, audio;
+#X text 24 303 Description: Create a named fader \, useful for automatic
+mixing.;
+#X text 24 91 Argument 0: <fader name>;
+#X text 24 114 Argument 1: <volume> value from 0-1;
+#X text 24 138 Argument 3: <time> fade time in ms;
+#X text 26 214 Inlet 1: <message> with name \, volume and time arguments
+;
+#X coords 0 -1 1 1 450 450 1 10 10;
+#X restore -454 58 pd REFERENCE;
+#X msg 265 292 \; myfade 0 500;
+#X msg 265 332 \; myfade 0.3 500;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 0 2 1;

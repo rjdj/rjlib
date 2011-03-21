@@ -1,0 +1,48 @@
+#N canvas 66 80 909 562 10;
+#X obj 629 117 noise~;
+#X floatatom 685 177 8 0 0 0 - - -;
+#X obj 685 147 / 127;
+#X obj 688 117 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X text 691 99 L < < < M > > > R;
+#X obj 629 147 *~ 0.3;
+#X obj 601 430 soundoutput;
+#X obj 549 239 env~;
+#X obj 549 261 - 100;
+#X obj 550 285 vu 15 120 empty empty -1 -8 0 10 -66577 -1 1 0;
+#X obj 724 239 env~;
+#X obj 724 261 - 100;
+#X obj 725 283 vu 15 120 empty empty -1 -8 0 10 -66577 -1 1 0;
+#X obj 629 207 e_pan;
+#N canvas 0 227 827 710 REFERENCE 0;
+#X text 114 404 See also:;
+#X text 114 121 Name: e_pan;
+#X text 114 141 Summary: Constant power panner;
+#X text 114 181 Argument 0: Panning position (float). 0 - Left \, 1
+- Right <default = 0.5>;
+#X text 122 529 Tags: Audio;
+#X text 114 214 Inlet 0: Signal to pan;
+#X text 114 234 Inlet 1: Panning position (float). 0 - Left \, 1 -
+Right;
+#X text 114 254 Outlet 0: Left channel;
+#X text 114 274 Outlet 1: Right channel;
+#X text 114 324 Description: Pans an incoming mono signal to a stereo
+output depending on the panning position set by Inlet 1 Hard left is
+0 \, hard right is 1 \, center is 0.5.;
+#X coords 0 -1 1 1 450 450 1 100 100;
+#X restore 5 48 pd REFERENCE;
+#X text 822 117 Pan value;
+#X obj 95 352 e_stereowidener;
+#X connect 0 0 5 0;
+#X connect 1 0 13 1;
+#X connect 2 0 1 0;
+#X connect 3 0 2 0;
+#X connect 5 0 13 0;
+#X connect 7 0 8 0;
+#X connect 8 0 9 0;
+#X connect 10 0 11 0;
+#X connect 11 0 12 0;
+#X connect 13 0 6 0;
+#X connect 13 0 7 0;
+#X connect 13 1 6 1;
+#X connect 13 1 10 0;

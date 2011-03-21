@@ -1,0 +1,84 @@
+#N canvas 100 76 1152 577 10;
+#X msg 758 459 1 \, 15 \,;
+#X msg 757 250 dump;
+#X msg 759 300 flip;
+#X obj 578 138 metro 200;
+#X obj 578 163 f 0;
+#X obj 612 164 + 1;
+#X obj 578 118 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 641 73 bng 64 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 578 487 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 757 221 clear;
+#X msg 759 323 flip 20 \, dump;
+#X obj 758 429 loadbang;
+#X text 840 429 How to store;
+#X text 798 248 sent pattern to right outlet;
+#X text 817 220 clear internal storage.;
+#X msg 757 278 clear \, dump;
+#X text 856 277 clear and dump;
+#X text 866 327 flip tick 20 *now*. And dump;
+#X obj 641 192 t b b;
+#X obj 668 216 spigot;
+#X obj 701 194 tgl 15 0 empty empty immediate_dump? 17 7 0 10 -262144
+-1 -1 0 1;
+#X floatatom 588 216 5 0 0 0 - - -;
+#X msg 758 370 set 10 \, dump;
+#X msg 758 392 unset 10 \, dump;
+#X text 866 369 set a single value;
+#X text 868 391 unset a single value;
+#X floatatom 758 351 5 0 0 0 - - -;
+#X text 865 350 set a single value;
+#X obj 578 191 mod 16;
+#X obj 578 462 c_taptap 16;
+#N canvas 83 115 670 703 REFERENCE 0;
+#X text 114 121 Name: c_taptap;
+#X text 114 141 Summary: tap on/off patterns;
+#X text 114 174 Argument 0: max length of pattern (default: 100);
+#X text 113 193 Inlet 0: current position in pattern;
+#X text 110 227 Inlet 1: bang: store 1 at current position. float:
+store 1 a position specified by float. flip <float>: toggle flag between
+0 and 1 at the float-position or the current position \, if no float
+was supplied. set <float>: store 1 a position specified by float. unset
+<float>: store 0 a position specified by float. dump: output current
+pattern in a format that can be stored in a comma-separated message
+box.;
+#X text 113 341 Outlet 0: bang \, if current position holds a 1;
+#X text 114 358 Outlet 1: current pattern in a format to be stored
+in a comma-separated message box.;
+#X text 117 395 Description: c_taptap can be used to store 0/1 patterns.
+It's similar to a series of numbered toggles. You can set each toggle
+through the various messages to its second inlet. The first inlet will
+send a bang if the pattern holds a 1 at the position coming in to the
+first inlet.;
+#X text 122 529 Tags: sequencer \, pattern \, toggle \, tempo \, table
+\, storage;
+#X coords 0 -1 1 1 450 450 1 100 100;
+#X restore 11 57 pd REFERENCE;
+#X text 812 300 flip current tick from 0 to 1 or opposite.;
+#X connect 0 0 29 1;
+#X connect 1 0 29 1;
+#X connect 2 0 29 1;
+#X connect 3 0 4 0;
+#X connect 4 0 28 0;
+#X connect 5 0 4 1;
+#X connect 6 0 3 0;
+#X connect 7 0 18 0;
+#X connect 9 0 29 1;
+#X connect 10 0 29 1;
+#X connect 11 0 0 0;
+#X connect 15 0 29 1;
+#X connect 18 0 29 1;
+#X connect 18 1 19 0;
+#X connect 19 0 1 0;
+#X connect 20 0 19 1;
+#X connect 22 0 29 1;
+#X connect 23 0 29 1;
+#X connect 26 0 29 1;
+#X connect 28 0 5 0;
+#X connect 28 0 21 0;
+#X connect 28 0 29 0;
+#X connect 29 0 8 0;
+#X connect 29 1 0 0;

@@ -1,0 +1,34 @@
+#N canvas 148 65 943 552 10;
+#X msg 564 256 ONE;
+#X msg 599 257 TWO;
+#X msg 620 284 set ONE;
+#X text 558 207 Sending to busses;
+#X text 557 151 First create busses. Bus names are globally visible.
+;
+#N canvas 282 261 702 587 REFERENCE 0;
+#X text 114 121 Name: c_frombus;
+#X text 114 140 Summary: receive audio from a named audio bus (mono)
+;
+#X text 114 159 Argument 0: name of bus to read from.;
+#X text 113 192 Inlet 0: rename source bus. set <name>: rename source
+bus to <name>. <name>: rename source bus to <name> when <name> is not
+equal to "set";
+#X text 114 289 Description: [c_frombus] will read audio from a named
+bus. It is meant to be used together with the [c_bus] object to read
+audio to a bus. Please see the [c_bus] help file for details.;
+#X text 113 249 Outlet 0: signal carrying the bus audio out.;
+#X coords 0 -1 1 1 450 450 1 100 100;
+#X restore 18 39 pd REFERENCE;
+#X obj 560 178 c_bus \$0-MYBUS;
+#X obj 564 311 c_frombus \$0-MYBUS;
+#X text 650 253 renaming bus source;
+#X obj 564 343 soundoutput;
+#X obj 489 463 c_bus \$0-xxx;
+#X obj 589 463 c_tobus \$0-xxx;
+#X obj 701 463 c_frombus \$0-xxx;
+#X text 488 440 Also see:;
+#X connect 0 0 7 0;
+#X connect 1 0 7 0;
+#X connect 2 0 7 0;
+#X connect 7 0 9 0;
+#X connect 7 0 9 1;

@@ -1,0 +1,95 @@
+#N canvas 127 22 1099 639 10;
+#X obj 84 340 r \$0-textfile;
+#X msg 70 206 dump;
+#X msg 87 250 numdump;
+#X text 111 205 dump file to left outlet;
+#X obj 127 394 bng 15 250 50 0 empty empty done 17 7 1 10 -262144 -1
+-1;
+#X obj 60 459 u_cocollect;
+#X msg 60 484;
+#X msg 134 428 clear;
+#X obj 60 143 loadbang;
+#N canvas 622 266 585 513 textfile-methods 0;
+#X msg 112 66 rewind;
+#X text 275 224 read a file;
+#X text 331 253 write one;
+#X msg 114 227 read textfile.txt;
+#X text 195 67 go to beginning;
+#X msg 112 93 bang;
+#X text 195 92 output one line as a list;
+#X msg 114 255 write /tmp/textfile.txt;
+#X msg 114 282 write /tmp/textfile2.txt cr;
+#X text 123 303 write a file \, terminating lines only with carriage
+return (omitting semicolons.) You can read files this way too \, in
+which case carriage returns are mapped to semicolons.;
+#X msg 113 351 read textfile.txt cr;
+#X msg 112 121 clear;
+#X text 267 122 empty the object;
+#X text 267 150 add a message;
+#X msg 112 201 set 2 4 6 8;
+#X text 270 202 clear and then add one message;
+#X msg 112 148 add cis boom bah;
+#X msg 112 175 add2 bang;
+#X text 264 175 add an unterminated message;
+#X msg 112 378 print;
+#X text 83 30 [u_dumpfile] supports all [textfile] operations:;
+#X obj 51 403 outlet;
+#X connect 0 0 21 0;
+#X connect 3 0 21 0;
+#X connect 5 0 21 0;
+#X connect 7 0 21 0;
+#X connect 8 0 21 0;
+#X connect 10 0 21 0;
+#X connect 11 0 21 0;
+#X connect 14 0 21 0;
+#X connect 16 0 21 0;
+#X connect 17 0 21 0;
+#X connect 19 0 21 0;
+#X restore 219 342 pd textfile-methods;
+#X obj 219 367 s \$0-textfile;
+#X text 212 316 [u_dumpfile] supports all [textfile] operations:;
+#X text 149 250 dump file to left outlet \, numbering each line \,
+starting from 0;
+#X msg 60 168 read m.txt cr;
+#X msg 219 412 dump;
+#X msg 260 412 numdump;
+#X obj 219 462 print DF;
+#X obj 60 370 u_dumpfile;
+#X obj 219 437 u_dumpfile s.txt cr;
+#X msg 77 228 dump 200;
+#X text 145 228 deferred dump with a delay of <x> msec between lines.
+;
+#X msg 91 283 numdump 500;
+#X text 375 439 args: <filename> <cr>;
+#X text 177 283 deferred and numbered dump;
+#N canvas 168 151 582 570 REFERENCE 0;
+#X text 25 183 Inlet 0:;
+#X text 25 234 Outlet 0:;
+#X text 24 66 Summary: read and dump a textfile.;
+#X text 23 299 Description: [u_dumpfile] is a slightly enhanced clone
+of [textfile] that additionally supports dumping a file to its outlet
+\, optionally numbered.;
+#X text 24 369 See also: [textfile];
+#X text 24 107 Argument 0: default textfile to load \, optional.;
+#X text 23 140 Argument 1: "cr" to use carriage returns for line endings
+;
+#X text 24 434 Tags: utility \, text;
+#X text 26 263 Outlet 1: bang when done.;
+#X text 24 31 Name:u_dumpfile;
+#X coords 0 -1 1 1 450 450 1 10 10;
+#X restore -456 53 pd REFERENCE;
+#X connect 0 0 17 0;
+#X connect 1 0 17 0;
+#X connect 2 0 17 0;
+#X connect 5 0 6 0;
+#X connect 7 0 5 1;
+#X connect 8 0 13 0;
+#X connect 9 0 10 0;
+#X connect 13 0 17 0;
+#X connect 14 0 18 0;
+#X connect 15 0 18 0;
+#X connect 17 0 5 0;
+#X connect 17 1 4 0;
+#X connect 18 0 16 0;
+#X connect 19 0 17 0;
+#X connect 21 0 17 0;

@@ -1,4 +1,4 @@
-#N canvas 487 32 1188 499 10;
+#N canvas -6 28 1188 499 10;
 #X msg 752 201 info;
 #X msg 652 51 start;
 #X msg 692 111 stop;
@@ -13,8 +13,9 @@
 -1 0 1;
 #X obj 517 233 *~ 1;
 #X msg 672 81 start 500;
-#N canvas 479 71 582 570 REFERENCE 0;
+#N canvas 97 192 582 570 REFERENCE 0;
 #X text 24 61 Summary: Record mono sounds into Pd tables.;
+#X text 24 31 Name: [u_record \$0-mysample];
 #X text 24 434 Tags: Audio \, Record;
 #X text 24 95 Argument 0: <symbol> - Table name \, required!;
 #X text 24 119 Argument 1: <float> - Max duration in milliseconds \,
@@ -30,7 +31,6 @@ optional \, default 1000;
 for circular buffers \, [s_playtable] can then be used to play back
 the sample.;
 #X text 24 384 See also: [s_playtable] [u_samplebank] [u_stereo];
-#X text 24 31 Name: [u_record];
 #X coords 0 -1 1 1 450 450 1 10 10;
 #X restore 15 38 pd REFERENCE;
 #X obj 15 8 cnv 15 450 20 empty empty empty 20 12 0 14 -261234 -66577

@@ -1,10 +1,10 @@
-#N struct 1298-symarray float x array symbols 1298-sym;
-#N struct 1298-sym symbol name float on;
-#N struct 1300-symarray float x array symbols 1300-sym;
-#N struct 1300-sym symbol name float on;
-#N struct 1302-symarray float x array symbols 1302-sym;
-#N struct 1302-sym symbol name float on;
-#N canvas 484 22 1056 617 10;
+#N struct 1004-symarray float x array symbols 1004-sym;
+#N struct 1004-sym symbol name float on;
+#N struct 1006-symarray float x array symbols 1006-sym;
+#N struct 1006-sym symbol name float on;
+#N struct 1008-symarray float x array symbols 1008-sym;
+#N struct 1008-sym symbol name float on;
+#N canvas 0 22 1056 617 10;
 #X floatatom 457 238 5 0 0 0 - - -;
 #X symbolatom 449 293 10 0 0 0 - - -;
 #X symbolatom 180 428 10 0 0 0 - - -;
@@ -16,7 +16,7 @@
 -1 -1;
 #X obj 181 172 list append 0;
 #X obj 256 147 hradio 15 1 0 8 empty empty empty 0 -8 0 10 -262144
--1 -1 5;
+-1 -1 0;
 #X obj 181 118 openpanel;
 #X msg 181 97 bang;
 #X msg 357 330 dump;
@@ -27,10 +27,19 @@
 #X msg 194 312 delete 2;
 #X msg 271 331 size \$1;
 #X floatatom 271 311 5 0 0 0 - - -;
-#N canvas 564 29 582 570 REFERENCE 0;
+#N canvas 698 74 582 570 REFERENCE 0;
 #X text 24 124 Inlet 0:;
+#X text 23 463 See also:;
 #X text 24 91 Argument 0: <table prefix \, will be the internal \$0
 if null>;
+#X text 82 154 float: look up the table name stored at index <float>
+;
+#X text 81 173 reset: delete all tables.;
+#X text 80 122 open <filename> <index>: open a file and load it into
+a table called "prefix-index". Index must be a number.;
+#X text 80 222 size <index>: report size of table at <index> in samples
+to 2nd outlet. Will be 0 for a non-existing table \, 1 for an existing
+table without data and greater for an actually loaded sample.;
 #X text 28 286 Inlet 1:;
 #X text 82 286 Internally connected to an [m_symbolarray] that maps
 indices to table names.;
@@ -43,22 +52,11 @@ and filled. They get automatic names that are constructed from the
 first argument and an index number supplied by you. If no first argument
 was supplied \, the internal \$0 variable is used as a prefix. You
 can lookup the names of the available tables by an index number.;
-#X text 22 536 Tags: Audio \, Playback;
-#X text 82 463;
-#X text 23 463 See also: [u_multisamplebank] [m_symbolarray] [u_samplebank2]
+#X text 81 194 delete <index>: resizes table <index> to 1 and remove
+it from the index-lookup. Saves a bit of memory.;
+#X text 82 463 [u_multisamplebank] [m_symbolarray] [u_samplebank2]
 [s_playtable2] [s_fplaytable2];
-#X text 82 154;
-#X text 80 173;
-#X text 81 194;
-#X text 80 222;
-#X text 80 122 open <filename> <index>: open a file and load it into
-a table called "prefix-index". Index must be a number. float: look
-up the table name stored at index <float>. reset: delete all tables.
-delete <index>: resizes table <index> to 1 and remove it from the index-lookup.
-Saves a bit of memory. size <index>: report size of table at <index>
-in samples to 2nd outlet. Will be 0 for a non-existing table \, 1 for
-an existing table without data and greater for an actually loaded sample.
-;
+#X text 22 536 Tags: Audio \, Playback;
 #X coords 0 -1 1 1 450 550 1 10 10;
 #X restore -311 52 pd REFERENCE;
 #X obj -311 22 cnv 15 450 20 empty empty empty 20 12 0 14 -261234 -66577

@@ -1,4 +1,4 @@
-#N canvas 485 22 902 517 10;
+#N canvas 43 28 902 517 10;
 #X obj 503 194 pack 0 0;
 #X obj 503 94 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
@@ -10,7 +10,7 @@
 #X floatatom 727 228 5 0 0 0 - - -;
 #X msg 727 249 vib-freq \$1;
 #X obj 503 375 *~ 0.25;
-#N canvas 483 22 582 570 REFERENCE 0;
+#N canvas 7 371 582 570 REFERENCE 0;
 #X text 24 31 Name: [u_makepoly];
 #X text 24 434 Tags: Audio;
 #X text 24 344 Description: creates a polyphonic version of midi-controlled

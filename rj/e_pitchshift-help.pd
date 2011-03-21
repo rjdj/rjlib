@@ -4,7 +4,8 @@
 #X msg 677 149 pitch \$1;
 #X floatatom 677 128 5 0 0 0 - - -;
 #X obj 596 248 soundoutput;
-#N canvas 3 22 827 710 REFERENCE 0;
+#N canvas 86 276 827 710 REFERENCE 0;
+#X text 114 424 See also:;
 #X text 114 121 Name: e_pitchshift;
 #X text 114 141 Summary: Shift pitch of incoming signal;
 #X text 114 204 Inlet 0: Audio input signal;
@@ -15,7 +16,6 @@
 #X text 114 304 Description: Pitches incoming audio in semitones according
 to the control value set in Inlet 1 - this effect differs from e_freqshift
 in that it still retains the harmonic structure of the signal.;
-#X text 114 424 See also: [e_freqshift];
 #X coords 0 -1 1 1 450 450 1 100 100;
 #X restore 5 48 pd REFERENCE;
 #X obj 5 18 cnv 15 450 20 empty empty empty 20 12 0 14 -261234 -66577
@@ -26,6 +26,7 @@ in that it still retains the harmonic structure of the signal.;
 #X obj 8 20 e_pitchshift;
 #X obj 596 208 *~ 0.5;
 #X text 720 128 Pitch Shift;
+#X obj 97 372 e_freqshift;
 #X text 109 21 - shifts the pitch of an incoming signal;
 #X connect 0 0 10 0;
 #X connect 1 0 0 0;

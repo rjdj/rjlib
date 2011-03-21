@@ -1,0 +1,38 @@
+#N canvas 146 73 868 535 10;
+#X obj 584 337 e_stereowidener;
+#X obj 584 396 soundoutput;
+#N canvas 264 314 827 710 REFERENCE 0;
+#X text 114 120 Name: e_stereowidener;
+#X text 114 151 Summary: widens the sound field of a stereo signal
+;
+#X text 112 311 Description: widen stereo signals further. Setting
+width to 0 sums the signal to mono \, a width of 1 gives maximum stereo
+width. Important: this effect will NOT work on mono signals. If you
+want to use a mono signal try delaying one input by a few ms.;
+#X text 112 401 See also:;
+#X text 112 521 Tags: Audio \, Imaging;
+#X text 114 225 Inlet 2: 'width <float>' Default = 0 \, 0-1.;
+#X text 114 184 Inlet 0: Audio input signal left;
+#X text 114 204 Inlet 1: Audio input signal right;
+#X text 114 260 Outlet 0: Audio output signal left;
+#X text 114 280 Outlet 1: Audio output signal right;
+#X coords 0 -1 1 1 450 450 1 100 100;
+#X restore 6 43 pd REFERENCE;
+#X obj 524 121 soundinput;
+#X msg 686 297 width \$1;
+#X obj 689 267 hsl 128 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 584 174 delread~ \$0-wide 400;
+#X obj 584 207 *~ 0.6;
+#X obj 524 238 delwrite~ \$0-wide 400;
+#X obj 100 344 e_pan;
+#X obj 150 344 e_circlepan;
+#X connect 0 0 1 0;
+#X connect 0 1 1 1;
+#X connect 3 0 8 0;
+#X connect 3 1 0 1;
+#X connect 4 0 0 2;
+#X connect 5 0 4 0;
+#X connect 6 0 7 0;
+#X connect 7 0 8 0;
+#X connect 7 0 0 0;

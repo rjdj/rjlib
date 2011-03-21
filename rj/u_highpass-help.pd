@@ -1,8 +1,8 @@
-#N canvas 470 22 845 532 10;
+#N canvas 240 143 845 532 10;
 #X obj 423 224 mtof;
 #X floatatom 490 193 5 0 0 2 BW - -;
 #X floatatom 423 192 5 0 0 2 freq - -;
-#N canvas 0 22 450 300 show 0;
+#N canvas 0 0 450 300 show 0;
 #X obj 41 39 inlet;
 #X obj 186 36 inlet;
 #X obj 41 124 outlet;
@@ -32,17 +32,15 @@
 #X obj 294 392 vu 15 80 empty empty -1 -8 0 10 -66577 -1 0 0;
 #X obj 220 383 hsl 32 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
+#X text 122 136 Both inlets are hot and trigger new coefficients.;
 #X text 66 26 u_highpass;
-#X obj 423 262 u_highpass;
-#X text 119 91;
-#X text 122 136;
 #X text 120 48 Compute biquad coefficients for a resonant highpass
-filter. Designed to be used with [biquad~] or [e_beequad]. u_highpass
-is controlled by a bandwidth which is expressed in octaves. A bandwidth
-of 100 is equivalent to one octave. Both inlets are hot and trigger
-new coefficients.;
-#X connect 0 0 21 0;
-#X connect 1 0 21 1;
+filter. Designed to be used with [biquad~] or [e_beequad];
+#X text 120 91 u_highpass is controlled by a bandwidth which is expressed
+in octaves. A bandwidth of 100 is equivalent to one octave.;
+#X obj 423 262 u_highpass;
+#X connect 0 0 24 0;
+#X connect 1 0 24 1;
 #X connect 2 0 0 0;
 #X connect 3 0 4 0;
 #X connect 6 0 8 0;
@@ -60,6 +58,6 @@ new coefficients.;
 #X connect 16 0 17 0;
 #X connect 17 0 18 0;
 #X connect 19 0 11 2;
-#X connect 21 0 3 0;
-#X connect 21 0 9 1;
-#X connect 21 0 13 0;
+#X connect 24 0 3 0;
+#X connect 24 0 9 1;
+#X connect 24 0 13 0;

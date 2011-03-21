@@ -1,6 +1,6 @@
-#N canvas 619 59 789 261 10;
+#N canvas 104 204 789 261 10;
 #X obj 109 134 u_loadmeter;
-#N canvas 634 107 491 233 REFERENCE 0;
+#N canvas 79 373 491 233 REFERENCE 0;
 #X text 25 117 See also:;
 #X text 24 31 Name: u_loadmeter;
 #X text 24 73 Description: Graphical representation of the host machine's
