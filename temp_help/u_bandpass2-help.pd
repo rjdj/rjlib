@@ -1,0 +1,77 @@
+#N canvas 240 143 845 532 10;
+#X obj 734 264 mtof;
+#X floatatom 851 266 5 0 0 2 BW - -;
+#X floatatom 734 242 5 0 0 2 freq - -;
+#N canvas 0 22 450 300 show 0;
+#X obj 41 39 inlet;
+#X obj 186 36 inlet;
+#X obj 41 124 outlet;
+#X msg 186 76 set;
+#X obj 41 59 list prepend set;
+#X obj 41 83 list trim;
+#X connect 0 0 4 0;
+#X connect 1 0 3 0;
+#X connect 3 0 2 0;
+#X connect 4 0 5 0;
+#X connect 5 0 2 0;
+#X restore 734 324 pd show;
+#X msg 734 357;
+#X obj 581 214 noise~;
+#X obj 479 353 env~;
+#X obj 581 240 *~ 0.3;
+#X obj 541 309 e_beequad;
+#X obj 542 444 soundoutput;
+#X obj 542 411 c_xfade;
+#X msg 792 324 reset;
+#X obj 626 311 biquad~;
+#X obj 479 376 - 100;
+#X obj 480 400 vu 15 80 empty empty -1 -8 0 10 -66577 -1 0 0;
+#X obj 664 352 env~;
+#X obj 664 375 - 100;
+#X obj 665 399 vu 15 80 empty empty -1 -8 0 10 -66577 -1 0 0;
+#X obj 591 390 hsl 32 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X msg 777 265 bang;
+#X obj 734 292 u_bandpass2 1000 200;
+#N canvas 88 41 582 570 REFERENCE 0;
+#X text 24 61 Summary: Compute biquad coefficients for a bandpass filter
+with constant 0 dB peak gain and BW inlet. Designed to be used with
+[biquad~] or [e_beequad].;
+#X text 24 125 Argument 0: Frequency;
+#X text 24 145 Argument 1: Bandwidth;
+#X text 24 168 Inlet 0: freq;
+#X text 24 188 Inlet 1: BandWidth;
+#X text 24 216 Outlet 0: Biquad Coefficients;
+#X text 24 254 Description: Compute biquad coefficients for a bandpass
+filter with constant 0 dB peak gain and BW inlet. Designed to be used
+with [biquad~] or [e_beequad]. Both inlets are hot and trigger new
+coefficients. Both inlets are hot and trigger new coefficients. BW=100
+per octave.;
+#X text 24 374 See also: [biquad~] [e_beequad];
+#X text 24 434 Tags: Utilities \, Filter;
+#X text 24 31 Name:u_bandpass2;
+#X coords 0 -1 1 1 450 450 1 10 10;
+#X restore 15 58 pd REFERENCE;
+#X connect 0 0 20 0;
+#X connect 1 0 20 1;
+#X connect 2 0 0 0;
+#X connect 3 0 4 0;
+#X connect 5 0 7 0;
+#X connect 6 0 13 0;
+#X connect 7 0 8 0;
+#X connect 7 0 12 0;
+#X connect 8 0 6 0;
+#X connect 8 0 10 0;
+#X connect 10 0 9 0;
+#X connect 10 0 9 1;
+#X connect 11 0 3 1;
+#X connect 12 0 15 0;
+#X connect 12 0 10 1;
+#X connect 13 0 14 0;
+#X connect 15 0 16 0;
+#X connect 16 0 17 0;
+#X connect 18 0 10 2;
+#X connect 19 0 20 0;
+#X connect 20 0 3 0;
+#X connect 20 0 8 1;
+#X connect 20 0 12 0;

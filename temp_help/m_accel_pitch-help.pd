@@ -1,0 +1,19 @@
+#N canvas 314 22 880 621 10;
+#X obj 530 390 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X floatatom 530 440 5 0 0 0 - - -;
+#X obj 530 413 m_accel_pitch;
+#N canvas 96 22 602 658 REFERENCE 0;
+#X text 114 121 Name: m_accel_pitch;
+#X text 114 141 Summary: calulate device pitch from accelerometer;
+#X text 114 171 Inlet 0: 0/1 to switch off or on. Default is on. Switch
+it off to save some CPU cycles.;
+#X text 114 299 Description: m_accel_pitch watches the force sensor's
+output and calculates the pitching of the device (iPod \, iPhone \,
+...).;
+#X text 122 529 Tags: mapping;
+#X text 114 247 Outlet 0: pitch;
+#X coords 0 -1 1 1 450 450 1 100 100;
+#X restore 41 55 pd REFERENCE;
+#X connect 0 0 2 0;
+#X connect 2 0 1 0;

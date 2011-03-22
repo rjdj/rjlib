@@ -1,0 +1,67 @@
+#N canvas 4 22 1276 756 10;
+#X obj 610 434 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 727 434 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 610 391 5 0 0 0 - - -;
+#X obj 610 272 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 721 272 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 610 227 5 0 0 0 - - -;
+#X msg 721 189 50 100;
+#X text 780 216 reset;
+#X msg 730 216 reset;
+#X text 783 190 set new thresholds and reset;
+#X text 540 315 Here we use only one threshold level. The two inlets
+report the direction the threshold was crossed.;
+#X text 724 453 From lower side;
+#X text 595 453 From higher side;
+#X msg 727 387 dead \$1;
+#X floatatom 727 370 5 0 0 0 - - -;
+#X obj 610 411 m_thresholds 100 100;
+#X text 856 407 Note: [m_thresholds] implements the event detection
+strategies described in Miller S. Puckette: Theory and Technique of
+Electronic Music \, section "Event detection".;
+#X msg 767 261 dead \$1;
+#X floatatom 767 244 5 0 0 0 - - -;
+#X obj 752 428 print low;
+#X obj 534 428 print high;
+#X obj 610 248 m_thresholds 90 110;
+#X text 834 261 set dead period duration (default 0);
+#N canvas 43 39 536 674 REFERENCE 0;
+#X text 123 529 Tags:;
+#X text 114 121 Name: m_thresholds;
+#X text 114 141 Summary: detects threshold crossings. Use it to detect
+when an activity starts and stops.;
+#X text 114 175 Argument 0: low threshold.;
+#X text 114 195 Argument 1: high threshold.;
+#X text 114 215 Argument 2: dead period(optional).;
+#X text 115 236 Inlet 0: value to check.;
+#X text 115 256 Inlet 1: a list of two numbers will set the new thresholds.
+"reset" will reset the detection algorithm to a clean state by opening
+both gates. "dead" will set the duration of a dead period during which
+the threshold detection doesn't register new events after an event
+was detected. When the dead period has passed \, belated events get
+reported. Default is a dead period of 0;
+#X text 114 365 Outlet 0: lower side threshold;
+#X text 114 385 Outlet 1: higher side threshold;
+#X text 113 431 Description: The outlets will send bangs whenever a
+threshold crossing is detected and after that pass over control to
+the other threshold.;
+#X coords 0 -1 1 1 450 450 1 100 100;
+#X restore 25 68 pd REFERENCE;
+#X connect 2 0 15 0;
+#X connect 5 0 21 0;
+#X connect 6 0 21 1;
+#X connect 8 0 21 1;
+#X connect 13 0 15 1;
+#X connect 14 0 13 0;
+#X connect 15 0 0 0;
+#X connect 15 0 20 0;
+#X connect 15 1 1 0;
+#X connect 15 1 19 0;
+#X connect 17 0 21 1;
+#X connect 18 0 17 0;
+#X connect 21 0 3 0;
+#X connect 21 1 4 0;
