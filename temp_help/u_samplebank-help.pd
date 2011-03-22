@@ -1,0 +1,60 @@
+#N canvas 51 144 867 514 10;
+#N canvas 65 285 1086 554 REFERENCE 0;
+#X text 24 31 Name: u_samplebank2;
+#X text 22 433 Tags: Audio \, Playback;
+#X text 23 97 Argument 0: <symbol> Table name - Must be unique.;
+#X text 23 117 Argument 1: <path> Soundfile directory (optional).;
+#X text 24 230 Outlet 0: output list if "info" message is sent to Inlet
+0;
+#X text 23 57 Summary: Utility patch to load mono stereo files into
+Pd tables.;
+#X text 23 396 See also: [u_samplebank2] [u_multisamplebank] [s_playtable]
+[s_playtable2];
+#X text 23 258 Description: Utility patch to load sample stereo files
+into Pd tables. Also calculates duration in milliseconds. Available
+in stereo as [u_samplebank2] as well. Play back the sample via [s_playtable].
+You can add paths to search for soundfiles using "declare". Just add
+[declare -path ./PATH/] to your _main.pd patch.;
+#X text 23 147 Inlet 0: <message> "open" - load a sample with opendialog.
+<message> "open filename.wav" - load a sample by path. <message> "info"
+- output list containing: table name \, duration in ms \, duration
+in samples \, samplerate. <message> "sr SAMPLERATE \, info" - change
+the samplerate.;
+#X coords 0 -1 1 1 450 450 1 10 10;
+#X restore -402 45 pd REFERENCE;
+#N canvas 0 22 469 282 HOW 0;
+#X obj 152 165 s_playtable;
+#X obj 152 207 soundoutput;
+#X msg 152 91 bang;
+#X obj 152 113 pack \$0;
+#X msg 152 135 \$1-SAMPLE;
+#X text 35 28 [s_playtable] can be used to play tables in the samplebank.
+;
+#X connect 0 0 1 0;
+#X connect 0 0 1 1;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 0 0;
+#X restore 273 473 pd HOW TO PLAYBACK SAMPLE;
+#X floatatom 150 418 8 0 0 1 duration_in_samples - -;
+#X floatatom 123 438 8 0 0 1 duration_in_ms - -;
+#X msg 96 181 info;
+#X msg 106 211 open;
+#X msg 136 271 sr 44100 \, info;
+#X msg 136 301 sr 22050 \, info;
+#X symbolatom 96 458 12 0 0 1 table_name - -;
+#X msg 126 241 open file_not_found.wav;
+#X obj 96 375 unpack s f f f;
+#X floatatom 177 398 6 0 0 1 samplerate - -;
+#X obj 96 335 u_samplebank2 \$0-sample ../samples/file_not_found.wav
+;
+#X connect 4 0 12 0;
+#X connect 5 0 12 0;
+#X connect 6 0 12 0;
+#X connect 7 0 12 0;
+#X connect 9 0 12 0;
+#X connect 10 0 8 0;
+#X connect 10 1 3 0;
+#X connect 10 2 2 0;
+#X connect 10 3 11 0;
+#X connect 12 0 10 0;

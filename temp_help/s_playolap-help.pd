@@ -24,8 +24,7 @@
 #X text 110 125 Inlet 1: messages: transposition <seminotes> \, chunk-size
 <ms> \, table <sym> \, sr <float>;
 #X text 110 83 Argument 0: name \, required;
-#X text 110 292 comment;
-#X text 110 180 Description: s_playolap plays two alternating \, overlapped
+#X text 108 183 Description: s_playolap plays two alternating \, overlapped
 chunks of a table \, that have a size specified with the "chunk-size"
 inlet1-message and is transposed by halftones set with the "transposition"
 message. Each chunk is enveloped with a half cosine wave and 50% out

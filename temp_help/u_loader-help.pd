@@ -1,0 +1,134 @@
+#N canvas 0 59 1399 637 10;
+#X text 101 167 arg1: <name-of-abstraction>-\$1;
+#X text 101 187 arg2: \$0;
+#X text 50 126 Inside of each abstraction you should create *EXACTLY*
+one [u_loader] object that gets the following arguments:;
+#X text 50 220 Don't create more than one [u_loader] with the same
+second \$0-argument!;
+#X obj 732 203 r \$0-one;
+#X floatatom 732 226 5 0 0 0 - - -;
+#X obj 542 69 u_loader SOMETAG \$0;
+#X msg 544 172 one \$1;
+#X floatatom 544 154 5 0 0 0 - - -;
+#X text 685 202 ==>;
+#X obj 544 203 u_dispatch \$0 one;
+#X obj 55 425 s RJ_SCENE_LOAD;
+#X obj 61 563 s RJ_SCENE_SAVE;
+#X obj 566 431 r RJ_SCENE;
+#X text 562 407 receive messages for saving on RJ_SCENE;
+#X msg 61 537 save;
+#X msg 566 534;
+#X msg 650 461 clear;
+#X obj 566 558 s RJ_SCENE_LOAD;
+#X text 52 476 Send "save" to RJ_SCENE_SAVE to initialize global saving.
+;
+#X msg 55 399 SOMETAG one \$1;
+#X floatatom 55 378 5 0 0 0 - - -;
+#X obj 58 357 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 735 250 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 61 494 bng 32 250 50 0 empty empty empty 17 7 0 10 -4034 -1
+-1;
+#X text 187 533 This will send all settings to;
+#X obj 410 532 r RJ_SCENE;
+#X floatatom 732 315 5 0 0 0 - - -;
+#X text 685 291 ==>;
+#X obj 735 339 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 544 292 u_dispatch \$0 two;
+#X obj 732 292 r \$0-two;
+#X floatatom 606 153 5 0 0 0 - - -;
+#X msg 606 171 two \$1;
+#X text 515 325 Arguments for [u_dispatch]:;
+#X text 532 350 1) \$0;
+#X text 532 367 2) method name.;
+#N canvas 0 22 799 406 write2textfile 0;
+#X obj 85 115 r RJ_SCENE;
+#X text 81 91 receive messages for saving on RJ_SCENE;
+#X msg 20 137 clear;
+#X obj 426 244 s RJ_SCENE_LOAD;
+#X obj 85 214 textfile;
+#X obj 85 143 list prepend add;
+#X obj 85 165 list trim;
+#X msg 22 166 print;
+#X msg 115 187 write settings.txt;
+#X obj 426 218 textfile;
+#X obj 426 185 until;
+#X text 419 81 Restore from textfile:;
+#X msg 471 190 read \$1 \, rewind;
+#X obj 426 145 t b a;
+#X msg 426 117 symbol settings.txt;
+#X connect 0 0 5 0;
+#X connect 2 0 4 0;
+#X connect 5 0 6 0;
+#X connect 6 0 4 0;
+#X connect 7 0 4 0;
+#X connect 8 0 4 0;
+#X connect 9 0 3 0;
+#X connect 9 1 10 1;
+#X connect 10 0 9 0;
+#X connect 12 0 9 0;
+#X connect 13 0 10 0;
+#X connect 13 1 12 0;
+#X connect 14 0 13 0;
+#X restore 738 551 pd write2textfile;
+#X text 185 556 You can either store them by writing it into a message
+as illustrated on the right or into a textfile (see subpatch);
+#X text 49 65 If you write an abstraction for the rjlib \, you should
+reserve the rightmost inlet for dispatching methods using [u_dispatch]
+as shown on the right with dispatchers for "one" and "two" messages.
+;
+#X text 49 260 By doing that \, [u_loader] will connect the local state
+variables to a group of global senders called RJ_SCENE \, RJ_SCENE_LOAD
+and RJ_SCENE_SAVE.;
+#X text 51 335 Send messages to RJ_SCENE_LOAD to remote-control settings
+;
+#X text 168 395 This is global. The message is composed of the first
+[u_loader]-argument and the second [u_dispatch] argument.;
+#X text 539 121 [u_loader] itself accepts a "save" message \, too \,
+to send its settings to its outlet.;
+#X msg 542 47 save;
+#X obj 542 94 print LOADER;
+#X obj 566 461 u_cocollect;
+#X text 595 47 save to outlet;
+#X text 575 489 restoring is possible from here as well by sending
+to RJ_SCENE_LOAD;
+#N canvas 176 457 582 570 REFERENCE 0;
+#X text 24 51 Summary:;
+#X text 24 183 Outlet 0:;
+#X text 24 31 Name: u_loader;
+#X text 77 51 connect local state variables to global senders;
+#X text 24 123 Argument 1: \$0 - Unique ID \, this makes sure it is
+unique to its parent patch.;
+#X text 24 91 Argument 0: "abstraction_name-\$1" - Abstraction Name
+\, this makes sure it takes the name of its parent patch.;
+#X text 24 334 See also: [u_dispatch];
+#X text 24 234 Description: [u_loader] is used in many rjlib abstractions
+to make preset handling and inlet method dispatching consistent. Only
+one should be used per abstraction \, it can also be used in conjunction
+with [u_dispatch].;
+#X text 24 163 Inlet 0:;
+#X text 24 434 Tags: Message;
+#X coords 0 -1 1 1 450 450 1 10 10;
+#X restore -475 58 pd REFERENCE;
+#X connect 4 0 5 0;
+#X connect 5 0 23 0;
+#X connect 6 0 45 0;
+#X connect 7 0 10 0;
+#X connect 8 0 7 0;
+#X connect 10 0 30 0;
+#X connect 13 0 46 0;
+#X connect 15 0 12 0;
+#X connect 16 0 18 0;
+#X connect 17 0 46 1;
+#X connect 20 0 11 0;
+#X connect 21 0 20 0;
+#X connect 22 0 21 0;
+#X connect 24 0 15 0;
+#X connect 27 0 29 0;
+#X connect 31 0 27 0;
+#X connect 32 0 33 0;
+#X connect 33 0 10 0;
+#X connect 44 0 6 0;
+#X connect 46 0 16 0;

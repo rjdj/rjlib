@@ -1,0 +1,138 @@
+#N canvas 4 22 1276 756 10;
+#X obj 716 208 soundoutput;
+#X msg 868 122 help;
+#X msg 960 390 pwmdepth \$1;
+#X msg 961 443 pwmfreq \$1;
+#X obj 542 498 s \$0-s_osc;
+#X obj 857 101 r \$0-s_osc;
+#X obj 934 472 s \$0-s_osc;
+#X obj 723 400 s \$0-s_osc;
+#X floatatom 723 340 5 -1 1 0 slope - -;
+#X floatatom 960 367 5 0 0 0 - - -;
+#X floatatom 961 421 5 0 0 0 - - -;
+#N canvas 0 22 738 528 waveform 0;
+#X obj 275 362 outlet;
+#X obj 109 56 inlet;
+#X obj 109 118 nbx 7 14 0 3 0 0 empty empty empty 0 -8 0 10 -262144
+-1 -1 0 256;
+#X obj 105 116 cnv 15 75 15 empty empty empty 20 12 0 14 -233017 -66577
+0;
+#X symbolatom 107 118 10 0 0 0 - - -;
+#X obj 213 144 select 0 1 2 3;
+#X obj 107 297 list;
+#X msg 361 198 1 0 0 0;
+#X msg 361 222 0 1 0 0;
+#X msg 362 243 0 0 1 0;
+#X msg 361 267 0 0 0 1;
+#X msg 181 254 tri;
+#X msg 181 232 square;
+#X msg 180 212 saw;
+#X msg 180 193 sine;
+#X msg 275 337 switch \$1 \$2 \$3 \$4;
+#X connect 1 0 2 0;
+#X connect 2 0 5 0;
+#X connect 5 0 14 0;
+#X connect 5 0 7 0;
+#X connect 5 1 13 0;
+#X connect 5 1 8 0;
+#X connect 5 2 12 0;
+#X connect 5 2 9 0;
+#X connect 5 3 11 0;
+#X connect 5 3 10 0;
+#X connect 6 0 4 0;
+#X connect 7 0 15 0;
+#X connect 8 0 15 0;
+#X connect 9 0 15 0;
+#X connect 10 0 15 0;
+#X connect 11 0 6 0;
+#X connect 12 0 6 0;
+#X connect 13 0 6 0;
+#X connect 14 0 6 0;
+#X connect 15 0 0 0;
+#X coords 0 -1 1 1 85 35 1 100 100;
+#X restore 542 294 pd waveform;
+#X obj 542 270 hradio 15 1 0 4 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X text 928 343 Set square wave pwm;
+#X text 540 249 Select waveforms:;
+#X floatatom 763 119 5 0 0 0 freq - -;
+#X obj 763 93 mtof;
+#X floatatom 763 70 5 0 0 0 - - -;
+#X obj 763 140 sig~;
+#X obj 1081 434 s \$0-s_osc;
+#X msg 1081 412 phase \$1;
+#X msg 1081 385 0;
+#X msg 723 377 trislope \$1;
+#X obj 726 323 hsl 128 15 -1 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 762 161 s_osc NAME saw;
+#X text 722 289 Set triangle wave slope: 0=tri \, -0.999 = phasor \,
+0.999 = phasor backwards;
+#X text 689 439 all off;
+#X msg 634 439 switch;
+#X msg 583 351 sine \$1;
+#X msg 584 371 saw \$1;
+#X msg 585 392 square \$1;
+#X msg 585 413 tri \$1;
+#X obj 557 353 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 557 372 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 557 393 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 557 413 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X text 629 486 "switch <sine> <saw> <square> <tri>";
+#X text 632 503 Use 1 and 0 to switch oscillators on and off.;
+#X text 1076 364 Set the phase;
+#X msg 635 461 switch 0 0 1 0;
+#N canvas 87 22 543 659 REFERENCE 0;
+#X text 114 121 Name: s_osc;
+#X text 114 141 Summary: Multi waveform oscillator. Supports sine wave
+(default) \, bandlimited saw \, bandlimited square and non-bandlimited
+triangle (between 0 and 1);
+#X text 112 250 Inlet 0: audio signal to set the oscillator's frequency
+\, to be modulated at audio rate.;
+#X text 112 200 Argument 0: name;
+#X text 112 220 Argument 1: default waveform;
+#X text 112 280 Inlet 1: accepts messages explained in the example.
+;
+#X text 112 308 Outlet 0: audio signal;
+#X text 115 382 Description: Multi waveform oscillator. Supports sine
+wave (default) \, bandlimited saw \, bandlimited square and non-bandlimited
+triangle (between 0 and 1) The first inlet accepts an audio signal
+to set the oscillator's frequency \, so that you can modulate it at
+audio rate. The second inlet accepts messages explained in the example.
+;
+#X text 123 529 Tags: oscillator \, synth;
+#X coords 0 -1 1 1 450 450 1 100 100;
+#X restore 25 68 pd REFERENCE;
+#X connect 1 0 24 1;
+#X connect 2 0 6 0;
+#X connect 3 0 6 0;
+#X connect 5 0 24 1;
+#X connect 8 0 22 0;
+#X connect 9 0 2 0;
+#X connect 10 0 3 0;
+#X connect 11 0 4 0;
+#X connect 12 0 11 0;
+#X connect 15 0 18 0;
+#X connect 16 0 15 0;
+#X connect 17 0 16 0;
+#X connect 18 0 24 0;
+#X connect 20 0 19 0;
+#X connect 21 0 20 0;
+#X connect 22 0 7 0;
+#X connect 23 0 8 0;
+#X connect 24 0 0 0;
+#X connect 24 0 0 1;
+#X connect 27 0 4 0;
+#X connect 28 0 4 0;
+#X connect 29 0 4 0;
+#X connect 30 0 4 0;
+#X connect 31 0 4 0;
+#X connect 32 0 28 0;
+#X connect 33 0 29 0;
+#X connect 34 0 30 0;
+#X connect 35 0 31 0;
+#X connect 39 0 4 0;

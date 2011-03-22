@@ -1,0 +1,32 @@
+#N canvas 117 22 836 517 10;
+#X obj 563 349 u_stereo e_alias ali1;
+#X obj 563 310 osc~ 220;
+#X msg 686 325 freq \$1;
+#X obj 575 385 soundoutput;
+#X obj 624 310 osc~ 280;
+#X floatatom 686 305 5 0 0 0 - - -;
+#N canvas 278 371 952 714 REFERENCE 0;
+#X text 24 434 Tags:;
+#X text 24 31 Name: u_stereo;
+#X text 24 294 Description: A quick way to convert a mono effect into
+a stereo effect. Works for effects with 1 audio in and 1 audio out.
+;
+#X text 24 364 See also: [u_robinpoly] [u_makepoly];
+#X text 59 434 Audio \, Utility;
+#X text 24 61 Summary: Convert a mono effect to stereo.;
+#X text 24 144 Inlet 0: Audio input signal left.;
+#X text 24 164 Inlet 1: Audio input signal right.;
+#X text 24 234 Outlet 0: Audio output signal left.;
+#X text 24 254 Outlet 1: Audio output signal right.;
+#X text 24 91 Argument 0: '<NAME>' - Unique name for each instance
+of object.;
+#X text 24 184 Inlet 2: Connection to the original object's control
+inlet. Parameters depends on the effect used.;
+#X coords 0 -1 1 1 450 450 1 10 10;
+#X restore 15 58 pd REFERENCE;
+#X connect 0 0 3 0;
+#X connect 0 1 3 1;
+#X connect 1 0 0 0;
+#X connect 2 0 0 2;
+#X connect 4 0 0 1;
+#X connect 5 0 2 0;

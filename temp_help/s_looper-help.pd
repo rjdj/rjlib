@@ -1,0 +1,88 @@
+#N canvas 84 86 1015 642 10;
+#X msg 523 158 open;
+#X obj 512 444 soundoutput;
+#X msg 581 239 stop;
+#X msg 612 285 loop \$1;
+#X obj 612 265 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X msg 576 215 play 500;
+#X obj 969 279 random 32;
+#X obj 969 256 metro 125;
+#X obj 969 233 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X floatatom 891 495 8 0 0 3 dur_in_smps - -;
+#X floatatom 817 495 8 0 0 3 dur_in_ms - -;
+#X symbolatom 742 495 10 0 0 3 table_name - -;
+#X obj 742 445 unpack s f f f;
+#X floatatom 975 495 6 0 0 3 samplerate - -;
+#X obj 817 534 s \$0-duration;
+#X obj 1029 200 r \$0-duration;
+#X obj 1029 227 / 32;
+#X obj 669 452 bng 15 50 50 0 empty empty bang_on_start 0 25 1 10 -262144
+-1 -1;
+#X msg 563 190 play;
+#X text 606 190 all from start;
+#X text 647 215 play all starting 500 ms into sample;
+#X text 569 159 open a file;
+#X text 671 286 loop file;
+#X text 941 128 "playdiv <divs> <part> <duration in parts>" divides
+the file into as many equal length parts as the <divs> number following
+it specifies. Then it start playing part <part> and stops after <duration>
+parts.;
+#X msg 613 314 sr 22050;
+#X msg 969 337 playdiv 32 \$1 1;
+#X text 669 364 adjust fade-in time (default 2ms);
+#X obj 1109 305 hradio 15 1 0 8 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X msg 1109 333 playdiv 16 \$1 0.5;
+#X text 683 314 set samplerate of file (default 22050 Hz);
+#X text 913 103 The "playdiv" message:;
+#X text 854 444 sample file info;
+#X msg 615 336 sr 44100;
+#X obj 523 419 s_looper \$0-mysample filenotfound.wav;
+#X msg 616 364 fade 0;
+#X msg 616 385 info;
+#X text 667 385 print info to last outlet;
+#N canvas 5 22 543 659 REFERENCE 0;
+#X text 112 169 Argument 0: name;
+#X text 114 121 Name: s_looper;
+#X text 114 141 Summary: sample player with looping and file storage.
+;
+#X text 112 190 Argument 1: soundfile to autoload.;
+#X text 112 219 Inlet 0: various messages. see example.;
+#X text 112 277 Outlet 0: audio signal left channel;
+#X text 112 297 Outlet 1: audio signal right channel;
+#X text 112 337 Outlet 3: sample file information.;
+#X text 112 317 Outlet 2: bang on start;
+#X text 115 382 Description: sample player with looping and file storage.
+;
+#X text 123 529 Tags: loop \, file storage;
+#X coords 0 -1 1 1 450 450 1 100 100;
+#X restore 35 78 pd REFERENCE;
+#X connect 0 0 33 0;
+#X connect 2 0 33 0;
+#X connect 3 0 33 0;
+#X connect 4 0 3 0;
+#X connect 5 0 33 0;
+#X connect 6 0 25 0;
+#X connect 7 0 6 0;
+#X connect 8 0 7 0;
+#X connect 10 0 14 0;
+#X connect 12 0 11 0;
+#X connect 12 1 10 0;
+#X connect 12 2 9 0;
+#X connect 12 3 13 0;
+#X connect 15 0 16 0;
+#X connect 16 0 7 1;
+#X connect 18 0 33 0;
+#X connect 24 0 33 0;
+#X connect 25 0 33 0;
+#X connect 27 0 28 0;
+#X connect 28 0 33 0;
+#X connect 32 0 33 0;
+#X connect 33 0 1 0;
+#X connect 33 1 1 1;
+#X connect 33 2 17 0;
+#X connect 33 3 12 0;
+#X connect 34 0 33 0;
+#X connect 35 0 33 0;
