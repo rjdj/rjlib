@@ -1,0 +1,36 @@
+#N canvas 25 39 925 425 10;
+#X floatatom 558 147 5 0 0 0 - - -;
+#X obj 558 174 mtof;
+#X obj 614 107 hsl 128 15 0 0.9 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 611 137 moses 1;
+#X text 626 88 Harmonicity-Env;
+#X text 672 138 don't go equal or over 1!;
+#X floatatom 619 161 5 0 0 0 - - -;
+#X obj 611 212 line~;
+#X obj 611 188 pack 0 100;
+#X obj 558 229 s_buzz;
+#X obj 513 256 soundoutput;
+#N canvas 61 37 639 392 REFERENCE 0;
+#X text 109 129 Outlet 0: output signal;
+#X text 110 58 Summary: buzz harmonics generator;
+#X text 110 41 Name: s_buzz;
+#X text 110 83 Inlet 0: float for frequency;
+#X text 110 104 Inlet 1: signal or float harmonic content (0 ... <
+1);
+#X text 113 204 cf: James A. Moorer: "Synthesis of Complex Audio Spectra"
+and Dodge/Jerse: "Computer Music" page 163f;
+#X text 110 157 Description: This is like the buzz opcode in csound.
+It generates a waveform using the summation forumula: out = sqrt[(1-a^2)(1+a^2)]
+* [sin(x) / (1+a^2 - 2a*cos(x))];
+#X coords 0 -1 1 1 450 250 1 100 20;
+#X restore 21 45 pd REFERENCE;
+#X connect 0 0 1 0;
+#X connect 1 0 9 0;
+#X connect 2 0 3 0;
+#X connect 3 0 6 0;
+#X connect 3 0 8 0;
+#X connect 7 0 9 1;
+#X connect 8 0 7 0;
+#X connect 9 0 10 0;
+#X connect 9 0 10 1;

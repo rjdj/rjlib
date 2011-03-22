@@ -1,0 +1,38 @@
+#N canvas 42 22 1002 596 10;
+#X obj 572 311 m_bpm2ms;
+#X floatatom 572 287 5 0 0 1 BPM - -;
+#X floatatom 572 341 5 0 0 1 Period_in_milliseconds - -;
+#X msg 572 261 120;
+#X obj 572 386 t a a;
+#X obj 572 436 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 572 413 metro;
+#X msg 523 386 stop;
+#X obj 776 348 m_bpm2ms;
+#X floatatom 776 328 5 0 0 1 Period_in_milliseconds - -;
+#X floatatom 776 370 5 0 0 1 BPM - -;
+#X text 770 299 Works both ways:;
+#N canvas 49 22 565 675 REFERENCE 0;
+#X text 122 529 Tags: conversions \, bpm \, beat \, durations \, pulse
+\, metro;
+#X text 114 120 Name: m_bpm2ms;
+#X text 114 141 Summary: convert between a frequeny specified as BPM
+(beats per minute) to a period in milliseconds (and back).;
+#X text 112 301 Description: convert between a frequeny specified as
+BPM (beats per minute) to a period in milliseconds (and back).;
+#X text 114 204 Inlet 0: BPM(beats per minute) or period in milliseconds
+;
+#X text 114 240 Outlet 0: period in milliseconds or BPM;
+#X coords 0 -1 1 1 450 450 1 100 100;
+#X restore 25 40 pd REFERENCE;
+#X connect 0 0 2 0;
+#X connect 0 0 9 0;
+#X connect 1 0 0 0;
+#X connect 2 0 4 0;
+#X connect 3 0 1 0;
+#X connect 4 0 6 0;
+#X connect 4 1 6 1;
+#X connect 6 0 5 0;
+#X connect 7 0 6 0;
+#X connect 8 0 10 0;
+#X connect 9 0 8 0;
