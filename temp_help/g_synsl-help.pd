@@ -1,0 +1,62 @@
+#N canvas 98 148 1269 680 10;
+#N canvas 0 22 450 300 show 0;
+#X obj 41 39 inlet;
+#X obj 186 36 inlet;
+#X obj 41 124 outlet;
+#X msg 186 76 set;
+#X obj 41 59 list prepend set;
+#X obj 41 83 list trim;
+#X connect 0 0 4 0;
+#X connect 1 0 3 0;
+#X connect 3 0 2 0;
+#X connect 4 0 5 0;
+#X connect 5 0 2 0;
+#X restore 507 384 pd show;
+#X msg 507 406 abc 21;
+#X floatatom 507 176 5 0 0 0 - - -;
+#X msg 507 217 hsl \$1;
+#X floatatom 575 176 5 0 0 0 - - -;
+#X msg 575 217 gain \$1;
+#X obj 575 195 / 100;
+#X floatatom 645 176 5 0 0 0 - - -;
+#X msg 645 217 abc \$1;
+#X text 660 290 "g_synsl hsl 0 127";
+#X text 660 309 "g_synsl gain 0 1";
+#X obj 507 279 g_synsl hsl 0 127;
+#X symbolatom 721 194 10 0 0 2 Set_Slider_Label - -;
+#X msg 721 216 hsl label \$1;
+#X floatatom 842 189 5 0 0 2 Set_Slider_Color - -;
+#X msg 842 218 gain color \$1;
+#X obj 507 309 g_synsl gain 0 1;
+#N canvas 168 230 582 570 REFERENCE 0;
+#X text 24 216 Inlet 0:;
+#X text 25 125 Argument 0: <tag>.;
+#X text 24 434 Tags:;
+#X text 23 334 Description: sends messages tagged with the first argument.
+;
+#X text 24 152 Argument 1: <min>.;
+#X text 24 31 Name:g_synsl;
+#X text 25 277 Outlet 0: Non matching messages are passed along. Non
+matching color and label configuration messages are not passed along.
+;
+#X text 26 384 See also: g_hsl \, g_hsl4;
+#X text 24 176 Argument 1: <max>.;
+#X text 24 66 Summary: tagged horizontal slider GUI with configuralble
+color and label. Use "tag label <label>" and "tag color <num>" to configure.
+;
+#X coords 0 -1 1 1 450 450 1 10 10;
+#X restore -52 4 pd REFERENCE;
+#X connect 0 0 1 0;
+#X connect 2 0 3 0;
+#X connect 3 0 11 0;
+#X connect 4 0 6 0;
+#X connect 5 0 11 0;
+#X connect 6 0 5 0;
+#X connect 7 0 8 0;
+#X connect 8 0 11 0;
+#X connect 11 0 16 0;
+#X connect 12 0 13 0;
+#X connect 13 0 11 0;
+#X connect 14 0 15 0;
+#X connect 15 0 11 0;
+#X connect 16 0 0 0;
