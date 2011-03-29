@@ -1,10 +1,6 @@
-#N canvas 601 238 958 529 10;
-#X declare -path ./PATH/;
-#N canvas 405 257 911 646 REFERENCE 0;
-#X text 23 342 You can add paths to search for soundfiles using "declare".
-;
-#X text 22 361 Just add;
-#X text 244 361 to your _main.pd patch.;
+#N canvas 322 238 958 529 10;
+#X declare -path ./;
+#N canvas 369 257 911 646 REFERENCE 0;
 #X text 24 31 Name: u_samplebank2;
 #X text 22 433 Tags: Audio \, Playback;
 #X text 23 97 Argument 0: <symbol> Table name - Must be unique.;
@@ -25,6 +21,8 @@ filename.wav" - load a sample by path. <message> "info" - output list
 containing: table name \, duration in ms \, duration in samples \,
 samplerate. <message> "sr SAMPLERATE \, info" - change the samplerate
 ;
+#X text 23 342 You can add paths to search for soundfiles using "declare".
+Just add [declare -path PATHNAME] to your _main.pd patch.;
 #X coords 0 -1 1 1 450 450 1 10 10;
 #X restore 18 45 pd REFERENCE;
 #X obj 18 20 cnv 15 450 20 empty empty empty 20 12 0 14 -261234 -66577
@@ -34,7 +32,6 @@ samplerate. <message> "sr SAMPLERATE \, info" - change the samplerate
 #X text 480 47 Example:;
 #X text 552 490 RjDj Library (https://github.com/rjdj/rjlib) - 2011
 ;
-#X obj 102 396 declare -path ./PATH/;
 #N canvas 0 22 469 282 HOW 0;
 #X obj 152 165 s_playtable;
 #X obj 152 207 soundoutput;
@@ -61,13 +58,15 @@ samplerate. <message> "sr SAMPLERATE \, info" - change the samplerate
 #X floatatom 597 338 6 0 0 1 samplerate - -;
 #X obj 516 275 u_samplebank2 \$0-sample ../samples/file_not_found.wav
 ;
-#X connect 10 0 18 0;
-#X connect 11 0 18 0;
-#X connect 12 0 18 0;
-#X connect 13 0 18 0;
-#X connect 15 0 18 0;
-#X connect 16 0 14 0;
-#X connect 16 1 9 0;
-#X connect 16 2 8 0;
-#X connect 16 3 17 0;
-#X connect 18 0 16 0;
+#X obj 676 70 declare -path ./;
+#X text 615 40 Don't forget to declare the path ".";
+#X connect 9 0 17 0;
+#X connect 10 0 17 0;
+#X connect 11 0 17 0;
+#X connect 12 0 17 0;
+#X connect 14 0 17 0;
+#X connect 15 0 13 0;
+#X connect 15 1 8 0;
+#X connect 15 2 7 0;
+#X connect 15 3 16 0;
+#X connect 17 0 15 0;

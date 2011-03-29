@@ -1,8 +1,8 @@
-#N struct 1182-symarray float x array symbols 1182-sym;
-#N struct 1182-sym symbol name float on;
-#N struct 1186-symarray float x array symbols 1186-sym;
-#N struct 1186-sym symbol name float on;
-#N canvas 1516 119 1021 505 10;
+#N struct 1017-symarray float x array symbols 1017-sym;
+#N struct 1017-sym symbol name float on;
+#N struct 1021-symarray float x array symbols 1021-sym;
+#N struct 1021-sym symbol name float on;
+#N canvas 259 119 1021 505 10;
 #X msg 544 163 print;
 #X msg 564 193 dump;
 #X floatatom 604 272 5 0 0 1 Lookup - -;
@@ -10,7 +10,7 @@
 #X obj 504 312 u_samplekit2 <optional_prefix>;
 #X msg 584 242 size \$1;
 #X floatatom 584 223 5 0 0 0 - - -;
-#N canvas 1464 281 582 570 REFERENCE 1;
+#N canvas 698 281 582 570 REFERENCE 0;
 #X text 24 31 Name: [u_samplekit2];
 #X text 24 434 Tags: Audio \, Playback;
 #X text 24 81 Argument 0: <symbol> - Optional prefix to the table names.
@@ -38,7 +38,7 @@ channel.;
 #X obj 11 11 cnv 15 450 20 empty empty empty 20 12 0 14 -261234 -66577
 0;
 #X text 474 44 Example:;
-#X text 690 475 RjDj Library (https://github.com/rjdj/rjlib) - 2011
+#X text 650 475 RjDj Library (https://github.com/rjdj/rjlib) - 2011
 ;
 #X obj 14 13 u_samplekit2;
 #X text 135 14 - load a directory of stereo samples;
@@ -46,8 +46,8 @@ channel.;
 #X text 587 164 Print the current mapping.;
 #X text 638 236 Size <index>: report size of table at <index> in samples
 to 2nd outlet.;
-#X text 600 104 Open samplekits.;
-#X text 775 133 Loads a map "index.txt".;
+#X text 620 104 Open samplekits.;
+#X text 805 133 Loads a map "index.txt".;
 #X msg 504 103 open ./*PATH*/;
 #X msg 524 133 open ./*PATH*/ <alternate_mapping.txt>;
 #X connect 0 0 4 0;

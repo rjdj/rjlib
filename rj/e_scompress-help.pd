@@ -27,7 +27,7 @@
 #X obj 509 146 c_adsrj;
 #X obj 662 104 loadbang;
 #X msg 662 125 A 20 \, D 30 \, S 70 \, R 100;
-#N canvas 62 366 827 710 REFERENCE 0;
+#N canvas 15 304 1265 720 REFERENCE 0;
 #X text 114 454 See also:;
 #X text 114 121 Name: e_scompress;
 #X text 114 141 Summary: loudness compress with sidechain.;
@@ -40,16 +40,11 @@ different to any other instances;
 #X text 114 214 Inlet 0: Audio input signal;
 #X text 114 234 Inlet 1: Sidechain input (if sidechain is not used
 connect input signal to this inlet).;
-#X text 114 264 Inlet 2: Control messages:;
-#X text 120 326 thresh <float>: time (ms) input level at which reduction
-occurs.;
-#X text 127 313 ratio <float>: time (ms) amount of reduction over thresh.
-;
-#X text 112 299 release <float>: time (ms) taken to reach no reduction.
-;
-#X text 119 286 attack <float>: time (ms) to reach desired reduction.
-;
 #X text 114 364 Outlet 1: Audio output signal;
+#X text 114 267 Inlet 2: Control messages: attack <float>: time (ms)
+to reach desired reduction. release <float>: time (ms) taken to reach
+no reduction. ratio <float>: time (ms) amount of reduction over thresh.
+thresh <float>: time (ms) input level at which reduction occurs.;
 #X coords 0 -1 1 1 450 450 1 100 100;
 #X restore 5 48 pd REFERENCE;
 #X obj 5 18 cnv 15 450 20 empty empty empty 20 12 0 14 -261234 -66577

@@ -11,8 +11,6 @@
 #X obj 516 330 unpack s f f f;
 #X floatatom 597 353 6 0 0 1 samplerate - -;
 #N canvas 120 378 934 511 REFERENCE 0;
-#X text 23 342 You can add paths to search for soundfiles using "declare".
-;
 #X text 24 31 Name: u_samplebank2;
 #X text 22 431 Tags: Audio \, Playback;
 #X text 23 396 See also: [u_samplebank] [u_multisamplebank] [s_playtable]
@@ -28,13 +26,14 @@ in mono as [u_samplebank] as well. Left channel will be in table "ARGUMENT-1"
 [s_playtable].;
 #X text 24 232 Outlet 0: output list if "info" message is sent to Inlet
 0;
-#X text 22 361 Just add [declare -path .] to your _main.pd patch.;
 #X text 23 147 Inlet 0: <message> "open" - load a sample with opendialog.
 <message> "open filename.wav" - load a sample by path. <message> "open
 filename.wav" - load a sample by path. <message> "info" - output list
 containing: table name \, duration in ms \, duration in samples \,
 samplerate. <message> "sr SAMPLERATE \, info" - change the samplerate
 ;
+#X text 23 342 You can add paths to search for soundfiles using "declare".
+Just add [declare -path PATHNAME] to your _main.pd patch.;
 #X coords 0 -1 1 1 450 450 1 0 0;
 #X restore 15 52 pd REFERENCE;
 #X obj 15 28 cnv 15 450 20 empty empty empty 20 12 0 14 -261234 -66577
@@ -47,6 +46,7 @@ samplerate. <message> "sr SAMPLERATE \, info" - change the samplerate
 #X obj 516 290 u_samplebank2 \$0-sample ../samples/file_not_found.wav
 ;
 #X obj 676 70 declare -path ./;
+#X text 615 40 Don't forget to declare the path ".";
 #X connect 2 0 16 0;
 #X connect 3 0 16 0;
 #X connect 4 0 16 0;

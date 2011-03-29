@@ -1,9 +1,9 @@
-#N struct 1171-symarray float x array symbols 1171-sym;
-#N struct 1171-sym symbol name float on;
-#N struct 1177-symarray float x array symbols 1177-sym;
-#N struct 1177-sym symbol name float on;
-#N struct 1173-symarray float x array symbols 1173-sym;
-#N struct 1173-sym symbol name float on;
+#N struct 1006-symarray float x array symbols 1006-sym;
+#N struct 1006-sym symbol name float on;
+#N struct 1010-symarray float x array symbols 1010-sym;
+#N struct 1010-sym symbol name float on;
+#N struct 1012-symarray float x array symbols 1012-sym;
+#N struct 1012-sym symbol name float on;
 #N canvas 22 42 1079 562 10;
 #X declare -path .;
 #X msg 516 99 open <directory>;

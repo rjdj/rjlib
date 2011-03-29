@@ -14,11 +14,12 @@ effect.;
 #X text 24 91 Argument 0: <symbol> Unique id - make sure this is different
 to any other instances.;
 #X text 24 124 Inlet 0: Audio input signal;
-#X text 44 164 freq <float>: Modulation frequency in Hz \, default
+#X text 199 521 freq <float>: Modulation frequency in Hz \, default
 = 5;
-#X text 24 144 Inlet 1: Control messages:;
-#X text 44 179 dry <float> Dry/Wet mix (0-1) \, default = 0;
 #X text 24 214 Outlet 0: Audio output signal;
+#X text 24 144 Inlet 1: Control messages: freq <float>: Modulation
+frequency in Hz \, default=5. dry <float> Dry/Wet mix as "dryness level"
+\, so default=0 means "not dry" i.e. wet!;
 #X coords 0 -1 1 1 450 450 1 10 10;
 #X restore 5 48 pd REFERENCE;
 #X obj 5 18 cnv 15 450 20 empty empty empty 20 12 0 14 -261234 -66577

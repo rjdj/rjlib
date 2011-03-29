@@ -1,4 +1,4 @@
-#N canvas 89 22 1118 501 10;
+#N canvas 89 22 1049 512 10;
 #X msg 500 112 bang;
 #X floatatom 500 372 5 0 0 1 Random_Number - -;
 #X msg 510 142 seed 12123;
@@ -29,7 +29,7 @@ generated. Weights can be set per value to change the probability.
 #X obj 5 8 cnv 15 450 20 empty empty empty 20 12 0 14 -261234 -66577
 0;
 #X text 468 41 Example:;
-#X text 779 474 RjDj Library (https://github.com/rjdj/rjlib) - 2011
+#X text 609 474 RjDj Library (https://github.com/rjdj/rjlib) - 2011
 ;
 #X obj 8 10 u_wrandom;
 #X text 129 11 - generate weighted random numbers;
@@ -86,8 +86,8 @@ generated. Weights can be set per value to change the probability.
 #X connect 22 0 18 1;
 #X connect 22 1 19 1;
 #X connect 22 2 20 1;
-#X restore 858 341 pd MARKOV-EXAMPLE;
-#X text 734 187 List of random weights. For example '1 0 0 1' will
+#X restore 688 341 pd MARKOV-EXAMPLE;
+#X text 584 217 List of random weights. For example '1 0 0 1' will
 output '0' or '3' with an even probability.;
 #X connect 0 0 6 0;
 #X connect 2 0 6 0;
