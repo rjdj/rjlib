@@ -1,32 +1,32 @@
-#N struct 1004-symarray float x array symbols 1004-sym;
-#N struct 1004-sym symbol name float on;
-#N struct 1006-symarray float x array symbols 1006-sym;
-#N struct 1006-sym symbol name float on;
-#N struct 1008-symarray float x array symbols 1008-sym;
-#N struct 1008-sym symbol name float on;
+#N struct 2296-symarray float x array symbols 2296-sym;
+#N struct 2296-sym symbol name float on;
+#N struct 2298-symarray float x array symbols 2298-sym;
+#N struct 2298-sym symbol name float on;
+#N struct 2300-symarray float x array symbols 2300-sym;
+#N struct 2300-sym symbol name float on;
 #N canvas 0 22 1056 617 10;
-#X floatatom 457 238 5 0 0 0 - - -;
-#X symbolatom 449 293 10 0 0 0 - - -;
-#X symbolatom 180 428 10 0 0 0 - - -;
-#X obj 180 455 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X floatatom 723 79 5 0 0 0 - - -;
+#X symbolatom 715 134 10 0 0 0 - - -;
+#X symbolatom 506 419 10 0 0 0 - - -;
+#X obj 506 446 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X msg 199 332 reset;
-#X msg 204 203 notfound.wav 2 \, otherfile 3;
-#X obj 449 314 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X msg 525 323 reset;
+#X msg 530 194 notfound.wav 2 \, otherfile 3;
+#X obj 715 155 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 181 172 list append 0;
-#X obj 256 147 hradio 15 1 0 8 empty empty empty 0 -8 0 10 -262144
+#X obj 507 163 list append 0;
+#X obj 582 138 hradio 15 1 0 8 empty empty empty 0 -8 0 10 -262144
 -1 -1 0;
-#X obj 181 118 openpanel;
-#X msg 181 97 bang;
-#X msg 357 330 dump;
-#X obj 357 433 print;
-#X obj 181 237 list prepend open;
-#X obj 181 260 list trim;
-#X msg 449 213 open filenname.wav 12 \, open filenname.wav 200;
-#X msg 194 312 delete 2;
-#X msg 271 331 size \$1;
-#X floatatom 271 311 5 0 0 0 - - -;
+#X obj 507 109 openpanel;
+#X msg 507 88 bang;
+#X msg 683 321 dump;
+#X obj 683 424 print;
+#X obj 507 228 list prepend open;
+#X obj 507 251 list trim;
+#X msg 715 54 open filenname.wav 12 \, open filenname.wav 200;
+#X msg 520 303 delete 2;
+#X msg 597 322 size \$1;
+#X floatatom 597 302 5 0 0 0 - - -;
 #N canvas 698 74 582 570 REFERENCE 0;
 #X text 24 124 Inlet 0:;
 #X text 23 463 See also:;
@@ -58,16 +58,16 @@ it from the index-lookup. Saves a bit of memory.;
 [s_playtable2] [s_fplaytable2];
 #X text 22 536 Tags: Audio \, Playback;
 #X coords 0 -1 1 1 450 550 1 10 10;
-#X restore -311 52 pd REFERENCE;
-#X obj -311 22 cnv 15 450 20 empty empty empty 20 12 0 14 -261234 -66577
+#X restore 15 43 pd REFERENCE;
+#X obj 15 13 cnv 15 450 20 empty empty empty 20 12 0 14 -261234 -66577
 0;
-#X text -187 25 - samplebank for many stereo files;
-#X text 171 51 Example:;
-#X text 416 585 RjDj Library (https://github.com/rjdj/rjlib) - 2011
+#X text 139 16 - samplebank for many stereo files;
+#X text 497 42 Example:;
+#X text 672 576 RjDj Library (https://github.com/rjdj/rjlib) - 2011
 ;
-#X obj -305 24 u_multisamplebank2;
-#X obj 180 392 u_multisamplebank2 \$0-filename;
-#X obj 449 267 u_multisamplebank2 \$0-filename2;
+#X obj 21 15 u_multisamplebank2;
+#X obj 506 383 u_multisamplebank2 \$0-filename;
+#X obj 715 108 u_multisamplebank2 \$0-filename2;
 #X connect 0 0 26 0;
 #X connect 1 0 6 0;
 #X connect 2 0 3 0;

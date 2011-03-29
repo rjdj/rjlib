@@ -1,18 +1,18 @@
-#N canvas -6 28 1188 499 10;
-#X msg 752 201 info;
-#X msg 652 51 start;
-#X msg 692 111 stop;
-#X msg 712 141 clear;
-#X msg 732 171 normalize;
-#X msg 792 278 clear \, start;
-#X msg 772 248 fade \$1;
-#X floatatom 772 231 5 0 0 0 - - -;
+#N canvas 0 28 1188 499 10;
+#X msg 712 201 info;
+#X msg 612 51 start;
+#X msg 652 111 stop;
+#X msg 672 141 clear;
+#X msg 692 171 normalize;
+#X msg 752 278 clear \, start;
+#X msg 732 248 fade \$1;
+#X floatatom 732 231 5 0 0 0 - - -;
 #X obj 517 310 u_record \$0-sample 2000;
 #X obj 517 174 osc~ 440;
 #X obj 538 213 tgl 15 0 empty empty sine_wave 17 7 1 10 -262144 -1
 -1 0 1;
 #X obj 517 233 *~ 1;
-#X msg 672 81 start 500;
+#X msg 632 81 start 500;
 #N canvas 97 192 582 570 REFERENCE 0;
 #X text 24 61 Summary: Record mono sounds into Pd tables.;
 #X text 24 31 Name: [u_record \$0-mysample];
@@ -36,19 +36,19 @@ the sample.;
 #X obj 15 8 cnv 15 450 20 empty empty empty 20 12 0 14 -261234 -66577
 0;
 #X text 478 41 Example:;
-#X text 863 470 RjDj Library (https://github.com/rjdj/rjlib) - 2011
+#X text 803 470 RjDj Library (https://github.com/rjdj/rjlib) - 2011
 ;
 #X obj 18 10 u_record;
 #X text 139 11 - Record mono sounds into Pd tables.;
-#X text 695 51 Start recording. Does not clear previous recordings!
+#X text 655 51 Start recording. Does not clear previous recordings!
 ;
-#X text 727 112 Stop recording.;
-#X text 753 141 Delete recording and set duration to 0;
-#X text 798 171 Normalize so that largest sample value is 1;
-#X text 741 75 'start x' will begin recording from 'x' milliseconds
+#X text 687 112 Stop recording.;
+#X text 713 141 Delete recording and set duration to 0;
+#X text 758 171 Normalize so that largest sample value is 1;
+#X text 701 75 'start x' will begin recording from 'x' milliseconds
 \, 500 in this case \, from start of the table.;
-#X text 876 278 You can combine messages with commas like this.;
-#X text 828 242 Default behaviour is to fade in and out over 5 msec.
+#X text 836 278 You can combine messages with commas like this.;
+#X text 788 242 Default behaviour is to fade in and out over 5 msec.
 This period can be changed with "fade x" messages.;
 #X floatatom 571 413 8 0 0 1 duration_in_samples - -;
 #X floatatom 544 433 8 0 0 1 duration_in_ms - -;
@@ -67,7 +67,7 @@ This period can be changed with "fade x" messages.;
 #X connect 3 0 4 0;
 #X connect 4 0 0 0;
 #X restore 966 382 pd PLAYBACK;
-#X text 790 196 Output list containing: <table name> <recording duration
+#X text 750 196 Output list containing: <table name> <recording duration
 in ms> <recording duration in samples> <samplerate>.;
 #X connect 0 0 8 1;
 #X connect 1 0 8 1;
