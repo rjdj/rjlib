@@ -53,10 +53,12 @@
 #X connect 7 0 6 0;
 #X connect 8 0 9 0;
 #X connect 9 0 4 0;
-#X restore 169 58 pd meter;
-#X floatatom 169 122 5 0 0 0 - - -;
-#X obj 169 80 int;
-#X obj 169 101 - 100;
+#X restore 23 250 pd meter;
+#X obj 23 272 int;
+#X obj 23 293 - 100;
+#X obj 169 121 nbx 3 14 -1e+37 1e+37 0 0 empty \$0-meter empty 0 -8
+0 10 -262144 -1 -1 0 256;
+#X obj 23 319 s \$0-meter;
 #X connect 1 0 28 0;
 #X connect 2 0 8 0;
 #X connect 2 1 9 0;
@@ -88,7 +90,7 @@
 #X connect 28 1 2 0;
 #X connect 29 0 30 0;
 #X connect 30 0 6 0;
-#X connect 31 0 33 0;
-#X connect 33 0 34 0;
-#X connect 34 0 32 0;
+#X connect 31 0 32 0;
+#X connect 32 0 33 0;
+#X connect 33 0 35 0;
 #X coords 0 -1 1 1 110 40 1 100 100;
