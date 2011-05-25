@@ -110,7 +110,6 @@
 #X obj 156 460 outlet~;
 #X obj 156 175 vcf~ 1;
 #X obj 156 18 inlet~;
-#X obj 485 42 *~ 1;
 #X connect 0 0 24 0;
 #X connect 0 1 24 1;
 #X connect 1 0 2 0;
@@ -147,7 +146,6 @@
 #X connect 23 0 22 0;
 #X connect 24 0 33 0;
 #X connect 24 1 32 0;
-#X connect 25 0 36 0;
+#X connect 25 0 8 0;
 #X connect 34 0 17 0;
 #X connect 35 0 34 0;
-#X connect 36 0 8 0;
