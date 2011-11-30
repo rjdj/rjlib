@@ -80,7 +80,6 @@
 #X obj 748 82 t f f;
 #X obj 678 205 t f f;
 #X obj 709 145 t f f;
-#X obj 486 196 print SAMPELRATE;
 #X connect 5 0 11 0;
 #X connect 5 1 27 0;
 #X connect 8 0 13 0;
@@ -121,7 +120,6 @@
 #X connect 47 0 20 0;
 #X connect 48 0 39 0;
 #X connect 49 0 35 1;
-#X connect 49 0 73 0;
 #X connect 50 0 49 0;
 #X connect 51 0 52 0;
 #X connect 52 0 45 0;
