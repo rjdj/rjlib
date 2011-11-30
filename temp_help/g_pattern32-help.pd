@@ -1,0 +1,118 @@
+#N canvas 4 39 1353 778 10;
+#X obj 701 326 select 0;
+#X obj 754 372 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 754 349 5 0 0 0 - - -;
+#X obj 701 146 c_multimetro 2000 100;
+#X obj 701 125 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X floatatom 713 169 5 0 0 0 - - -;
+#X obj 1054 358 print PATT;
+#N canvas 246 76 594 365 restore 0;
+#X obj 59 129 list prepend set;
+#X obj 59 150 list trim;
+#X obj 59 102 inlet;
+#X obj 59 268 outlet;
+#X obj 81 178 loadbang;
+#X text 234 106 stores the last pattern.;
+#X msg 59 216 0.648005 0.192001 0 0.288002 0 0.456003 0 0.0480003 0.312002
+0.408003 0 0.336002 0 0 0 0.264002 0 0 0 0.648005 0 0 0.168001 0.0720005
+0.336002 0.336002 0 0.0720005 0.336002 0.648005 0.648005 0;
+#X connect 0 0 1 0;
+#X connect 1 0 6 0;
+#X connect 2 0 0 0;
+#X connect 4 0 6 0;
+#X connect 6 0 3 0;
+#X restore 1077 255 pd restore;
+#X text 1065 301 <= select beat;
+#X obj 738 51 bng 15 250 50 0 empty empty null 17 7 1 10 -262144 -1
+-1;
+#X obj 738 75 bng 15 250 50 0 empty empty dump 17 7 1 10 -262144 -1
+-1;
+#X text 787 74 - dump pattern as list to second outlet;
+#X text 786 51 - set all to 0;
+#X floatatom 699 576 5 0 0 0 - - -;
+#X floatatom 699 623 5 0 0 0 - - -;
+#X text 696 545 You can look up the values of the table anywhere else
+\, too;
+#X text 738 103 If you directly edit the table items \, you should
+"dump" the pattern to save it to the 2nd outlet.;
+#X obj 1054 333 spigot;
+#X obj 1103 333 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
+0 1;
+#X text 1075 236 one possible way to save the pattern.;
+#X obj 1054 174 u_listrandom 2 32;
+#X msg 1054 152 bang;
+#X text 712 192 There's a mod 32 inside.;
+#N canvas 246 76 594 365 restore 0;
+#X obj 59 129 list prepend set;
+#X obj 59 150 list trim;
+#X obj 59 102 inlet;
+#X obj 59 268 outlet;
+#X obj 81 178 loadbang;
+#X text 234 106 stores the last pattern.;
+#X msg 59 216 118 84 13 94 83.8982 56 128 128 32 98 128 90 102 67 128
+128 13 26 59 23 102 126 41 14 102 82 22 47 4 70 70 105;
+#X connect 0 0 1 0;
+#X connect 1 0 6 0;
+#X connect 2 0 0 0;
+#X connect 4 0 6 0;
+#X connect 6 0 3 0;
+#X restore 1075 475 pd restore;
+#X obj 699 597 tabread \$0-melody;
+#X msg 1069 405 bang;
+#X obj 1069 428 u_listrandom 128 32;
+#X text 696 393 Here's a pattern that ranges from 0...128;
+#X text 541 258 slide value 0...max =>;
+#X text 534 234 number input 0...max =>;
+#X obj 699 437 g_pattern32 \$0-melody 128;
+#X obj 699 414 r \$0-melo;
+#X msg 1074 548 null;
+#X msg 1086 568 dump;
+#X obj 1074 636 s \$0-melo;
+#X msg 1093 589 table const 60 \, table 16 100;
+#X text 1126 548 message interface;
+#X obj 701 217 g_pattern32 \$0-myseq;
+#X text 877 192 toggle 0/max. Or press "t" during 1 sec after step
+selection;
+#N canvas 65 115 582 570 REFERENCE 0;
+#X text 25 431 Tags:;
+#X text 24 31 Name:g_pattern32;
+#X text 24 66 Summary: graphical 32 step pattern editor.;
+#X text 24 107 Argument 0: <table name \, required>.;
+#X text 24 129 Argument 1: <max-value \, default 1>.;
+#X text 25 238 Inlet 1: list of up to 32 numbers sets the pattern.
+;
+#X text 25 163 Inlet 0: float: lookup element in pattern at <number>
+modulo 32 and send to first outlet. null: set all to 0 dump: dump pattern
+as list to second outlet. table <...>: Send messages to the internal
+table (experts only);
+#X text 25 275 Outlet 0:;
+#X text 25 392 See also:;
+#X text 25 308 Outlet 1:;
+#X text 25 344 Description: graphical 32 step pattern editor.;
+#X coords 0 -1 1 1 450 450 1 10 10;
+#X restore 6 55 pd REFERENCE;
+#X connect 0 1 2 0;
+#X connect 2 0 1 0;
+#X connect 3 0 5 0;
+#X connect 3 0 37 0;
+#X connect 4 0 3 0;
+#X connect 7 0 37 1;
+#X connect 13 0 24 0;
+#X connect 17 0 6 0;
+#X connect 18 0 17 1;
+#X connect 20 0 37 1;
+#X connect 21 0 20 0;
+#X connect 23 0 30 1;
+#X connect 24 0 14 0;
+#X connect 25 0 26 0;
+#X connect 26 0 30 1;
+#X connect 30 1 23 0;
+#X connect 31 0 30 0;
+#X connect 32 0 34 0;
+#X connect 33 0 34 0;
+#X connect 35 0 34 0;
+#X connect 37 0 0 0;
+#X connect 37 1 7 0;
+#X connect 37 1 17 0;
