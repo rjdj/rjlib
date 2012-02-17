@@ -1,4 +1,4 @@
-#N canvas 174 275 976 607 10;
+#N canvas 174 275 1050 615 10;
 #X obj 168 565 outlet~;
 #X obj 208 518 outlet~;
 #X obj 167 483 s_playtable2;
@@ -117,6 +117,10 @@ License along with this program. If not \, see <http://www.gnu.org/licenses/>.
 ;
 #X restore 812 29 pd LICENSE-GPL;
 #X msg 314 443 fade 0 \$1;
+#X obj 713 222 r RJLIB;
+#X obj 713 243 route sf-samplerate;
+#X obj 713 265 s \$0-sr;
+#X text 709 201 Allow global setting of soundfile samplerate;
 #X connect 2 0 0 0;
 #X connect 2 1 1 0;
 #X connect 6 0 5 0;
@@ -173,3 +177,5 @@ License along with this program. If not \, see <http://www.gnu.org/licenses/>.
 #X connect 62 0 63 0;
 #X connect 63 0 59 0;
 #X connect 65 0 2 1;
+#X connect 66 0 67 0;
+#X connect 67 0 68 0;

@@ -1,9 +1,9 @@
 #N canvas 289 87 888 636 10;
-#X obj 664 443 openpanel;
-#X obj 663 518 table play-samp;
-#X msg 664 464 read -resize \$1 play-samp;
-#X obj 664 490 soundfiler;
-#X obj 664 416 bng 20 250 50 0 empty empty open-sample 0 -6 1 10 -262144
+#X obj 692 502 openpanel;
+#X obj 691 577 table play-samp;
+#X msg 692 523 read -resize \$1 play-samp;
+#X obj 692 549 soundfiler;
+#X obj 692 475 bng 20 250 50 0 empty empty open-sample 0 -6 1 10 -262144
 -1 -1;
 #X obj 122 584 soundoutput;
 #X msg 158 209 play-samp 0.5 2;
@@ -48,6 +48,9 @@ is doen by resampling;
 #X text 336 471 fade in & out time (default is 0 ms \, 2 ms);
 #X floatatom 323 453 5 0 0 0 - - -;
 #X obj 270 472 pack 0 2;
+#X obj 508 430 s RJLIB;
+#X msg 508 399 sf-samplerate 44100;
+#X text 501 375 Set soundfile samplerate globally:;
 #X connect 0 0 2 0;
 #X connect 2 0 3 0;
 #X connect 4 0 0 0;
@@ -71,3 +74,4 @@ is doen by resampling;
 #X connect 35 0 31 1;
 #X connect 37 0 38 1;
 #X connect 38 0 35 0;
+#X connect 40 0 39 0;

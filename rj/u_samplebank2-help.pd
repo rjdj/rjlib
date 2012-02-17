@@ -1,4 +1,4 @@
-#N canvas 104 162 939 537 10;
+#N canvas 104 169 987 530 10;
 #X declare -path ./;
 #X floatatom 570 373 8 0 0 1 duration_in_samples - -;
 #X floatatom 543 393 8 0 0 1 duration_in_ms - -;
@@ -19,21 +19,21 @@
 Pd tables.;
 #X text 23 97 Argument 0: <symbol> Table name - Must be unique.;
 #X text 23 117 Argument 1: <path> Soundfile directory (optional).;
-#X text 23 258 Description: Utility patch to load sample stereo files
+#X text 23 268 Description: Utility patch to load sample stereo files
 into Pd tables. Also calculates duration in milliseconds. Available
 in mono as [u_samplebank] as well. Left channel will be in table "ARGUMENT-1"
 \, right channel is in table "ARGUMENT-2". Play back the sample via
 [s_playtable].;
-#X text 24 232 Outlet 0: output list if "info" message is sent to Inlet
+#X text 24 242 Outlet 0: output list if "info" message is sent to Inlet
 0;
+#X text 23 342 You can add paths to search for soundfiles using "declare".
+Just add [declare -path PATHNAME] to your _main.pd patch.;
 #X text 23 147 Inlet 0: <message> "open" - load a sample with opendialog.
 <message> "open filename.wav" - load a sample by path. <message> "open
 filename.wav" - load a sample by path. <message> "info" - output list
 containing: table name \, duration in ms \, duration in samples \,
-samplerate. <message> "sr SAMPLERATE \, info" - change the samplerate
-;
-#X text 23 342 You can add paths to search for soundfiles using "declare".
-Just add [declare -path PATHNAME] to your _main.pd patch.;
+samplerate. <message> "sr SAMPLERATE" - change the samplerate (also
+possible via global RJLIB receiver with "sf-samplerate");
 #X coords 0 -1 1 1 450 450 1 0 0;
 #X restore 15 52 pd REFERENCE;
 #X obj 15 28 cnv 15 450 20 empty empty empty 20 12 0 14 -261234 -66577
@@ -47,6 +47,9 @@ Just add [declare -path PATHNAME] to your _main.pd patch.;
 ;
 #X obj 676 70 declare -path ./;
 #X text 615 40 Don't forget to declare the path ".";
+#X obj 733 194 s RJLIB;
+#X msg 733 163 sf-samplerate 44100;
+#X text 726 139 Set soundfile samplerate globally:;
 #X connect 2 0 16 0;
 #X connect 3 0 16 0;
 #X connect 4 0 16 0;
@@ -57,3 +60,4 @@ Just add [declare -path PATHNAME] to your _main.pd patch.;
 #X connect 8 2 0 0;
 #X connect 8 3 9 0;
 #X connect 16 0 8 0;
+#X connect 20 0 19 0;
