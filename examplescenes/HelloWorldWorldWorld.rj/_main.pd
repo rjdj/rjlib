@@ -1,0 +1,59 @@
+#N canvas 164 32 878 731 10;
+#X declare -path .;
+#X declare -path rj;
+#X declare -path ../pd;
+#X declare -path ../../pd;
+#N canvas 0 0 588 274 LICENSE 0;
+#X text 79 84 (c) 2008 Reality Jockey;
+#X text 57 36 Released under the GNU General Public License ver. 3
+or later. See the file LICENSE.txt for the full text.;
+#X restore 571 83 pd LICENSE;
+#X obj 72 83 soundinput;
+#X obj 71 590 soundoutput;
+#X obj 571 108 OVERVIEW;
+#X text 27 23 RjDj Scene Template - _main.pd;
+#X obj 571 24 declare -path .;
+#X obj 571 49 declare -path rj;
+#X text 639 107 of all RjDj abstractions;
+#X obj 170 308 e_sdelay 300;
+#X obj 73 308 e_sdelay 200;
+#X obj 268 308 e_sdelay 500;
+#X obj 367 308 e_sdelay 700;
+#X obj 466 308 e_sdelay 1100;
+#X text 203 609 <= everything larger than 0 means bad clipping!;
+#N canvas 0 0 799 338 volume 0;
+#X obj 115 138 hsl 100 15 0 1 0 1 empty empty volume -2 -8 1 10 -262144
+-1 -1 1200 1;
+#X floatatom 112 182 5 0 0 0 - - -;
+#X obj 42 168 *~ 0.1;
+#X obj 43 82 inlet~;
+#X obj 42 204 outlet~;
+#X text 255 137 <= this is a slider that is initialized with the last
+value it had when you saved the scene.;
+#X connect 0 0 1 0;
+#X connect 0 0 2 1;
+#X connect 2 0 4 0;
+#X connect 3 0 2 0;
+#X coords 0 -1 1 1 150 60 1 100 100;
+#X restore 72 476 pd volume;
+#X text 257 519 Set this slider so that the number in the [soundoutput]
+object stays below 0 all the time.;
+#X text 597 309 <= a series of audio delays;
+#N canvas 0 0 448 215 more_paths 0;
+#X text 27 19 You can add more paths here as well \, like the path
+to soundoutput.pd on your computer etc.;
+#X obj 36 57 declare -path ../pd;
+#X obj 35 79 declare -path ../../pd;
+#X restore 707 49 pd more_paths;
+#X connect 1 0 9 0;
+#X connect 1 0 8 0;
+#X connect 1 0 10 0;
+#X connect 1 0 11 0;
+#X connect 1 0 12 0;
+#X connect 8 0 14 0;
+#X connect 9 0 14 0;
+#X connect 10 0 14 0;
+#X connect 11 0 14 0;
+#X connect 12 0 14 0;
+#X connect 14 0 2 0;
+#X connect 14 0 2 1;
