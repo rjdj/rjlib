@@ -1,0 +1,41 @@
+#N canvas 275 135 964 509 10;
+#N canvas 35 139 827 710 REFERENCE 0;
+#X text 114 524 Tags: Dynamics;
+#X text 114 414 See also: [e_mcompressor] \, [e_compressorgui];
+#X text 114 121 Name: g_compressorgui;
+#X text 114 151 Summary: gui object for [e_mcompressor] & [e_scompressor]
+;
+#X text 114 204 Inlet 0: control inlet;
+#X text 114 224 Outlet 0: control outlet;
+#X text 114 284 Description: A handy tool for setting the threshold
+and ratio for the compressor objects. Connect the right outlet of the
+compressor to its inlet and connect its outlet to the right inlet of
+the compressor. Switch on the gui first! Use a load message to set
+the parameters of the compressor object.;
+#X coords 0 -1 1 1 450 450 1 100 100;
+#X restore 19 41 pd REFERENCE;
+#X msg 672 207 load;
+#X obj 508 414 dac~;
+#X text 709 207 loads the current settings for the gui;
+#X text 709 227 (turn on the gui first!);
+#X text 671 433 [e_compressorgui];
+#X obj 674 273 g_compressorgui;
+#X text 877 473 RjDj 2012;
+#X obj 508 54 osc~ 440;
+#X obj 560 185 *~;
+#X obj 575 155 osc~ 0.1;
+#X obj 508 107 *~;
+#X obj 523 74 osc~ 0.2;
+#X obj 508 353 e_scompressor 67 2;
+#X obj 560 134 osc~ 528;
+#X connect 1 0 13 2;
+#X connect 6 0 13 2;
+#X connect 8 0 11 0;
+#X connect 9 0 13 1;
+#X connect 10 0 9 1;
+#X connect 11 0 13 0;
+#X connect 12 0 11 1;
+#X connect 13 0 2 0;
+#X connect 13 1 2 1;
+#X connect 13 2 6 0;
+#X connect 14 0 9 0;

@@ -1,0 +1,50 @@
+#N canvas 279 113 970 524 10;
+#N canvas 86 276 827 710 REFERENCE 0;
+#X text 114 121 Name: e_mcompressor;
+#X text 114 174 Arg 0: threshold <float> (0 - 100);
+#X text 114 194 Arg 1: ratio <float> (1 - 100);
+#X text 114 141 Summary: mono compressor with set attack and release
+times;
+#X text 114 224 Inlet 0: audio input signal;
+#X text 114 244 Inlet 1: control inlet (can also attach to compressor
+gui);
+#X text 114 274 Outlet 0: compressed audio output signal;
+#X text 114 294 Outlet 1: control outlet (to interface with compressor
+gui);
+#X text 114 354 Description: Simple piecewise linear compressor with
+adjustable threshold and ratio controls. Attack and release is set
+to 40 ms.;
+#X text 114 524 Tags: Dynamics;
+#X text 114 454 See also: [e_scompressor] \, [e_compressorgui];
+#X coords 0 -1 1 1 450 450 1 100 100;
+#X restore 19 41 pd REFERENCE;
+#X obj 507 63 osc~ 220;
+#X obj 522 119 *~ 0.5;
+#X obj 522 141 +~ 0.5;
+#X obj 507 181 *~;
+#X obj 522 97 osc~ 0.1;
+#X msg 624 230 load;
+#X obj 507 405 *~ 0.5;
+#X obj 507 457 dac~;
+#X msg 547 190 2;
+#X text 577 189 <- try clipping the input;
+#X text 661 230 loads the current settings for the gui;
+#X text 661 250 (turn on the gui first!);
+#X obj 507 223 *~ 1;
+#X text 667 460 [e_compressorgui];
+#X obj 507 373 e_mcompressor 67 2;
+#X obj 670 300 g_compressorgui;
+#X text 892 503 RjDj 2012;
+#X connect 1 0 4 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 1;
+#X connect 4 0 13 0;
+#X connect 5 0 2 0;
+#X connect 6 0 15 1;
+#X connect 7 0 8 0;
+#X connect 7 0 8 1;
+#X connect 9 0 13 1;
+#X connect 13 0 15 0;
+#X connect 15 0 7 0;
+#X connect 15 1 16 0;
+#X connect 16 0 15 1;

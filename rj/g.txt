@@ -16,3 +16,4 @@ g_vol - graphical volume control (dB)
 1
 g_vol2 - graphical stereo volume control (dB)
 1
+g_compressorgui - graphical display for [e_mcompressor]

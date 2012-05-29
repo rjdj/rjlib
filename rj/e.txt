@@ -26,6 +26,8 @@ e_reslop - resonant lowpass filter
 e_resonzq - 2-pole resonant bandpass filter
 e_reverb - simple reverb
 e_scompress - compressor with sidechain (can be used without as well)
+e_mcompressor - simple mono compressor with set attack / release
+e_scompressor - simple stereo compressor with set attack / release
 e_sdelay - static delay line
 e_softclip - tube-like distortion (tanh)
 e_stereowidener - widens the sound field of a stereo signal
