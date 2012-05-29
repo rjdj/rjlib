@@ -1,7 +1,7 @@
-#N canvas 195 231 897 464 10;
+#N canvas 195 231 957 464 10;
 #X msg 687 221 help;
 #X obj 483 307 soundoutput;
-#X obj 482 171 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 482 171 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 619 80 g_nbx dur;
 #X obj 619 47 g_nbx loopstart;
@@ -46,7 +46,7 @@
 -1 -1;
 #X obj 482 273 s_loopsmooth mytable;
 #X obj 619 304 spigot;
-#X obj 671 305 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 671 305 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X text 695 85 min. duration: 10 ms;
 #N canvas 285 142 696 470 REFERENCE 0;
@@ -79,6 +79,9 @@ looping);
 #X msg 630 171 sr 22050;
 #X msg 699 171 sr 44100;
 #X text 763 170 file samplerate;
+#X obj 762 235 s RJLIB;
+#X msg 762 214 sf-samplerate 44100;
+#X text 708 194 Set soundfile samplerate globally:;
 #X connect 0 0 16 1;
 #X connect 2 0 16 0;
 #X connect 3 0 10 0;
@@ -101,3 +104,4 @@ looping);
 #X connect 22 0 13 0;
 #X connect 23 0 16 1;
 #X connect 24 0 16 1;
+#X connect 27 0 26 0;

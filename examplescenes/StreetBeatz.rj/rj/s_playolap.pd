@@ -1,4 +1,4 @@
-#N canvas 292 297 800 545 10;
+#N canvas 292 297 905 550 10;
 #N canvas 0 0 854 788 playsamp 0;
 #X obj 195 215 +~ 1;
 #X obj 195 293 *~;
@@ -146,6 +146,10 @@ in individual files.;
 #X text 123 148 See the file LICENSE.txt for the full license text.
 ;
 #X restore 488 28 pd LICENSE-BSD;
+#X obj 563 132 r RJLIB;
+#X obj 563 153 route sf-samplerate;
+#X obj 563 175 s \$0-sr;
+#X text 559 111 Allow global setting of soundfile samplerate;
 #X connect 0 0 22 0;
 #X connect 2 0 4 0;
 #X connect 3 0 1 0;
@@ -168,3 +172,5 @@ in individual files.;
 #X connect 21 0 0 1;
 #X connect 21 1 18 1;
 #X connect 22 0 23 0;
+#X connect 27 0 28 0;
+#X connect 28 0 29 0;

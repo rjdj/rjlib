@@ -15,6 +15,7 @@ e_freqshift - frequency shifter
 e_graindelread - granular delay reader
 e_lop2 - 2-pole resonant lowpass filter
 e_lop4 - 4-pole resonant lowpass filter
+e_noclickdel - variable clickless delread~
 e_pan - stereo panning (constant power)
 e_phaser - Phaser effect
 e_pingpong - Pingpong delay line
@@ -27,5 +28,6 @@ e_reverb - simple reverb
 e_scompress - compressor with sidechain (can be used without as well)
 e_sdelay - static delay line
 e_softclip - tube-like distortion (tanh)
+e_stereowidener - widens the sound field of a stereo signal
 e_tremolo - simple tremolo
 e_vocoder - FFT vocoder

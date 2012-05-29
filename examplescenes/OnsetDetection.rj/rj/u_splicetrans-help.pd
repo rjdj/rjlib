@@ -1,56 +1,63 @@
-#N canvas 312 169 803 592 10;
-#X text 332 242 use harm. 1 \, 3 \, 5 for transition table.;
-#X floatatom 60 185 5 0 0 0 - - -;
-#X obj 60 206 mtof;
-#X floatatom 60 227 5 0 0 0 - - -;
-#X obj 205 339 tabwrite~ \$0-spliced0;
-#N canvas 0 0 450 300 (subpatch) 0;
-#X array \$0-spliced0 441 float 0;
-#X coords 0 1 440 -1 200 140 1;
-#X restore 545 35 graph;
-#X msg 218 317 bang;
-#X obj 59 362 *~ 1;
-#X obj 100 361 *~ 0;
-#X obj 123 342 tgl 15 0 empty empty aliased 17 7 1 10 -262144 -1 -1
+#N canvas 65 92 964 534 10;
+#X floatatom 611 80 5 0 0 0 - - -;
+#X obj 611 101 mtof;
+#X floatatom 611 132 5 0 0 0 - - -;
+#X obj 611 263 *~ 1;
+#X obj 652 262 *~ 0;
+#X obj 673 242 tgl 15 0 empty empty aliased 17 7 1 10 -262144 -1 -1
 0 1;
-#X obj 82 317 tgl 15 0 empty empty bandlim. 17 7 1 10 -262144 -1 -1
+#X obj 632 215 tgl 15 0 empty empty bandlim. 17 7 1 10 -262144 -1 -1
 0 1;
-#X text 334 212 use harm. 1 \, 3 for transition table.;
-#X text 49 18 [u_splicetrans];
-#X text 74 42 Replace jumps in a phasor~ signal by a bandlimited transition.
+#X obj 513 453 throw~ \$0-outl;
+#X obj 804 453 throw~ \$0-outr;
+#X obj 697 317 catch~ \$0-outr;
+#X obj 684 292 catch~ \$0-outl;
+#X obj 611 162 phasor~;
+#X obj 610 352 soundoutput;
+#N canvas 165 183 582 570 REFERENCE 0;
+#X text 24 434 Tags:;
+#X text 24 31 Name: u_splicetrans;
+#X text 58 434 Audio \, Utility;
+#X text 24 334 See also: [u_stereo];
+#X text 23 58 Summary: Replace jumps in a phasor~ signal by a bandlimited
+transition.;
+#X text 24 100 Argument 0: <bool> if 0 use harm. 1 \, 3 for transition
+table \, if 1 use harm. 1 \, 3 \, 5 for transition table.;
+#X text 24 146 Inlet 0: phasor signal from 0-1;
+#X text 24 166 Inlet 1: frequency of phasor signal;
+#X text 24 186 Outlet 0: phasor signal from 0-1 with bandlimited jump.
 ;
-#X text 56 81 Inlets:;
-#X text 79 99 in0~: phasor signal from 0-1;
-#X text 78 117 in1~: frequency of phasor signal;
-#X text 56 143 Outlets:;
-#X text 77 159 out0~: phasor signal from 0-1 with bandlimited jump.
+#X text 24 233 Description: Replace jumps in a phasor~ signal by a
+bandlimited transition.;
+#X coords 0 -1 1 1 450 450 1 10 10;
+#X restore 19 55 pd REFERENCE;
+#X obj 19 24 cnv 15 450 27 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj 22 29 u_splicetrans;
+#X text 530 492 RjDj Library (https://github.com/rjdj/rjlib) - 2011
 ;
-#X text 295 391 Extracting even.odd harmonics from a phasor~ with bandlimit
-;
-#X obj 376 467 throw~ \$0-outl;
-#X obj 449 443 throw~ \$0-outr;
-#X obj 145 406 catch~ \$0-outr;
-#X obj 132 381 catch~ \$0-outl;
-#X obj 170 317 -~ 0.5;
-#N canvas 483 205 746 653 even.odd 0;
+#X text 489 54 Example:;
+#X text 128 30 - Replace jumps in a phasor~ signal;
+#X obj 611 188 u_splicetrans;
+#N canvas 483 205 746 653 Extracting 0;
 #X floatatom 45 74 5 0 0 1 frequency - -;
 #X obj 101 155 wrap~;
-#N canvas 0 0 450 300 (subpatch) 0;
+#N canvas 0 22 450 300 (subpatch) 0;
 #X array \$0-phasor-output 882 float 0;
 #X coords 0 1.02 882 -1.02 200 130 1;
 #X restore 504 23 graph;
 #X obj 45 102 phasor~ 0;
 #X obj 36 244 -~;
 #X obj 98 244 +~;
-#N canvas 0 0 450 300 (subpatch) 0;
+#N canvas 0 22 450 300 (subpatch) 0;
 #X array \$0-wrap-output 882 float 0;
 #X coords 0 1.02 882 -1.02 200 130 1;
 #X restore 505 158 graph;
-#N canvas 0 0 450 300 (subpatch) 0;
+#N canvas 0 22 450 300 (subpatch) 0;
 #X array \$0-sum 882 float 0;
 #X coords 0 1.02 882 -1.02 200 130 1;
 #X restore 506 293 graph;
-#N canvas 0 0 450 300 (subpatch) 0;
+#N canvas 0 22 450 300 (subpatch) 0;
 #X array \$0-difference 882 float 0;
 #X coords 0 1.02 882 -1.02 200 130 1;
 #X restore 506 433 graph;
@@ -58,7 +65,7 @@
 #X text 102 8 BUCHLA'S METHOD;
 #X text 511 567 ---- 0.02 seconds ----;
 #X obj 125 99 s \$0-freq;
-#N canvas 0 0 450 300 s 0;
+#N canvas 0 22 450 300 s 0;
 #X obj 119 107 r \$0-freq;
 #X obj 31 87 inlet~;
 #X obj 29 158 outlet~;
@@ -69,7 +76,7 @@
 #X connect 3 0 2 0;
 #X connect 4 0 3 0;
 #X restore 102 180 pd s;
-#N canvas 0 0 450 300 s 0;
+#N canvas 0 22 450 300 s 0;
 #X obj 119 107 r \$0-freq;
 #X obj 31 87 inlet~;
 #X obj 30 168 outlet~;
@@ -132,29 +139,22 @@ like saw and square. It's a variation on the example patch K04.even.odd.pd
 #X connect 27 0 26 1;
 #X connect 28 0 29 1;
 #X connect 29 0 21 0;
-#X restore 377 419 pd even.odd;
-#X obj 221 212 u_splicetrans 0;
-#X obj 220 239 u_splicetrans 1;
-#X obj 60 277 u_splicetrans;
-#X obj 60 247 phasor~;
-#X obj 58 441 soundoutput;
+#X restore 513 433 pd Extracting harmonics from bandlimited phasor~
+;
+#X connect 0 0 1 0;
 #X connect 1 0 2 0;
-#X connect 2 0 3 0;
-#X connect 3 0 28 1;
-#X connect 3 0 29 0;
-#X connect 6 0 4 0;
-#X connect 7 0 30 0;
-#X connect 7 0 30 1;
-#X connect 8 0 30 0;
-#X connect 8 0 30 1;
-#X connect 9 0 8 1;
-#X connect 10 0 7 1;
-#X connect 22 0 30 1;
-#X connect 23 0 30 0;
-#X connect 24 0 4 0;
-#X connect 25 0 20 0;
-#X connect 25 1 21 0;
-#X connect 28 0 7 0;
-#X connect 28 0 24 0;
-#X connect 29 0 8 0;
-#X connect 29 0 28 0;
+#X connect 2 0 11 0;
+#X connect 2 0 19 1;
+#X connect 3 0 12 0;
+#X connect 3 0 12 1;
+#X connect 4 0 12 0;
+#X connect 4 0 12 1;
+#X connect 5 0 4 1;
+#X connect 6 0 3 1;
+#X connect 9 0 12 1;
+#X connect 10 0 12 0;
+#X connect 11 0 4 0;
+#X connect 11 0 19 0;
+#X connect 19 0 3 0;
+#X connect 20 0 7 0;
+#X connect 20 1 8 0;

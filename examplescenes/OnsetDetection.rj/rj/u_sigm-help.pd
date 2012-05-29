@@ -1,56 +1,31 @@
-#N canvas 272 196 802 516 10;
-#X msg 255 284 gain \$1;
-#X floatatom 255 264 5 0 0 1 gain - -;
-#X floatatom 98 278 5 0 0 0 - - -;
-#X floatatom 99 377 5 0 0 0 - - -;
-#X obj 167 398 tabwrite \$0-sigm;
-#X obj 167 169 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X obj 167 254 - 50;
-#X obj 167 276 / 5;
-#X obj 167 215 t a a;
-#N canvas 0 0 450 300 (subpatch) 0;
-#X array \$0-sigm 100 float 2;
-#X coords 0 1 99 -1 200 140 1;
-#X restore 314 327 graph;
-#X obj 223 149 t b a;
-#X obj 226 126 hsl 128 15 -2 2 0 0 empty empty gain_-2...2 -2 -8 0
-10 -262144 -1 -1 4300 1;
-#X obj 167 323 u_sigm MYSIGM;
-#X text 322 281 default gain is 1;
-#X msg 376 109 1;
-#N canvas 0 0 450 300 count100 0;
-#X obj 171 145 until;
-#X msg 171 88 100;
-#X obj 171 173 f 0;
-#X obj 202 174 + 1;
-#X obj 214 144 0;
-#X obj 171 116 t a b;
-#X obj 170 198 outlet;
-#X obj 171 61 inlet;
-#X connect 0 0 2 0;
-#X connect 1 0 5 0;
-#X connect 2 0 3 0;
-#X connect 2 0 6 0;
-#X connect 3 0 2 1;
-#X connect 4 0 2 1;
-#X connect 5 0 0 0;
-#X connect 5 1 4 0;
-#X connect 7 0 1 0;
-#X restore 167 190 pd count100;
-#X text 107 46 u_sigm - sigmoid function;
-#X connect 0 0 12 1;
+#N canvas 81 87 801 504 10;
+#X msg 643 250 gain \$1;
+#X floatatom 643 230 5 0 0 1 Gain - -;
+#N canvas 43 244 582 570 REFERENCE 0;
+#X text 24 334 See also:;
+#X text 24 124 Inlet 1: Gain (Default gain is 1);
+#X text 24 164 Outlet 0: floating point number whose maximum is 1 and
+the minimum limits to zero.;
+#X text 24 31 Name: u_sigm;
+#X text 24 51 Summary: Generates a sigmoid function.;
+#X text 24 434 Tags: Message;
+#X text 24 94 Inlet 0: X axis;
+#X text 24 234 Description: Generates a sigmoid function \, useful
+for non-linear scales for compressors/limiters.;
+#X coords 0 -1 1 1 450 450 1 10 10;
+#X restore 5 38 pd REFERENCE;
+#X obj 5 8 cnv 15 450 20 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X text 468 41 Example:;
+#X text 479 474 RjDj Library (https://github.com/rjdj/rjlib) - 2011
+;
+#X text 129 11 - summary;
+#X obj 8 10 u_sigm;
+#X obj 538 280 u_sigm \$0-function;
+#X obj 541 180 hsl 128 15 -6 6 0 0 empty empty X_Value_(-6_to_6) -2
+-8 0 10 -262144 -1 -1 0 1;
+#X floatatom 538 312 5 0 0 0 - - -;
+#X connect 0 0 8 1;
 #X connect 1 0 0 0;
-#X connect 2 0 12 0;
-#X connect 5 0 15 0;
-#X connect 6 0 7 0;
-#X connect 7 0 12 0;
-#X connect 8 0 6 0;
-#X connect 8 1 4 1;
-#X connect 10 0 15 0;
-#X connect 10 1 1 0;
-#X connect 11 0 10 0;
-#X connect 12 0 3 0;
-#X connect 12 0 4 0;
-#X connect 14 0 11 0;
-#X connect 15 0 8 0;
+#X connect 8 0 10 0;
+#X connect 9 0 8 0;

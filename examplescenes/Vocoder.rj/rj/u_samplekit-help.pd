@@ -1,49 +1,54 @@
 #N struct 1006-symarray float x array symbols 1006-sym;
 #N struct 1006-sym symbol name float on;
-#N struct 1008-symarray float x array symbols 1008-sym;
-#N struct 1008-sym symbol name float on;
 #N struct 1010-symarray float x array symbols 1010-sym;
 #N struct 1010-sym symbol name float on;
-#N struct 1011-symarray float x array symbols 1011-sym;
-#N struct 1011-sym symbol name float on;
-#N canvas 317 100 656 775 10;
+#N struct 1012-symarray float x array symbols 1012-sym;
+#N struct 1012-sym symbol name float on;
+#N canvas 22 42 1079 562 10;
 #X declare -path .;
-#X text 59 22 u_samplekit - load a directory of samples;
-#X text 102 146 The index-file has one line for each sample to load
-consisting of:;
-#X text 145 179 <filename> <index number>;
-#X text 146 229 bassdrum.wav 36;
-#X text 146 251 handclap.wav 39;
-#X text 146 273 hihat.wav 42;
-#X text 106 206 Example:;
-#X msg 111 470 open <directory>;
-#X msg 120 493 open <directory> <alternate_mapping.txt>;
-#X text 102 98 The samplekit must have a text file mapping sample names
-to numbers. The default name of this file is "index.txt" \, but you
-can overwrite the name inside the "open" message.;
-#X text 104 54 [u_samplekit] loads a directory of samples (a "kit")
-into numbered tables prefixed with "\$0-" or the first argument.;
-#X text 104 308 The tables for the samples are created as \$0-<index
-number> \, if [u_samplekit] was created without an argument. If you
-pass an argument it will be taken instead of the abstraction's \$0
-as a prefix.;
-#X text 104 377 After a kit was loaded you can look up the actual table
-names by sending a number to the [u_samplekit]'s first inlet. It will
-then send out the matching table name to its first outlet.;
-#X msg 132 521 print;
-#X text 111 447 open samplekits:;
-#X text 244 470 loads a map "index.txt";
-#X text 183 520 print the current mapping.;
-#X msg 132 546 dump;
-#X text 183 542 dump the current mapping to the second outlet as lists
-of "<index> <table>";
-#X floatatom 66 535 5 0 0 0 lookup - -;
-#X symbolatom 111 644 10 0 0 0 - - -;
-#X obj 111 619 u_samplekit <optional_prefix>;
-#X text 311 243 Don't use spaces in filenames!;
-#N canvas 322 156 651 327 hints 0;
-#N canvas 0 0 772 685 gmkit 0;
-#N canvas 0 0 588 406 list2symbol 0;
+#X msg 516 99 open <directory>;
+#X msg 536 129 open <directory> <alternate_mapping.txt>;
+#X msg 556 159 print;
+#X msg 576 189 dump;
+#X floatatom 616 268 5 0 0 1 Lookup - -;
+#X symbolatom 516 398 10 0 0 0 - - -;
+#X obj 516 338 u_samplekit <optional_prefix>;
+#X obj 687 398 print;
+#X msg 596 238 size \$1;
+#X floatatom 596 219 5 0 0 0 - - -;
+#N canvas 23 22 633 747 REFERENCE 0;
+#X text 24 31 Name: u_samplekit;
+#X text 24 61 Summary: load a directory of samples;
+#X text 24 486 Tags: Audio \, Playback;
+#X text 24 134 Inlet 0: Various control messages - see Example.;
+#X text 24 91 Argument 0: <symbol> - Optional prefix to the table names.
+Otherwise reverts to '\$0'.;
+#X text 24 204 Outlet 1: Upon recieving a 'dump' message to Inlet 0
+\, this outlet will dump the current mapping to the second outlet as
+lists of '<index> <table>'.;
+#X text 24 264 Description: [u_samplekit] loads a directory of samples
+(a "kit") into numbered tables prefixed with "\$0-" or the first argument.
+The samplekit must have a text file mapping sample names to numbers.
+The default name of this file is "index.txt" \, but you can overwrite
+the name inside the "open" message. The index-file has one line for
+each sample to load consisting of: <filename> <index number>. For example
+- bassdrum.wav 36 (Don't use spaces in the filenames).;
+#X text 24 164 Outlet 0: <float> - Table lookup output if a number
+is sent to Inlet 0;
+#X text 24 420 See also: [u_samplekit2] [s_playtable] [u_multisamplebank]
+[m_symbolarray];
+#X coords 0 -1 1 1 450 500 1 10 10;
+#X restore 7 38 pd REFERENCE;
+#X obj 7 8 cnv 15 450 20 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X text 470 41 Example:;
+#X text 754 533 RjDj Library (https://github.com/rjdj/rjlib) - 2011
+;
+#X obj 10 10 u_samplekit;
+#X text 131 11 - load a directory of samples;
+#N canvas 322 156 651 327 HINTS 0;
+#N canvas 0 22 772 685 gmkit 0;
+#N canvas 0 22 588 406 list2symbol 0;
 #X msg 326 212 set %s;
 #X obj 234 260 t a;
 #X obj 117 268 makefilename %s;
@@ -130,21 +135,21 @@ to follow the GM drum standard:;
 #X obj 107 180 declare -path .;
 #X text 100 145 Generally you should also use a declaration like this
 in _main.pd to be able to use relative directory names:;
-#X restore 112 680 pd hints;
-#X obj 167 724 u_multisamplebank;
-#X obj 300 724 m_symbolarray;
-#X text 89 727 Also see:;
-#X obj 316 651 print;
-#X text 198 582 size <index>: report size of table at <index> in samples
+#X restore 870 331 pd HINTS;
+#X text 789 130 Open samplekit and use custom mapping textfile.;
+#X text 623 99 Open samplekits using 'default.txt' as mapping file.
+;
+#X text 650 223 Size <index>: report size of table at <index> in samples
 to 2nd outlet.;
-#X msg 132 588 size \$1;
-#X floatatom 132 569 5 0 0 0 - - -;
-#X connect 7 0 21 0;
-#X connect 8 0 21 0;
-#X connect 13 0 21 0;
-#X connect 17 0 21 0;
-#X connect 19 0 21 0;
-#X connect 21 0 20 0;
-#X connect 21 1 27 0;
-#X connect 29 0 21 0;
-#X connect 30 0 29 0;
+#X text 617 185 Dump the current mapping to the second outlet as lists
+of "<index> <table>";
+#X text 597 158 Print the current mapping.;
+#X connect 0 0 6 0;
+#X connect 1 0 6 0;
+#X connect 2 0 6 0;
+#X connect 3 0 6 0;
+#X connect 4 0 6 0;
+#X connect 6 0 5 0;
+#X connect 6 1 7 0;
+#X connect 8 0 6 0;
+#X connect 9 0 8 0;

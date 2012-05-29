@@ -1,46 +1,9 @@
-#N canvas 303 130 782 642 10;
-#X obj 141 494 e_vocoder myvocoder;
-#X msg 271 462 squelch \$1;
-#X floatatom 271 438 5 0 0 0 - - -;
-#X text 298 497 inlets: <filter input~> <control source~> <methods>
-;
-#X obj 105 538 soundoutput;
-#X text 45 23 e_vocoder / timbre stamp;
-#N canvas 0 0 512 416 play 0;
-#X obj 93 86 inlet;
-#X obj 93 125 b;
-#X obj 93 187 symbol;
-#X obj 93 158 openpanel;
-#X obj 223 103 inlet;
-#X obj 93 258 readsf~;
-#X obj 162 308 outlet;
-#X obj 93 308 outlet~;
-#X obj 170 133 b;
-#X obj 170 154 spigot 1;
-#X msg 93 216 open \$1 \, 1;
-#X obj 156 87 inlet;
-#X obj 129 126 b;
-#X connect 0 0 1 0;
-#X connect 1 0 3 0;
-#X connect 2 0 10 0;
-#X connect 3 0 2 0;
-#X connect 4 0 9 1;
-#X connect 5 0 7 0;
-#X connect 5 1 6 0;
-#X connect 5 1 8 0;
-#X connect 8 0 9 0;
-#X connect 9 0 2 0;
-#X connect 10 0 5 0;
-#X connect 11 0 12 0;
-#X connect 12 0 2 0;
-#X restore 207 283 pd play;
-#X obj 253 262 tgl 15 0 empty empty loop 17 7 1 10 -262144 -1 -1 0
-1;
-#X obj 207 218 bng 15 250 50 0 empty empty load_sample 17 7 1 10 -4034
--1 -1;
-#X obj 230 238 bng 15 250 50 0 empty empty play_it_again_Sam 17 7 1
-10 -4034 -1 -1;
-#N canvas 0 0 660 424 chord 0;
+#N canvas 168 61 763 529 10;
+#X obj 521 344 e_vocoder myvocoder;
+#X msg 651 322 squelch \$1;
+#X floatatom 651 298 5 0 0 0 - - -;
+#X obj 521 410 soundoutput;
+#N canvas 0 22 660 424 chord 0;
 #X obj 92 147 -~ 0.5;
 #X obj 92 196 clip~ -0.5 0.5;
 #X obj 92 219 cos~;
@@ -95,42 +58,48 @@
 #X connect 23 0 15 0;
 #X connect 24 0 16 0;
 #X connect 25 0 24 0;
-#X restore 142 452 pd chord;
-#X msg 142 426 40 50 55;
-#X msg 142 406 40 45 59;
-#X msg 142 386 40 49 57;
-#X obj 142 356 select 0 1 2;
-#X obj 142 334 random 3;
-#X text 49 58 This is a Fourier-based "vocoder" (perhaps better called
-a "timbre stamp") like the one the Convolution brothers use. The "control
-source" is analyzed to get its spectral envelope \, which is then stamped
-onto the "filter input" by adjusting the amplitudes of its Fourier
-transform. The "filter input" is first whitened. The best value of
-"squelch" to use depends critically on what kind of sounds are used
-for the filter input and the control source.;
-#X obj 308 285 soundinput;
-#X text 398 285 check with soundinput as well!;
-#X obj 307 320 *~ 0;
-#X obj 353 321 hsl 50 15 0 1 0 0 empty empty volume 5 8 1 10 -4034
--1 -1 0 1;
-#X connect 0 0 4 0;
-#X connect 0 0 4 1;
+#X restore 521 208 pd chord;
+#X msg 561 169 40 50 55;
+#X msg 541 149 40 45 59;
+#X msg 521 129 40 49 57;
+#X obj 586 239 soundinput;
+#N canvas 45 310 582 570 REFERENCE 0;
+#X text 24 354 See also:;
+#X text 24 31 Name: e_vocoder;
+#X text 24 51 Summary: vocoder/time stamp effect;
+#X text 24 214 Description: This is a Fourier-based "vocoder" (perhaps
+better called a "timbre stamp") like the one the Convolution brothers
+use. The "control source" is analyzed to get its spectral envelope
+\, which is then stamped onto the "filter input" by adjusting the amplitudes
+of its Fourier transform. The "filter input" is first whitened. The
+best value of "squelch" to use depends critically on what kind of sounds
+are used for the filter input and the control source.;
+#X text 24 124 Inlet 0: Audio input signal - control source;
+#X text 24 144 Inlet 1: Audio input signal - filter input;
+#X text 24 190 Outlet 0: Audio output signal;
+#X text 24 81 Argument 0: <symbol> Unique id - make sure this is different
+to other instances.;
+#X text 24 164 Inlet 2: squelch <float>: default = 0;
+#X text 24 434 Tags: Audio \, Pitch;
+#X coords 0 -1 1 1 450 450 1 10 10;
+#X restore 5 48 pd REFERENCE;
+#X obj 5 18 cnv 15 450 20 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X text 468 51 Example:;
+#X text 394 511 RjDj Library (https://github.com/rjdj/rjlib) - 2011
+;
+#X text 89 21 - timbre stamp effect;
+#X obj 8 20 e_vocoder;
+#X obj 89 391 e_pitchshift;
+#X obj 189 391 e_freqshift;
+#X obj 521 99 loadbang;
+#X connect 0 0 3 0;
+#X connect 0 0 3 1;
 #X connect 1 0 0 2;
 #X connect 2 0 1 0;
-#X connect 6 0 0 1;
-#X connect 6 1 15 0;
-#X connect 7 0 6 2;
-#X connect 8 0 6 0;
-#X connect 9 0 6 1;
-#X connect 10 0 0 0;
-#X connect 11 0 10 0;
-#X connect 12 0 10 0;
-#X connect 13 0 10 0;
-#X connect 14 0 13 0;
-#X connect 14 1 12 0;
-#X connect 14 2 11 0;
-#X connect 15 0 14 0;
-#X connect 17 0 19 0;
-#X connect 17 1 19 0;
-#X connect 19 0 0 1;
-#X connect 20 0 19 1;
+#X connect 4 0 0 0;
+#X connect 5 0 4 0;
+#X connect 6 0 4 0;
+#X connect 7 0 4 0;
+#X connect 8 0 0 1;
+#X connect 17 0 7 0;

@@ -137,6 +137,10 @@ in individual files.;
 #X text 123 148 See the file LICENSE.txt for the full license text.
 ;
 #X restore 674 36 pd LICENSE-BSD;
+#X obj 775 335 r RJLIB;
+#X obj 775 356 route sf-samplerate;
+#X obj 775 378 s \$0-sr;
+#X text 771 314 Allow global setting of soundfile samplerate;
 #X connect 0 0 1 1;
 #X connect 1 0 3 0;
 #X connect 2 0 1 0;
@@ -178,3 +182,5 @@ in individual files.;
 #X connect 40 4 0 0;
 #X connect 42 0 40 0;
 #X connect 42 1 28 0;
+#X connect 44 0 45 0;
+#X connect 45 0 46 0;

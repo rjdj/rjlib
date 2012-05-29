@@ -1,77 +1,88 @@
-#N canvas 236 121 925 699 10;
-#X floatatom 265 537 8 0 0 3 dur_in_smps - -;
-#X floatatom 191 537 8 0 0 3 dur_in_ms - -;
-#X msg 320 304 info;
-#X obj 481 526 s_playtable;
-#X obj 481 568 soundoutput;
-#X msg 625 494 sr 44100;
-#X msg 626 471 sr 22050;
-#X symbolatom 116 537 10 0 0 3 table_name - -;
-#X msg 626 526 stop;
-#X text 103 54 Arguments:;
-#X obj 116 487 unpack s f f f;
-#X floatatom 349 537 6 0 0 3 samplerate - -;
-#X obj 481 474 symbol \$0-sample;
-#X msg 481 452 bang;
-#X text 103 122 Inlets: 1) audio signal to record;
-#X msg 296 188 start;
-#X msg 305 214 stop;
-#X text 369 298 output list containing: <table name> <recording duration
-in ms> <rec. duration in samples> <samplerate>;
-#X msg 314 242 clear;
-#X msg 315 269 normalize;
-#X text 391 270 normalize so that largest sample value is 1;
-#X text 383 632 s_playtable can be used to play the sample;
-#X obj 143 351 soundinput;
-#X text 289 448 <name> <maxdur>;
-#X text 359 215 stop recording;
-#X text 350 187 start recording. Does not clear previous recordings!
+#N canvas 0 28 1188 499 10;
+#X msg 712 201 info;
+#X msg 612 51 start;
+#X msg 652 111 stop;
+#X msg 672 141 clear;
+#X msg 692 171 normalize;
+#X msg 752 278 clear \, start;
+#X msg 732 248 fade \$1;
+#X floatatom 732 231 5 0 0 0 - - -;
+#X obj 517 310 u_record \$0-sample 2000;
+#X obj 517 174 osc~ 440;
+#X obj 538 213 tgl 15 0 empty empty sine_wave 17 7 1 10 -262144 -1
+-1 0 1;
+#X obj 517 233 *~ 1;
+#X msg 632 81 start 500;
+#N canvas 97 192 582 570 REFERENCE 0;
+#X text 24 61 Summary: Record mono sounds into Pd tables.;
+#X text 24 31 Name: [u_record \$0-mysample];
+#X text 24 434 Tags: Audio \, Record;
+#X text 24 95 Argument 0: <symbol> - Table name \, required!;
+#X text 24 119 Argument 1: <float> - Max duration in milliseconds \,
+optional \, default 1000;
+#X text 24 165 Inlet 0: Audio input signal.;
+#X text 24 185 Inlet 1: Various messages \, see Example.;
+#X text 164 220 <symbol> - Table name.;
+#X text 164 234 <float> - Recording duration in ms.;
+#X text 164 248 <float> - Recording duration in samples.;
+#X text 164 262 <float> - Samplerate.;
+#X text 24 205 Outlet 0: Outputs a list containing:;
+#X text 24 298 Description: Records a mono signal into a table. Useful
+for circular buffers \, [s_playtable] can then be used to play back
+the sample.;
+#X text 24 384 See also: [s_playtable] [u_samplebank] [u_stereo];
+#X coords 0 -1 1 1 450 450 1 10 10;
+#X restore 15 38 pd REFERENCE;
+#X obj 15 8 cnv 15 450 20 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X text 478 41 Example:;
+#X text 803 470 RjDj Library (https://github.com/rjdj/rjlib) - 2011
 ;
-#X text 366 244 delete recording and set duration to 0;
-#X msg 318 389 clear \, start;
-#X text 419 389 You can combine messages like this.;
-#X msg 319 346 fade \$1;
-#X floatatom 319 329 5 0 0 0 - - -;
-#X text 393 333 default behaviour is to fade in and out over 5 msec.
-You can change this time with "fade x" messages;
-#X obj 116 447 u_record \$0-sample 2000;
-#X obj 117 261 osc~ 440;
-#X obj 143 387 *~ 0;
-#X obj 183 388 tgl 15 0 empty empty microphone 17 7 1 10 -262144 -1
--1 0 1;
-#X obj 156 321 tgl 15 0 empty empty sine_wave 17 7 1 10 -262144 -1
--1 0 1;
-#X obj 116 320 *~ 1;
-#X obj 43 18 u_record \$0-mysample;
-#X text 210 19 Record mono sounds into Pd tables.;
-#X text 143 73 <table name - required!>;
-#X text 333 72 <max duration in milliseconds \, optional \, default
-1000>;
-#X text 157 145 2) various messages \, see below;
-#X connect 2 0 32 1;
+#X obj 18 10 u_record;
+#X text 139 11 - Record mono sounds into Pd tables.;
+#X text 655 51 Start recording. Does not clear previous recordings!
+;
+#X text 687 112 Stop recording.;
+#X text 713 141 Delete recording and set duration to 0;
+#X text 758 171 Normalize so that largest sample value is 1;
+#X text 701 75 'start x' will begin recording from 'x' milliseconds
+\, 500 in this case \, from start of the table.;
+#X text 836 278 You can combine messages with commas like this.;
+#X text 788 242 Default behaviour is to fade in and out over 5 msec.
+This period can be changed with "fade x" messages.;
+#X floatatom 571 413 8 0 0 1 duration_in_samples - -;
+#X floatatom 544 433 8 0 0 1 duration_in_ms - -;
+#X symbolatom 517 453 12 0 0 1 table_name - -;
+#X obj 517 370 unpack s f f f;
+#X floatatom 598 393 6 0 0 1 samplerate - -;
+#N canvas 0 22 450 300 PLAYBACK 0;
+#X obj 150 154 s_playtable;
+#X obj 150 196 soundoutput;
+#X msg 150 60 bang;
+#X obj 150 92 pack \$0;
+#X msg 150 124 \$1-sample;
+#X connect 0 0 1 0;
+#X connect 0 0 1 1;
+#X connect 2 0 3 0;
 #X connect 3 0 4 0;
-#X connect 3 0 4 1;
-#X connect 5 0 3 1;
-#X connect 6 0 3 1;
-#X connect 8 0 3 1;
-#X connect 10 0 7 0;
-#X connect 10 1 1 0;
-#X connect 10 2 0 0;
-#X connect 10 3 11 0;
-#X connect 12 0 3 0;
-#X connect 13 0 12 0;
-#X connect 15 0 32 1;
-#X connect 16 0 32 1;
-#X connect 18 0 32 1;
-#X connect 19 0 32 1;
-#X connect 22 0 34 0;
-#X connect 22 1 34 0;
-#X connect 27 0 32 1;
-#X connect 29 0 32 1;
-#X connect 30 0 29 0;
-#X connect 32 0 10 0;
-#X connect 33 0 37 0;
-#X connect 34 0 32 0;
-#X connect 35 0 34 1;
-#X connect 36 0 37 1;
-#X connect 37 0 32 0;
+#X connect 4 0 0 0;
+#X restore 966 382 pd PLAYBACK;
+#X text 750 196 Output list containing: <table name> <recording duration
+in ms> <recording duration in samples> <samplerate>.;
+#X connect 0 0 8 1;
+#X connect 1 0 8 1;
+#X connect 2 0 8 1;
+#X connect 3 0 8 1;
+#X connect 4 0 8 1;
+#X connect 5 0 8 1;
+#X connect 6 0 8 1;
+#X connect 7 0 6 0;
+#X connect 8 0 29 0;
+#X connect 9 0 11 0;
+#X connect 10 0 11 1;
+#X connect 11 0 8 0;
+#X connect 12 0 8 1;
+#X connect 29 0 28 0;
+#X connect 29 1 27 0;
+#X connect 29 2 26 0;
+#X connect 29 3 30 0;

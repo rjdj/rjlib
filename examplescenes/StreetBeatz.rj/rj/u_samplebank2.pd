@@ -48,6 +48,10 @@ License along with this program. If not \, see <http://www.gnu.org/licenses/>.
 #X text 60 325 See the file LICENSE.txt for the full license text.
 ;
 #X restore 522 59 pd LICENSE-GPL;
+#X obj 515 159 r RJLIB;
+#X obj 515 180 route sf-samplerate;
+#X obj 515 202 s \$0-sr;
+#X text 511 138 Allow global setting of soundfile samplerate;
 #X connect 0 0 5 0;
 #X connect 1 0 19 0;
 #X connect 2 0 0 0;
@@ -80,3 +84,5 @@ License along with this program. If not \, see <http://www.gnu.org/licenses/>.
 #X connect 27 0 25 0;
 #X connect 28 0 27 3;
 #X connect 31 0 1 0;
+#X connect 33 0 34 0;
+#X connect 34 0 35 0;

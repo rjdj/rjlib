@@ -1,5 +1,5 @@
 #N canvas 373 183 808 432 10;
-#N canvas 147 0 795 617 fft-analysis 0;
+#N canvas 147 22 795 617 fft-analysis 0;
 #X obj 94 511 *~;
 #X obj 55 511 *~;
 #X obj 413 356 *~;
@@ -142,8 +142,6 @@ and window-msec (analysis window size in seconds and msec).;
 #X obj 479 103 u_loader e_vocoder-\$1 \$0;
 #X obj 545 257 loadbang;
 #X obj 545 279 f \$0;
-#X msg 545 300 \; pd dsp 1 \; \$1-window-size 1024 \; \$1-squelch 30
-\;;
 #X obj 111 186 inlet~;
 #X obj 212 186 inlet~;
 #X obj 109 238 outlet~;
@@ -156,9 +154,10 @@ in individual files.;
 #X text 123 148 See the file LICENSE.txt for the full license text.
 ;
 #X restore 563 50 pd LICENSE-BSD;
-#X connect 0 0 10 0;
+#X msg 545 300 \; \$1-window-size 1024 \; \$1-squelch 30 \;;
+#X connect 0 0 9 0;
 #X connect 3 0 2 0;
 #X connect 5 0 6 0;
-#X connect 6 0 7 0;
-#X connect 8 0 0 0;
-#X connect 9 0 0 1;
+#X connect 6 0 12 0;
+#X connect 7 0 0 0;
+#X connect 8 0 0 1;
