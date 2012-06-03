@@ -1,5 +1,7 @@
 g_channelstrip - mixer strip with GUI
 4
+g_compressorgui - graphical display for [e_mcompressor]
+3
 g_hradio - tagged horizontal radio button GUI
 g_hsl - tagged horizontal slider GUI
 g_hsl4 - four tagged horizontal sliders
@@ -16,4 +18,3 @@ g_vol - graphical volume control (dB)
 1
 g_vol2 - graphical stereo volume control (dB)
 1
-g_compressorgui - graphical display for [e_mcompressor]
