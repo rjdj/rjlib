@@ -25,6 +25,7 @@ u_loader - connect local state variables to global senders
 u_lowpass - compute biquad coefficients for a resonant lowpass filter (BW)
 u_lowpassq - compute biquad coefficients for a resonant lowpass filter (Q)
 u_makepoly - make midi-like instruments polyphonic
+u_makepolymono - make midi-like instruments polyphonic (mono version)
 u_messagesaver - collect presets into message boxes
 u_multisamplebank - samplebank for many mono files
 u_multisamplebank2 - samplebank for many stereo files
