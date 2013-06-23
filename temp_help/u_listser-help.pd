@@ -1,18 +1,19 @@
-#N canvas 151 38 806 431 10;
-#X obj 106 353 bng 15 250 50 0 empty empty end_of_list 17 7 1 10 -262144
+#N canvas 54 22 806 431 10;
+#X obj 86 343 bng 15 250 50 0 empty empty end_of_list 17 7 1 10 -262144
 -1 -1;
-#X msg 106 281 1 2 3 4 5;
-#X msg 55 243 bang;
-#X floatatom 55 333 5 0 0 0 - - -;
-#X text 169 282 list to serialize;
-#X obj 128 328 spigot;
-#X obj 161 308 tgl 15 0 empty empty loop 17 7 1 10 -262144 -1 -1 0
+#X msg 86 251 1 2 3 4 5;
+#X msg 35 213 bang;
+#X floatatom 35 313 5 0 0 0 - - -;
+#X text 149 252 list to serialize;
+#X obj 108 298 spigot;
+#X obj 141 278 tgl 15 0 empty empty loop 17 7 1 10 -262144 -1 -1 0
 1;
-#X obj 55 311 u_listser;
-#X obj 55 353 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+#X obj 35 281 u_listser;
+#X obj 35 343 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X text 89 244 Output the next element of the list;
-#N canvas 26 291 495 391 REFERENCE 0;
+#X text 69 214 Output the next element of the list;
+#N canvas 351 174 495 391 REFERENCE 0;
+#X text 24 31 Name: u_listser;
 #X text 24 111 Inlet 0: "bang" - Outputs next element of list.;
 #X text 24 131 Inlet 1: <list> - List to serialize.;
 #X text 24 171 Outlet 0: Current element in serialised list.;
@@ -24,7 +25,6 @@ from the [list]-abs collection).;
 [u_listloop] [u_listmap] [u_listnth] [u_listrandom] [u_listreduce]
 ;
 #X text 22 331 Tags: Message \, Lists;
-#X text 24 31 Name:u_listser;
 #X coords 0 -1 1 1 450 350 1 10 10;
 #X restore -454 58 pd REFERENCE;
 #X connect 1 0 7 1;

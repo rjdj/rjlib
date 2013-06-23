@@ -1,0 +1,80 @@
+#N canvas 1 22 1276 678 10;
+#X obj 1064 383 openpanel;
+#X obj 1063 458 table play-samp;
+#X msg 1064 404 read -resize \$1 play-samp;
+#X obj 1064 430 soundfiler;
+#X obj 1064 356 bng 20 250 50 0 empty empty open-sample 0 -6 1 10 -262144
+-1 -1;
+#X obj 552 494 soundoutput;
+#X msg 588 149 play-samp 0.5 2;
+#X text 786 175 original gain \, original pitch \, start at 500 ms
+;
+#X msg 601 201 play-samp 1 1 500 250;
+#X msg 597 178 play-samp 1 1 500;
+#X msg 608 295 bang;
+#X text 650 295 repeat last instruction;
+#X obj 670 474 spigot;
+#X obj 725 475 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 670 502 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 607 259 play-samp 0.8 -1 8000 8000;
+#X text 605 235 attenuated \, reversed \, starting at 8000ms \, playing
+for 8000ms;
+#X text 731 120 original gain \, original pitch \, start at 0 \, play
+for 8000ms;
+#X text 667 454 last outlet: bang at end of duration;
+#X text 785 199 original gain \, original pitch \, start at 500 ms
+\, play for 250ms;
+#X msg 552 98 play-samp;
+#X msg 701 360 sr 44100;
+#X msg 626 359 sr 22050;
+#X text 624 339 adjust file samplerate (Hz \, default 22050);
+#X text 733 143 attenuated \, transposed up an octave.Transposition
+is doen by resampling;
+#X msg 572 123 play-samp 1 1 0 8000;
+#X text 633 98 play all with original gain and original pitch;
+#X obj 552 433 s_playtable;
+#X msg 650 431 stop;
+#X text 696 434 stop playing;
+#X msg 700 402 fade \$1;
+#X floatatom 700 384 5 0 0 0 - - -;
+#X text 771 404 fade in/out time (default is 2msec);
+#N canvas 58 22 696 470 REFERENCE 0;
+#X text 110 41 Name: s_playtable;
+#X text 110 62 Summary: Low level \, but flexible table-sample player.
+;
+#X text 110 260 Description: s_playtable is controlled through messages
+composed of: <table name> <gain> <transposition> <start location (ms)>
+<duration (ms)> <looping 0/1>;
+#X text 110 104 Inlet 0: play-samp messages with various parameters-->see
+example. bang: to repeat last instruction.;
+#X text 110 155 Inlet 1: messages: sr to adjust sample rate. fade:
+fade in/out time. stop: to stop playback.;
+#X text 110 209 Outlet 0: signal output;
+#X text 110 229 Outlet 1: last outlet: bang at the end of duration.
+;
+#X text 113 346 Tags: table player \, sample player;
+#X coords 0 -1 1 1 450 350 1 100 20;
+#X restore 27 49 pd REFERENCE;
+#X connect 0 0 2 0;
+#X connect 2 0 3 0;
+#X connect 4 0 0 0;
+#X connect 6 0 27 0;
+#X connect 8 0 27 0;
+#X connect 9 0 27 0;
+#X connect 10 0 27 0;
+#X connect 12 0 14 0;
+#X connect 12 0 27 0;
+#X connect 13 0 12 1;
+#X connect 15 0 27 0;
+#X connect 20 0 27 0;
+#X connect 21 0 27 1;
+#X connect 22 0 27 1;
+#X connect 25 0 27 0;
+#X connect 27 0 5 0;
+#X connect 27 0 5 1;
+#X connect 27 1 12 0;
+#X connect 28 0 27 1;
+#X connect 30 0 27 1;
+#X connect 31 0 30 0;

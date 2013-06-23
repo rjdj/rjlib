@@ -1,0 +1,35 @@
+#N canvas 4 22 1041 555 10;
+#X obj 566 418 u_collect;
+#X msg 566 447;
+#X obj 617 393 bng 15 250 50 0 empty empty clear 17 7 1 10 -262144
+-1 -1;
+#X floatatom 566 390 5 0 0 0 - - -;
+#X msg 702 447;
+#X obj 765 393 bng 15 250 50 0 empty empty clear 17 7 1 10 -262144
+-1 -1;
+#X floatatom 702 370 5 0 0 0 - - -;
+#X obj 702 418 u_cocollect;
+#X obj 751 369 pack 1 2 3 4;
+#X floatatom 751 352 5 0 0 0 - - -;
+#X text 804 350 both also collect lists;
+#N canvas 0 22 565 646 REFERENCE 0;
+#X text 114 120 Name: u_cocollect;
+#X text 114 141 Summary: collect messages into a message box;
+#X text 114 214 Inlet 1: bang: bang to clear.;
+#X text 114 279 Outlet 0: message: collected numbers into one message.
+;
+#X text 116 381 Description: u_collect just collects messsages. u_cocollect
+collects messsages and ends each with a comma.;
+#X text 116 504 Related: u_collect;
+#X text 117 529 Tags:;
+#X text 114 194 Inlet 0: numbers to be collected.;
+#X coords 0 -1 1 1 450 450 1 100 100;
+#X restore 17 45 pd REFERENCE;
+#X connect 0 0 1 0;
+#X connect 2 0 0 1;
+#X connect 3 0 0 0;
+#X connect 5 0 7 1;
+#X connect 6 0 7 0;
+#X connect 7 0 4 0;
+#X connect 8 0 7 0;
+#X connect 9 0 8 0;
