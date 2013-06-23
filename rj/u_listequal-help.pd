@@ -1,26 +1,41 @@
-#N canvas 354 285 581 508 10;
-#X text 49 22 u_listequal - compare two number lists;
-#X text 77 53 u_listequal checks if two lists containing only numbers
-are the same. If both are equal \, a 1 is send to the outlet \, else
-a 0;
-#X text 79 374 u_listequal does not work with lists containing symbols!
-;
-#X obj 115 232 u_listequal;
-#X msg 189 207 1 2 3 4 5;
-#X obj 115 259 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+#N canvas 264 46 929 532 10;
+#X obj 238 235 u_listequal;
+#X msg 312 210 1 2 3 4 5;
+#X obj 238 262 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
-#X obj 115 313 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 238 316 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 189 183 loadbang;
-#X msg 115 127 1 2 3 4 5;
-#X msg 123 152 0 1 2 3 4;
-#X msg 128 176 1 2 3;
-#X text 77 396 Check [list-compare] from the [list]-abs collection
-if you need to compare symbols.;
-#X connect 3 0 5 0;
-#X connect 4 0 3 1;
-#X connect 5 0 6 0;
-#X connect 7 0 4 0;
-#X connect 8 0 3 0;
-#X connect 9 0 3 0;
-#X connect 10 0 3 0;
+#X obj 312 186 loadbang;
+#X msg 238 130 1 2 3 4 5;
+#X msg 246 155 0 1 2 3 4;
+#X msg 251 179 1 2 3;
+#N canvas 341 158 582 570 REFERENCE 0;
+#X text 24 31 Name: u_listequal;
+#X text 25 71 Summary: compare two number lists;
+#X text 24 259 Description: checks if two lists containing only numbers
+are the same. If both are equal \, a 1 is send to the outlet \, else
+a 0 NOTE: u_listequal does not work with lists containing symbols!
+Check [list-compare] from the [list]-abs collection if you need to
+compare symbols.;
+#X text 26 356 See also: [list-compare] [list];
+#X text 24 434 Tags: utility \, list;
+#X text 24 124 Inlet 0: list.;
+#X text 23 191 Outlet 0: Outputs 0 if lists at inlets differ and 1
+if lists are equal.;
+#X text 24 144 Inlet 1: list we want to compare with Inlet 0;
+#X coords 0 -1 1 1 450 450 1 10 10;
+#X restore -355 58 pd REFERENCE;
+#X text 108 61 Example:;
+#X text 225 489 RjDj Library (https://github.com/rjdj/rjlib) - 2011
+;
+#X obj -355 32 cnv 15 450 20 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X obj -352 34 u_listequal;
+#X text -231 35 - compare two number lists;
+#X connect 0 0 2 0;
+#X connect 1 0 0 1;
+#X connect 2 0 3 0;
+#X connect 4 0 1 0;
+#X connect 5 0 0 0;
+#X connect 6 0 0 0;
+#X connect 7 0 0 0;

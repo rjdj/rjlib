@@ -1,50 +1,65 @@
-#N canvas 212 72 973 689 10;
-#X obj 121 172 inlet;
-#X floatatom 175 194 5 0 0 0 - - -;
-#X floatatom 383 334 5 0 0 0 - - -;
-#X floatatom 382 525 5 0 0 0 - - -;
-#X obj 382 504 r \$0-float;
-#X floatatom 272 193 5 0 0 0 - - -;
-#X floatatom 525 195 5 0 0 0 - - -;
-#X floatatom 382 624 5 0 0 0 - - -;
-#X floatatom 322 194 5 0 0 0 - - -;
-#X obj 383 383 t a b;
-#X obj 383 407 list prepend set;
-#X obj 383 429 list trim;
-#X msg 383 452 a b c d 93;
-#X obj 382 603 r \$0-prep;
-#X obj 525 217 list prepend prep;
-#X msg 175 215 attack \$1;
-#X obj 121 312 u_dispatch \$0 attack;
-#X obj 383 313 r \$0-attack;
-#X obj 383 360 r \$0-alist;
-#X obj 322 216 list prepend alist a b c d;
-#X text 123 45 Wrapper around [route] that automatically sends incoming
-messages to a receiver called "\$1-\$2" \, if they start with \$2.
-;
-#X text 125 94 Non-matching messages get passed on to the outlet.;
-#X text 124 114 Useful for dispatching of inlet-messages if you create
+#N canvas 103 67 1279 724 10;
+#X obj 108 118 inlet;
+#X floatatom 162 140 5 0 0 0 - - -;
+#X floatatom 370 280 5 0 0 0 - - -;
+#X floatatom 369 471 5 0 0 0 - - -;
+#X obj 369 450 r \$0-float;
+#X floatatom 259 139 5 0 0 0 - - -;
+#X floatatom 512 141 5 0 0 0 - - -;
+#X floatatom 369 570 5 0 0 0 - - -;
+#X floatatom 309 140 5 0 0 0 - - -;
+#X obj 370 329 t a b;
+#X obj 370 353 list prepend set;
+#X obj 370 375 list trim;
+#X msg 370 398 a b c d 93;
+#X obj 369 549 r \$0-prep;
+#X obj 512 163 list prepend prep;
+#X msg 162 161 attack \$1;
+#X obj 108 258 u_dispatch \$0 attack;
+#X obj 370 259 r \$0-attack;
+#X obj 370 306 r \$0-alist;
+#X obj 309 162 list prepend alist a b c d;
+#X text 111 60 Useful for dispatching of inlet-messages if you create
 chains of [u_dispatch] objects like below:;
-#X text 274 312 sends to this:;
-#X text 271 358 sends to this:;
-#X text 268 502 sends to this:;
-#X text 268 603 sends to this:;
-#X msg 476 271 help;
-#X obj 121 503 u_dispatch \$0 float;
-#X obj 121 600 u_dispatch \$0 prep;
-#X obj 121 359 u_dispatch \$0 alist;
-#X text 473 252 special method "help" to print all active u_dispatch
+#X text 261 258 sends to this:;
+#X text 258 304 sends to this:;
+#X text 255 448 sends to this:;
+#X text 255 549 sends to this:;
+#X msg 408 227 help;
+#X obj 108 449 u_dispatch \$0 float;
+#X obj 108 546 u_dispatch \$0 prep;
+#X obj 108 305 u_dispatch \$0 alist;
+#X text 405 208 special method "help" to print all active u_dispatch
 targets;
-#X obj 121 630 u_dispatch \$0 bang;
-#X obj 258 630 r \$0-bang;
-#X msg 135 215 bang;
-#X obj 258 658 print BANG;
-#X obj 671 527 u_dispatch \$0 symbol;
-#X text 643 508 This does not work \, don't use it:;
-#X obj 617 75 u_loader dispatch-tag \$0;
-#X text 614 51 Also see:;
-#X text 47 18 u_dispatch - dispatch messages by selector to local senders
+#X obj 108 576 u_dispatch \$0 bang;
+#X obj 245 576 r \$0-bang;
+#X msg 122 161 bang;
+#X obj 245 604 print BANG;
+#X obj 598 399 u_dispatch \$0 symbol;
+#X text 570 380 This does not work \, don't use it:;
+#N canvas 53 166 582 570 REFERENCE 0;
+#X text 24 91 Argument 0:;
+#X text 24 124 Inlet 0:;
+#X text 24 31 Name: u_dispatch;
+#X text 24 51 Summary: dispatch messages by selector to local senders
 ;
+#X text 24 434 Tags: utility \, messages;
+#X text 24 187 Outlet 0: non-matching messages passed to this outlet.
+;
+#X text 24 234 Description: Wrapper around [route] that automatically
+sends incoming messages to a receiver called "\$1-\$2" \, if they start
+with \$2. Useful for dispatching of inlet-messages if you create chains
+of [u_dispatch].;
+#X text 24 334 See also: [u_loader dispatch-tag \$0];
+#X coords 0 -1 1 1 450 450 1 10 10;
+#X restore -415 58 pd REFERENCE;
+#X obj -415 28 cnv 15 450 20 empty empty empty 20 12 0 14 -261234 -66577
+0;
+#X text 48 61 Example:;
+#X text 316 650 RjDj Library (https://github.com/rjdj/rjlib) - 2011
+;
+#X obj -412 30 u_dispatch;
+#X text -301 30 - dispatch messages by selector to local senders;
 #X connect 0 0 16 0;
 #X connect 1 0 15 0;
 #X connect 4 0 3 0;
@@ -58,13 +73,13 @@ targets;
 #X connect 13 0 7 0;
 #X connect 14 0 16 0;
 #X connect 15 0 16 0;
-#X connect 16 0 30 0;
+#X connect 16 0 28 0;
 #X connect 17 0 2 0;
 #X connect 18 0 9 0;
 #X connect 19 0 16 0;
-#X connect 27 0 16 0;
-#X connect 28 0 29 0;
-#X connect 29 0 32 0;
-#X connect 30 0 28 0;
-#X connect 33 0 35 0;
-#X connect 34 0 16 0;
+#X connect 25 0 16 0;
+#X connect 26 0 27 0;
+#X connect 27 0 30 0;
+#X connect 28 0 26 0;
+#X connect 31 0 33 0;
+#X connect 32 0 16 0;
