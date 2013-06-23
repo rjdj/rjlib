@@ -1,0 +1,105 @@
+#N canvas 84 40 1227 673 10;
+#X obj 686 253 g_nbx delr;
+#X obj 686 218 g_nbx dell;
+#X obj 686 358 g_nbx bpitch;
+#X obj 686 288 g_nhsl feedback 0 1;
+#X msg 686 569 dry 0.2 \, bq 2 \, basedur 500 \, bpitch 83 \, feedback
+0.99 \, dell 2 \, delr 3 \,;
+#X obj 686 526 u_cocollect;
+#X obj 570 525 soundoutput;
+#X msg 703 500 help;
+#X obj 570 500 e_dubdel mydubdel;
+#X obj 686 183 g_nbx basedur;
+#X obj 686 323 g_nbx bq;
+#X obj 686 398 g_hsl dry 0 1;
+#X msg 730 441 save;
+#X obj 730 468 t a b;
+#X obj 570 448 tgl 15 0 empty empty empty 17 7 0 10 -204786 -1 -1 0
+1;
+#X obj 571 97 loadbang;
+#X text 840 293 feedback - delay feedback;
+#X text 764 328 bq - bandpass Q: resonance (default 2);
+#X text 779 440 e_dubdel is saveable;
+#X text 782 187 basedur - base duration for delays;
+#X msg 571 124 dry 0.2 \, bq 2 \, basedur 500 \, bpitch 83 \, feedback
+0.99 \, dell 2 \, delr 3 \,;
+#N canvas 537 164 740 697 REFERENCE 0;
+#X text 114 161 Argument 0: name for state saving (required);
+#X text 114 141 Summary: beat synchronized pingpong or dub delay;
+#X text 114 121 Name: e_dubdel;
+#X text 114 181 Inlet 0: left audio signal to apply effect on;
+#X text 114 201 Inlet 1: right audio signal to apply effect on;
+#X text 114 332 Outlet 0: left audio signal.;
+#X text 114 352 Outlet 1: right audio signal.;
+#X text 115 393 Description: e_dubdel is a pingpong delay line with
+a bandpass filter in the delay path. Left and right delay times are
+set using in reference to a base duration to ease beat synchronization.
+Just set the time of your beats and use the dell and delr methods to
+set beat divisions. The feedback is applied to both delay paths.;
+#X text 122 529 Tags: delay \, effect \, pingpong;
+#X text 114 371 Outlet 2: on "save" \, the current state is reported
+here.;
+#X text 114 221 Inlet 2: Many method messages. dry <x>: dry/wet mix
+\, 0=all dry. bq <freq>: frequency of bandpass filter in delay path.
+bpitch <pitch>: bandpass pitch in midi units (0-127). basedur <time>:
+reference delay duration in msec. dell <divisor>: delay divisor left
+\, actual delay will be basedur/dell. delr <divisor>: delay divisor
+right \, actual delay will be basedur/delr. feedback <amount>: delay
+feedback. save: report current settings to last outlet.;
+#X coords 0 -1 1 1 450 450 1 100 100;
+#X restore 5 28 pd REFERENCE;
+#N canvas 0 22 377 419 test__ 0;
+#X obj 45 206 s_rhodey mypiano;
+#X obj 45 168 pack 0 0;
+#X obj 45 114 m_majorscale 60;
+#X obj 45 87 random 7;
+#X obj 45 60 metro 1000;
+#X obj 45 141 makenote 80 50;
+#X obj 46 261 e_pan 0.5;
+#X obj 109 238 hsl 50 15 0 1 0 0 empty empty pan 20 8 1 10 -262144
+-86277 -1 0 1;
+#X obj 45 17 inlet;
+#X obj 45 38 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X obj 45 292 outlet~;
+#X obj 105 292 outlet~;
+#X connect 0 0 6 0;
+#X connect 1 0 0 0;
+#X connect 2 0 5 0;
+#X connect 3 0 2 0;
+#X connect 4 0 3 0;
+#X connect 5 0 1 0;
+#X connect 5 1 1 1;
+#X connect 6 0 10 0;
+#X connect 6 1 11 0;
+#X connect 7 0 6 1;
+#X connect 8 0 9 0;
+#X connect 9 0 4 0;
+#X restore 570 472 pd test__;
+#X text 834 394 dry - amount of dry signal;
+#X text 833 412 dry=0 means fully wet (default);
+#X text 783 216 dell - delay divisor left.;
+#X text 783 230 Actual delay: basedur/dell;
+#X text 785 250 delr - delay divisor right.;
+#X text 785 264 Actual delay: basedur/delr;
+#X text 762 360 bandpass pitch in midi units (0-127);
+#X connect 0 0 3 0;
+#X connect 1 0 0 0;
+#X connect 2 0 11 0;
+#X connect 3 0 10 0;
+#X connect 5 0 4 0;
+#X connect 7 0 8 2;
+#X connect 8 0 6 0;
+#X connect 8 1 6 1;
+#X connect 8 2 5 0;
+#X connect 9 0 1 0;
+#X connect 10 0 2 0;
+#X connect 11 0 8 2;
+#X connect 12 0 13 0;
+#X connect 13 0 8 2;
+#X connect 13 1 5 1;
+#X connect 14 0 22 0;
+#X connect 15 0 20 0;
+#X connect 20 0 9 0;
+#X connect 22 0 8 0;
+#X connect 22 1 8 1;

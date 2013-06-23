@@ -1,0 +1,66 @@
+#N canvas 228 135 1119 682 10;
+#N canvas 0 22 450 300 store 0;
+#X msg 155 128 aux2name chan1-2 \, aux1name chan1-1 \,;
+#X obj 155 98 inlet;
+#X obj 88 128 outlet;
+#X obj 208 97 loadbang;
+#X connect 0 0 2 0;
+#X connect 1 0 0 0;
+#X connect 3 0 0 0;
+#X restore 648 230 pd store;
+#N canvas 0 22 450 300 store 0;
+#X msg 155 128 aux2 0.341772 \, aux1 0.151899 \, pan 0.708661 \, level
+43.1646 \,;
+#X obj 155 98 inlet;
+#X obj 88 128 outlet;
+#X obj 208 97 loadbang;
+#X connect 0 0 2 0;
+#X connect 1 0 0 0;
+#X connect 3 0 0 0;
+#X restore 815 231 pd store;
+#N canvas 0 22 711 385 store 0;
+#X obj 155 98 inlet;
+#X obj 88 128 outlet;
+#X obj 208 97 loadbang;
+#X msg 155 128;
+#X connect 0 0 3 0;
+#X connect 2 0 3 0;
+#X connect 3 0 1 0;
+#X restore 975 232 pd store;
+#X obj 505 253 g_channelstrip chan1;
+#X obj 672 253 g_channelstrip chan2;
+#X obj 832 254 g_channelstrip chan3;
+#X obj 136 529 u_channelstrip;
+#X text 58 528 Also see:;
+#X obj 514 546 catch~ chan1-1;
+#X obj 630 546 catch~ chan1-2;
+#X text 511 507 Example: After pressing autoaux in first channel from
+above \, aux signals go here:;
+#N canvas 609 128 674 665 REFERENCE 0;
+#X text 119 243 Argument: <NAME> (required!);
+#X text 118 273 Inlet0~: Signal in;
+#X text 119 290 Inlet1: Control messages;
+#X text 119 324 Outlet 0 + 1: Panned signal left and right;
+#X text 119 344 Outlet 2: Aux1 signal (postfader);
+#X text 119 363 Outlet 3: Aux2 signal (postfader);
+#X text 119 384 Outlet 4: Control messages to set message boxes;
+#X text 120 146 Name: g_channelstrip;
+#X text 118 188 Summary: mixer strip bundled with GUI;
+#X coords 0 -1 1 1 400 500 1 100 100;
+#X restore 30 66 pd REFERENCE;
+#X obj 676 66 bng 15 250 50 0 empty empty save 17 7 1 10 -262144 -1
+-1;
+#X text 672 91 Send control messages to outlet 4 See [pd store] for
+how to save these messages into your patch.;
+#X obj 676 126 bng 15 250 50 0 empty empty autoaux 17 7 1 10 -262144
+-1 -1;
+#X text 673 158 Rename aux1 and aux2 from first argument. Result will
+be: "ARG1-1" and "ARG1-2". Make sure that your have the respective
+[catch~ ARG1-1] and [catch~ ARG1-2] available \, otherwise Pd will
+complain.;
+#X connect 0 0 3 1;
+#X connect 1 0 4 1;
+#X connect 2 0 5 1;
+#X connect 3 4 0 0;
+#X connect 4 4 1 0;
+#X connect 5 4 2 0;

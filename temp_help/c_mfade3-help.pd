@@ -1,0 +1,74 @@
+#N canvas 53 133 1059 587 10;
+#X obj 785 488 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#N canvas 0 22 450 300 (subpatch) 0;
+#X array \$0-scope 1000 float 2;
+#X coords 0 1 999 -1 200 140 1;
+#X restore 543 423 graph;
+#X obj 576 210 phasor~ 123;
+#X obj 576 231 -~ 0.5;
+#X obj 576 252 *~ 2;
+#X obj 561 172 noise~;
+#X obj 720 159 hsl 300 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 28100 1;
+#X obj 717 203 nbx 7 20 0 1 0 0 empty empty empty 0 -8 0 16 -204786
+-1 -1 0.939799 256;
+#X obj 717 228 sig~;
+#X obj 716 250 lop~ 0.5;
+#X obj 785 465 loadbang;
+#X obj 546 127 osc~ 400;
+#X obj 546 285 c_mfade3;
+#X text 773 424 ajf2009;
+#X obj 546 346 soundoutput;
+#X obj 775 444 catch~ \$0-s;
+#X obj 664 346 throw~ \$0-s;
+#X obj 785 506 metro 90;
+#X obj 717 177 cnv 15 306 17 empty empty empty 10 8 1 12 -1 -66577
+0;
+#X obj 718 178 cnv 15 100 15 empty empty a<->b 10 8 1 12 -233017 -66577
+0;
+#X obj 820 178 cnv 15 100 15 empty empty b<->c 10 8 1 12 -191407 -66577
+0;
+#X obj 922 178 cnv 15 100 15 empty empty c<->a 10 8 1 12 -233017 -66577
+0;
+#X text 574 155 noise (b);
+#X text 614 192 saw (c);
+#X text 560 109 sine (a);
+#N canvas 61 202 665 672 REFERENCE 0;
+#X text 114 121 Name: c_mfade3;
+#X text 114 138 Summary: wrapped crossfader between three inputs;
+#X text 112 167 Inlet 0: audio signal (a);
+#X text 112 184 Inlet 1: audio signal (b);
+#X text 112 201 Inlet 3: audio signal (c);
+#X text 112 218 Inlet 4: audio signal to crossfade signals (a) \, (b)
+and (c). The range 0-1 fades through signals in the order: a \, mix(ab)
+\, b \, mix(bc) \, c \, mix(ca).;
+#X text 112 261 Outlet 0: mix of (a) \, (b) rsp. (c);
+#X text 122 529 Tags: mixing \, crossfade \, wavetable synthesis;
+#X text 112 321 Description: c_mfade3 allows one to crossfade three
+signals \, mixing each possible pairs (ab \, bc \, ca). The last inlet
+selects the active mix: 0 ... 1/3 will fade signals (a) and (b) \,
+1/3 ... 2/3 will mix (b) and (c) \, 2/3 ... 1 will mix (c) and (a).
+The control inlet is wrapped so it repeats with values larger than
+1.0. The mixing uses linear interpolation.;
+#X coords 0 -1 1 1 450 450 1 100 100;
+#X restore 5 48 pd REFERENCE;
+#X floatatom 675 204 5 0 0 0 - - -;
+#X obj 775 530 tabwrite~ \$0-scope;
+#X connect 0 0 17 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 12 2;
+#X connect 5 0 12 1;
+#X connect 6 0 7 0;
+#X connect 7 0 8 0;
+#X connect 8 0 9 0;
+#X connect 9 0 12 3;
+#X connect 10 0 0 0;
+#X connect 11 0 12 0;
+#X connect 12 0 16 0;
+#X connect 12 0 14 0;
+#X connect 12 0 14 1;
+#X connect 15 0 27 0;
+#X connect 17 0 27 0;
+#X connect 26 0 8 0;
