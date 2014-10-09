@@ -1,9 +1,9 @@
-#N struct 1699-symarray float x array symbols 1699-sym;
-#N struct 1699-sym symbol name float on;
-#N struct 1703-symarray float x array symbols 1703-sym;
-#N struct 1703-sym symbol name float on;
-#N struct 1705-symarray float x array symbols 1705-sym;
-#N struct 1705-sym symbol name float on;
+#N struct 1321-symarray float x array symbols 1321-sym;
+#N struct 1321-sym symbol name float on;
+#N struct 1325-symarray float x array symbols 1325-sym;
+#N struct 1325-sym symbol name float on;
+#N struct 1327-symarray float x array symbols 1327-sym;
+#N struct 1327-sym symbol name float on;
 #N canvas 83 69 1079 562 10;
 #X declare -path .;
 #X msg 516 99 open <directory>;
@@ -46,8 +46,8 @@ lists of '<index> <table>'.;
 ;
 #X obj 10 10 u_samplekit;
 #X text 131 11 - load a directory of samples;
-#N canvas 322 156 516 306 HINTS 0;
-#N canvas 409 33 772 685 gmkit 0;
+#N canvas 78 191 516 306 HINTS 0;
+#N canvas 635 146 772 685 gmkit 0;
 #N canvas 155 100 588 406 list2symbol 0;
 #X msg 326 212 set %s;
 #X obj 234 260 t a;
@@ -141,13 +141,12 @@ in _main.pd to be able to use relative directory names:;
 #X connect 5 0 0 0;
 #X restore 870 331 pd HINTS;
 #X text 789 130 Open samplekit and use custom mapping textfile.;
-#X text 623 99 Open samplekits using 'default.txt' as mapping file.
-;
 #X text 650 223 Size <index>: report size of table at <index> in samples
 to 2nd outlet.;
 #X text 617 185 Dump the current mapping to the second outlet as lists
 of "<index> <table>";
 #X text 597 158 Print the current mapping.;
+#X text 623 99 Open samplekits using 'index.txt' as mapping file.;
 #X connect 0 0 6 0;
 #X connect 1 0 6 0;
 #X connect 2 0 6 0;

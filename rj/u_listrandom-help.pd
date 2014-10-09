@@ -13,7 +13,7 @@
 #X floatatom 620 216 5 0 0 2 range - -;
 #X floatatom 667 217 5 0 0 2 length - -;
 #X msg 583 300 bang;
-#N canvas 110 354 582 570 REFERENCE 0;
+#N canvas 103 144 582 570 REFERENCE 0;
 #X text 24 31 Name: [u_listrandom];
 #X text 24 264 Description: generates a list of pseudorandom integers
 from 0 to N-1 \, where N is the first creation argument. The second
@@ -30,9 +30,8 @@ in outputted list).;
 #X text 24 154 Inlet 0: <message> 'bang' - outputs list \, 'seed <integer>'
 - sets the seed of the random.;
 #X text 24 204 Inlet 2: Length control inlet;
-#X text 24 364 See also: [u_list drip] [u_listequal] [u_listfilter]
-[u_listloop] [u_listmap] [u_listnth] [u_listrandom] [u_listreduce]
-[u_listser];
+#X text 24 364 See also: [u_listdrip] [u_listequal] [u_listfilter]
+[u_listloop] [u_listmap] [u_listnth] [u_listreduce] [u_listser];
 #X coords 0 -1 1 1 450 450 1 10 10;
 #X restore 15 58 pd REFERENCE;
 #X obj 15 28 cnv 15 450 20 empty empty empty 20 12 0 14 -261234 -66577
