@@ -29,19 +29,19 @@
 #X text 707 174 renaming bus target;
 #X text 495 512 Read and sending can introduce delays and thus phasing
 effects.;
-#N canvas 276 199 702 587 REFERENCE 0;
+#N canvas 276 187 702 587 REFERENCE 1;
 #X text 114 121 Name: c_bus;
 #X text 114 140 Summary: create a named audio bus (mono);
 #X text 115 178 Argument 0: name of bus. Must be unique and not used
 in [catch~] or [s~] anywhere else.;
-#X text 114 283 Description: [c_bus] is a routing helper for audio.
-It receives audio throw~n to its internal [catch~] named by its argument
-\, then [send~]s it along to a [receive~] of the same name. [c_bus]
-is meant to be used with the [c_tobus] to send audio to a bus and with
-[c_frombus] to read from the bux.;
 #X text 116 222 Inlet 0: dummy inlet for execution order forcing.;
 #X text 116 238 Outlet 0: dummy outlet for execution order forcing.
 Carries no sound signal.;
+#X text 114 283 Description: [c_bus] is a routing helper for audio.
+It receives audio [throw~]s to its internal [catch~] named by its argument
+\, then [send~]s it along to a [receive~] of the same name. [c_bus]
+is meant to be used with the [c_tobus] to send audio to a bus and with
+[c_frombus] to read from the bus.;
 #X coords 0 -1 1 1 450 450 1 100 100;
 #X restore 18 39 pd REFERENCE;
 #X text 18 16 c_bus - create a named audio bus;
@@ -50,9 +50,9 @@ Carries no sound signal.;
 #X text 481 112 Dummy in/outlets can be used to force execution order.
 Here bus THREE will execute prior to bus FOUR.;
 #X text 478 287 Reading from busses;
-#N canvas 191 186 902 527 real-world-example 0;
+#N canvas 191 186 902 527 real-world-example 1;
 #X obj 56 435 soundoutput;
-#X obj 55 17 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+#X obj 55 17 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
 ;
 #X obj 55 40 metro 250;
 #N canvas 165 56 622 412 plings 0;
