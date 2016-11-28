@@ -1,9 +1,9 @@
 #N canvas 25 103 972 527 10;
 #X obj 554 57 tgl 15 0 empty empty on/off 17 7 1 10 -262144 -1 -1 0
 1;
-#X floatatom 554 232 5 0 0 0 - - -;
-#X floatatom 619 144 5 0 0 2 length - -;
-#X floatatom 684 146 5 0 0 2 period - -;
+#X floatatom 554 232 5 0 0 0 - - -, f 5;
+#X floatatom 619 144 5 0 0 2 length - -, f 5;
+#X floatatom 684 146 5 0 0 2 period - -, f 5;
 #X obj 554 284 timer;
 #X obj 554 307 list prepend;
 #X obj 554 259 t b b a;
@@ -17,7 +17,7 @@
 #X obj 554 201 c_multimetro 16 125;
 #X obj 549 430 tgl 15 0 empty empty on/off 17 7 1 10 -262144 -1 -1
 0 1;
-#X floatatom 549 469 5 0 0 0 - - -;
+#X floatatom 549 469 5 0 0 0 - - -, f 5;
 #X obj 549 448 c_multimetro 0 125;
 #X text 546 392 If you set the pattern length to 0 \, the counter will
 not be bounded and grow constanly:;
@@ -36,8 +36,8 @@ not be bounded and grow constanly:;
 #X obj 186 335 pack 0 0;
 #X obj 186 180 t a a;
 #X obj 263 133 / 100;
-#X floatatom 263 113 5 0 0 1 swing-percentage - -;
-#N canvas 0 0 450 300 show 0;
+#X floatatom 263 113 5 0 0 1 swing-percentage - -, f 5;
+#N canvas 0 22 450 300 show 0;
 #X obj 41 39 inlet;
 #X obj 186 36 inlet;
 #X obj 41 124 outlet;
@@ -52,7 +52,7 @@ not be bounded and grow constanly:;
 #X restore 205 366 pd show;
 #X msg 205 386 135 115;
 #X obj 186 132 m_bpm2ms;
-#X floatatom 186 112 5 0 0 0 bpm - -;
+#X floatatom 186 112 5 0 0 0 bpm - -, f 5;
 #X obj 186 154 / 4;
 #X obj 186 424 outlet;
 #X text 86 27 This example shows how you can delay each second beat
@@ -88,9 +88,6 @@ tempo the same.;
 #X text 114 161 Argument 0: pattern length. If length is 0 \, then
 the counter is unbounded.;
 #X text 114 194 Argument 1: single period;
-#X text 114 214 Inlet 0: 0/1 rsp. bang/stop for start/stop of metro.
-"set POS" message to set the internal counter. "hold 0/1" message to
-pause counting \, so that the same number is send all the time.;
 #X text 114 273 Inlet 1: pattern length. If length is 0 \, then the
 counter is unrestricted.;
 #X text 114 306 Inlet 2: (list of) periods \, will be cycled.;
@@ -106,6 +103,9 @@ second inlet.;
 as: duration of beat0==200 \, duration of beat1=300 \, duration of
 beat2=400 \, duration of beat3=150 and so on for beat([modulo pattern
 length] modulo period list-length).;
+#X text 114 214 Inlet 0: 0/1 rsp. bang/stop for start/stop of metro.
+"set POS" message to set the internal counter. "hold 0/1" message to
+pause counting \, so that the same number is sent all the time.;
 #X coords 0 -1 1 1 450 450 1 100 100;
 #X restore 21 35 pd REFERENCE;
 #X text 19 10 c_multimetro - variable period metro with counter inside.
