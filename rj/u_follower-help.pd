@@ -1,0 +1,20 @@
+#N canvas 0 22 477 281 10;
+#X floatatom 37 141 5 0 0 0 - - -;
+#X floatatom 37 234 5 0 0 0 - - -;
+#X obj 37 202 u_follower 100;
+#X obj 118 166 g_hsl latency 0 1;
+#X obj 37 85 metro 500;
+#X obj 37 62 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1 1
+;
+#X obj 37 114 random 100;
+#X text 7 20 [u_follower] - a simple smoother for constant rate messages
+;
+#X text 119 140 latency (0= no latency \, 0.99= very smoothed \, 1=infinite)
+;
+#X text 272 170 default is 0.8;
+#X connect 0 0 2 0;
+#X connect 2 0 1 0;
+#X connect 3 0 2 1;
+#X connect 4 0 6 0;
+#X connect 5 0 4 0;
+#X connect 6 0 0 0;

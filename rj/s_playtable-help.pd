@@ -1,4 +1,4 @@
-#N canvas 289 87 888 636 10;
+#N canvas 506 49 888 636 10;
 #X obj 692 502 openpanel;
 #X obj 691 577 table play-samp;
 #X msg 692 523 read -resize \$1 play-samp;
@@ -21,8 +21,6 @@
 #X msg 177 319 play-samp 0.8 -1 8000 8000;
 #X text 175 295 attenuated \, reversed \, starting at 8000ms \, playing
 for 8000ms;
-#X text 117 111 <table name> <gain> <transposition> <start location
-(ms)> <duration (ms)> <looping 0/1>;
 #X text 301 180 original gain \, original pitch \, start at 0 \, play
 for 8000ms;
 #X text 237 544 last outlet: bang at end of duration;
@@ -36,42 +34,44 @@ for 8000ms;
 #X text 116 56 Low level \, but flexible table-sample player;
 #X text 117 82 s_playtable is controlled through messages composed
 of:;
-#X text 303 203 attenuated \, transposed up an octave.Transposition
-is doen by resampling;
 #X msg 142 183 play-samp 1 1 0 8000;
 #X text 203 158 play all with original gain and original pitch;
 #X obj 122 523 s_playtable;
 #X msg 220 521 stop;
 #X text 266 524 stop playing;
-#X floatatom 270 454 5 0 0 0 - - -;
+#X floatatom 270 454 5 0 0 0 - - -, f 5;
 #X msg 270 492 fade \$1 \$2;
 #X text 336 471 fade in & out time (default is 0 ms \, 2 ms);
-#X floatatom 323 453 5 0 0 0 - - -;
+#X floatatom 323 453 5 0 0 0 - - -, f 5;
 #X obj 270 472 pack 0 2;
 #X obj 508 430 s RJLIB;
 #X msg 508 399 sf-samplerate 44100;
 #X text 501 375 Set soundfile samplerate globally:;
+#X text 303 203 attenuated \, transposed up an octave \, transposition
+is done by resampling;
+#X text 117 111 <table name> <gain> <transposition> <start location
+(ms)> <duration (ms);
 #X connect 0 0 2 0;
 #X connect 2 0 3 0;
 #X connect 4 0 0 0;
-#X connect 6 0 31 0;
-#X connect 8 0 31 0;
-#X connect 9 0 31 0;
-#X connect 10 0 31 0;
+#X connect 6 0 29 0;
+#X connect 8 0 29 0;
+#X connect 9 0 29 0;
+#X connect 10 0 29 0;
 #X connect 12 0 14 0;
-#X connect 12 0 31 0;
+#X connect 12 0 29 0;
 #X connect 13 0 12 1;
-#X connect 15 0 31 0;
-#X connect 21 0 31 0;
-#X connect 23 0 31 1;
-#X connect 24 0 31 1;
-#X connect 29 0 31 0;
-#X connect 31 0 5 0;
-#X connect 31 0 5 1;
-#X connect 31 1 12 0;
-#X connect 32 0 31 1;
-#X connect 34 0 38 0;
-#X connect 35 0 31 1;
-#X connect 37 0 38 1;
-#X connect 38 0 35 0;
-#X connect 40 0 39 0;
+#X connect 15 0 29 0;
+#X connect 20 0 29 0;
+#X connect 22 0 29 1;
+#X connect 23 0 29 1;
+#X connect 27 0 29 0;
+#X connect 29 0 5 0;
+#X connect 29 0 5 1;
+#X connect 29 1 12 0;
+#X connect 30 0 29 1;
+#X connect 32 0 36 0;
+#X connect 33 0 29 1;
+#X connect 35 0 36 1;
+#X connect 36 0 33 0;
+#X connect 38 0 37 0;

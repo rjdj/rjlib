@@ -1,14 +1,14 @@
 #N canvas 28 90 913 314 10;
 #X obj 489 193 s_blsquare;
 #X obj 489 66 mtof;
-#X floatatom 489 46 5 0 0 0 - - -;
-#X obj 490 248 soundoutput;
-#X floatatom 640 31 5 0 0 2 pwm_freq - -;
-#X floatatom 576 194 5 0 0 1 phase_(0...1) - -;
-#X obj 640 50 osc~ 0.5;
-#X obj 522 129 pack 0 10;
-#X obj 522 107 / 100;
-#X floatatom 522 89 5 0 0 0 - - -;
+#X floatatom 489 46 5 0 0 0 - - -, f 5;
+#X obj 489 248 soundoutput;
+#X floatatom 641 31 5 0 0 2 pwm_freq - -, f 5;
+#X floatatom 576 194 5 0 0 1 phase_(0...1) - -, f 5;
+#X obj 641 50 osc~ 0.5;
+#X obj 517 129 pack 0 10;
+#X obj 517 107 / 100;
+#X floatatom 517 89 5 0 0 0 - - -, f 5;
 #X obj 641 110 +~ 0.5;
 #X obj 641 82 *~ 0.1;
 #X obj 641 154 *~ 1;
@@ -16,8 +16,8 @@
 1;
 #X text 650 128 it's best to modulate around 0.5;
 #X obj 727 49 / 100;
-#X floatatom 727 31 5 0 0 2 depth - -;
-#X obj 522 150 line~;
+#X floatatom 727 31 5 0 0 2 depth - -, f 5;
+#X obj 517 150 line~;
 #N canvas 285 142 696 470 REFERENCE 0;
 #X text 110 83 Inlet 0: signal or float for frequency;
 #X text 110 104 Inlet 1: signal or float for pulse width - 0.5 is a
@@ -25,10 +25,10 @@
 #X text 110 138 Inlet 2: float to set phase (0...1);
 #X text 110 62 Summary: bandlimited square wave with audio input for
 PWM.;
-#X text 110 41 Name: s_blquare;
-#X text 110 180 Description: s_blquare generates a bandlimited square
-wave with audio input for PWM.;
 #X text 110 159 Outlet 0: output signal;
+#X text 110 180 Description: s_blsquare generates a bandlimited square
+wave with audio input for PWM.;
+#X text 110 41 Name: s_blsquare;
 #X coords 0 -1 1 1 450 200 1 100 20;
 #X restore 19 51 pd REFERENCE;
 #X text 20 12 s_blsquare - bandlimited square wave with PWM.;

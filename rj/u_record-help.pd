@@ -55,7 +55,7 @@ This period can be changed with "fade x" messages.;
 #X symbolatom 517 453 12 0 0 1 table_name - -;
 #X obj 517 370 unpack s f f f;
 #X floatatom 598 393 6 0 0 1 samplerate - -;
-#N canvas 0 22 450 300 PLAYBACK 0;
+#N canvas 0 22 450 300 PLAYBACK 1;
 #X obj 150 154 s_playtable;
 #X obj 150 196 soundoutput;
 #X msg 150 60 bang;
@@ -69,6 +69,10 @@ This period can be changed with "fade x" messages.;
 #X restore 966 382 pd PLAYBACK;
 #X text 750 196 Output list containing: <table name> <recording duration
 in ms> <recording duration in samples> <samplerate>.;
+#X obj 771 370 s RJLIB;
+#X msg 771 339 sf-samplerate 44100;
+#X text 764 315 Set soundfile samplerate globally (default is 22050):
+;
 #X connect 0 0 8 1;
 #X connect 1 0 8 1;
 #X connect 2 0 8 1;
@@ -86,3 +90,4 @@ in ms> <recording duration in samples> <samplerate>.;
 #X connect 29 1 27 0;
 #X connect 29 2 26 0;
 #X connect 29 3 30 0;
+#X connect 34 0 33 0;

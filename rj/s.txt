@@ -1,5 +1,6 @@
 s_blsaw - bandlimited saw wave
 s_blsquare - bandlimited square wave with PWM
+s_bltriangle - bandlimited triangle wave with slope setting
 s_buzz - buzz harmonics generator
 s_chip - grungy and grainy console and cheap synth sounds
 s_cwc - synth with 4 harmonic oscillator modulating a waveshaper and FM stage

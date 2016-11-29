@@ -1,0 +1,34 @@
+#N canvas 28 90 877 305 10;
+#X obj 489 66 mtof;
+#X floatatom 489 46 5 0 0 0 - - -, f 5;
+#X obj 489 248 soundoutput;
+#X floatatom 576 194 5 0 0 1 phase_(0...1) - -, f 5;
+#N canvas 285 142 696 470 REFERENCE 0;
+#X text 110 83 Inlet 0: signal or float for frequency;
+#X text 110 138 Inlet 2: float to set phase (0...1);
+#X text 110 159 Outlet 0: output signal;
+#X text 110 41 Name: s_bltriangle;
+#X text 111 62 Summary: bandlimited triangle wave with slope setting.
+;
+#X text 110 104 Inlet 1: float for triangle slope. 0 for triangle \,
+0.99 for forward phasor and -0.99 for backward phasor;
+#X text 110 180 Description: s_bltriangle generates a bandlimited triangle
+wave with slope setting.;
+#X coords 0 -1 1 1 450 200 1 100 20;
+#X restore 19 51 pd REFERENCE;
+#X floatatom 523 155 5 -1 1 1 slope - -, f 5;
+#X obj 526 128 hsl 128 15 -1 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 5900 1;
+#X text 20 12 s_bltriangle - bandlimited triangle wave with slope setting
+;
+#X obj 489 193 s_bltriangle;
+#X text 521 90 Set triangle wave slope:;
+#X text 521 107 0=tri \, -0.999 = phasor \, 0.999 = phasor backwards
+;
+#X connect 0 0 8 0;
+#X connect 1 0 0 0;
+#X connect 3 0 8 2;
+#X connect 5 0 8 1;
+#X connect 6 0 5 0;
+#X connect 8 0 2 0;
+#X connect 8 0 2 1;

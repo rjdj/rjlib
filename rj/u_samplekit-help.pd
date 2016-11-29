@@ -1,10 +1,10 @@
-#N struct 1006-symarray float x array symbols 1006-sym;
-#N struct 1006-sym symbol name float on;
-#N struct 1010-symarray float x array symbols 1010-sym;
-#N struct 1010-sym symbol name float on;
-#N struct 1012-symarray float x array symbols 1012-sym;
-#N struct 1012-sym symbol name float on;
-#N canvas 22 42 1079 562 10;
+#N struct 1321-symarray float x array symbols 1321-sym;
+#N struct 1321-sym symbol name float on;
+#N struct 1325-symarray float x array symbols 1325-sym;
+#N struct 1325-sym symbol name float on;
+#N struct 1327-symarray float x array symbols 1327-sym;
+#N struct 1327-sym symbol name float on;
+#N canvas 83 69 1079 562 10;
 #X declare -path .;
 #X msg 516 99 open <directory>;
 #X msg 536 129 open <directory> <alternate_mapping.txt>;
@@ -23,9 +23,6 @@
 #X text 24 134 Inlet 0: Various control messages - see Example.;
 #X text 24 91 Argument 0: <symbol> - Optional prefix to the table names.
 Otherwise reverts to '\$0'.;
-#X text 24 204 Outlet 1: Upon recieving a 'dump' message to Inlet 0
-\, this outlet will dump the current mapping to the second outlet as
-lists of '<index> <table>'.;
 #X text 24 264 Description: [u_samplekit] loads a directory of samples
 (a "kit") into numbered tables prefixed with "\$0-" or the first argument.
 The samplekit must have a text file mapping sample names to numbers.
@@ -37,6 +34,9 @@ each sample to load consisting of: <filename> <index number>. For example
 is sent to Inlet 0;
 #X text 24 420 See also: [u_samplekit2] [s_playtable] [u_multisamplebank]
 [m_symbolarray];
+#X text 24 204 Outlet 1: Upon receiving a 'dump' message to Inlet 0
+\, this outlet will dump the current mapping to the second outlet as
+lists of '<index> <table>'.;
 #X coords 0 -1 1 1 450 500 1 10 10;
 #X restore 7 38 pd REFERENCE;
 #X obj 7 8 cnv 15 450 20 empty empty empty 20 12 0 14 -261234 -66577
@@ -46,9 +46,9 @@ is sent to Inlet 0;
 ;
 #X obj 10 10 u_samplekit;
 #X text 131 11 - load a directory of samples;
-#N canvas 322 156 651 327 HINTS 0;
-#N canvas 0 22 772 685 gmkit 0;
-#N canvas 0 22 588 406 list2symbol 0;
+#N canvas 78 191 516 306 HINTS 0;
+#N canvas 635 146 772 685 gmkit 0;
+#N canvas 155 100 588 406 list2symbol 0;
 #X msg 326 212 set %s;
 #X obj 234 260 t a;
 #X obj 117 268 makefilename %s;
@@ -92,12 +92,12 @@ is sent to Inlet 0;
 #X connect 17 0 18 0;
 #X connect 18 0 15 0;
 #X connect 19 0 17 0;
-#X restore 285 342 pd list2symbol;
-#X obj 232 318 list split 1;
-#X obj 232 367 pack 0 s;
-#X floatatom 104 419 5 0 0 0 - - -;
-#X symbolatom 144 419 25 0 0 0 - - -;
-#X msg 232 125 35 Acoustic Bass Drum \, 36 Bass Drum 1 \, 37 Side Stick
+#X restore 285 325 pd list2symbol;
+#X obj 232 301 list split 1;
+#X obj 232 350 pack 0 s;
+#X floatatom 104 418 5 0 0 0 - - -;
+#X symbolatom 144 418 25 0 0 0 - - -;
+#X msg 232 108 35 Acoustic Bass Drum \, 36 Bass Drum 1 \, 37 Side Stick
 \, 38 Acoustic Snare \, 39 Hand Clap \, 40 Electric Snare \, 41 Low
 Floor Tom \, 42 Closed Hi-Hat \, 43 High Floor Tom \, 44 Pedal Hi-Hat
 \, 45 Low Tom \, 46 Open Hi-Hat \, 47 Low-Mid Tom \, 48 Hi-Mid Tom
@@ -110,11 +110,11 @@ C) Hi Bongo \, 61 Low Bongo \, 62 Mute Hi Conga \, 63 Open Hi Conga
 Long Whistle \, 73 Short Guiro \, 74 Long Guiro \, 75 Claves \, 76
 Hi Wood Block \, 77 Low Wood Block \, 78 Mute Cuica \, 79 Open Cuica
 \, 80 Mute Triangle \, 81 Open Triangle \, 82 Shaker \,;
-#X obj 232 100 loadbang;
-#X obj 144 394 m_symbolarray;
+#X obj 232 83 loadbang;
+#X obj 144 376 m_symbolarray;
 #X obj 84 453 outlet;
-#X obj 84 343 inlet;
-#X msg 104 376 set \$1;
+#X obj 84 315 inlet;
+#X msg 104 348 set \$1;
 #X connect 0 0 2 1;
 #X connect 1 0 2 0;
 #X connect 1 1 0 0;
@@ -128,22 +128,25 @@ Hi Wood Block \, 77 Low Wood Block \, 78 Mute Cuica \, 79 Open Cuica
 #X connect 9 0 8 0;
 #X connect 9 0 7 0;
 #X connect 10 0 3 0;
-#X coords 0 -1 1 1 255 40 1 100 400;
-#X restore 113 85 pd gmkit;
+#X coords 0 -1 1 1 200 40 1 100 400;
+#X restore 107 133 pd gmkit;
 #X text 103 43 When loading drum samples this way \, it may be useful
 to follow the GM drum standard:;
-#X obj 107 180 declare -path .;
-#X text 100 145 Generally you should also use a declaration like this
+#X obj 107 228 declare -path .;
+#X text 100 193 Generally you should also use a declaration like this
 in _main.pd to be able to use relative directory names:;
+#X obj 107 82 loadbang;
+#X msg 107 108 35;
+#X connect 4 0 5 0;
+#X connect 5 0 0 0;
 #X restore 870 331 pd HINTS;
 #X text 789 130 Open samplekit and use custom mapping textfile.;
-#X text 623 99 Open samplekits using 'default.txt' as mapping file.
-;
 #X text 650 223 Size <index>: report size of table at <index> in samples
 to 2nd outlet.;
 #X text 617 185 Dump the current mapping to the second outlet as lists
 of "<index> <table>";
 #X text 597 158 Print the current mapping.;
+#X text 623 99 Open samplekits using 'index.txt' as mapping file.;
 #X connect 0 0 6 0;
 #X connect 1 0 6 0;
 #X connect 2 0 6 0;
