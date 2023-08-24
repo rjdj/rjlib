@@ -1,5 +1,5 @@
 /* code for the "rj_accum" pd class. 
-ver 0.2
+ver 0.3
 Amaury Hazan 
 Damian Stewart
 */
